@@ -1,0 +1,24 @@
+<!-- 
+  Etec de Poá
+ salvar como Uploadphp.php -->
+<html>
+<head>
+<title> UPLOAD IMAGENS </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<BODY BGCOLOR="#DEDDDE">
+<font face="caviar dreams">
+<h1> Subindo uma imagem para o servidor </h1>
+<?php
+
+echo"<br/> <br/> ";
+echo"<form method='post' enctype='multipart/form-data' action='Upload.php'> ";
+echo"<h3>Selecione uma imagem: </h3>
+   <input name='arquivo'  type='file'  /> ";
+echo"<br/> <br/>  <input type='submit' value='Salvar' />  ";
+echo"</form>";
+
+?>
+
+</BODY>
+</HTML>

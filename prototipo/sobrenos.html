@@ -66,13 +66,14 @@
 
     <div class="nav-actions">
         <a href="./entrarconta.html" class="home-btn">Login</a>
-        <a href="#" class="home-btn">Cadastrar-se</a>
+        
         
     </div>
 </nav>
 
     <footer class="footer"> <p> &copy;  2025 Bibliotec.  Todos os direitos reservados  by Maiam Technologies </p></footer>
-    <script>
+     <script>
+       
 const texto = "Bibliotec é uma biblioteca digital que oferece uma ampla gama de livros e recursos para leitores de todas as idades.";
 const elemento = document.getElementById("typewriter-text");
 let i = 0;
@@ -85,6 +86,21 @@ function digitar() {
     }
 }
 window.onload = digitar;
-</script>
+
+var lupa = document.getElementById("lupa");
+var bolalupa = document.getElementById("bolalupa")
+
+function mudacor(){
+    lupa.style.color = "Blue";
+}
+
+function mudacor2(){
+    lupa.style.color = "var(--cor-fundo)";
+}
+
+     
+     bolalupa.addEventListener("mousemove", mudacor , false);
+     bolalupa.addEventListener("mouseleave", mudacor2, false)
+    </script>
 </body>
 </html>

@@ -110,6 +110,50 @@ body{
     gap: 40px; /* Espaço igual entre os blocos */
 }
 
+/* NAVBAR RESPONSIVA */
+.navbar-toggle {
+  display: none;
+  background: var(--cor-secundaria);
+  border: none;
+  color: var(--cor-texto-navbar);
+  font-size: 2rem;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .nav-list {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    display: none;
+  }
+  .nav-list.active {
+    display: flex;
+  }
+  .nav-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .search-area {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
 .nav-list {
     display: flex;
     gap: 30px;
@@ -340,10 +384,6 @@ body{
     padding: 20px;
 }
 
-.titulo-card{
-    
-}
-
 .custom-file-input {
     display: none; /* Esconde o input padrão */
 }
@@ -530,30 +570,34 @@ max-width: 80%;
 
 
 
-.search-area{
+.search-area {
     background-color: var(--cor-texto-navbar);
-    border-top-right-radius: 15px ;
+    border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px ;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-left: 0px;
+    display: flex;                /* Adicionado */
+    justify-content: flex-end;    /* Adicionado */
+    align-items: center;          /* Adicionado */
 }
 .search-input {
-    padding: 8px 12px;
+    padding: 0px 0px;
     border: none;
     border-radius: 5px 0 0 5px;
     font-size: 16px;
     outline: none;
+    margin: 0px;
 }
 
 .search-btn {
-    padding: 8px 12px;
+    padding: 0px 0px;
     border: none;
     background: var(--cor-texto-navbar);
-    color: #fd5050;
     border-radius: 100%;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.2s;
+    transition:  0.2s;
     align-items: center;
     width: 35px;
     height: 35px;
@@ -561,11 +605,17 @@ max-width: 80%;
 }
 
 .search-btn:hover {
-    border-radius: 100%;
-    background-color: #1c259c;
+    
+    background-color: #eeeeee60;
     width: 35px;
     height: 35px;
     color: var(--cor-footer);
 
 }
 
+button[type="file"] {
+  outline: none;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
