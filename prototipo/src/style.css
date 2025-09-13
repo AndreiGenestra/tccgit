@@ -619,3 +619,14 @@ button[type="file"] {
   box-shadow: none;
   background: transparent;
 }
+
+
+
+/* container de realizado com sucesso*/
+
+.realizado{
+    height: 100px;
+    width: 200px;
+    background-color: #e3dfdf;
+
+}

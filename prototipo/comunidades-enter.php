@@ -1,9 +1,11 @@
 <?php
 
-require 'bd.php';
+require_once ('bd.php');
 
+	$mysql = new BancodeDados();
+	$mysql -> conecta();
 // Buscar arquivos no banco
-$resultado = $conn->query("SELECT * FROM livros ORDER BY data_upload DESC");
+$resultado = conecta()->query("SELECT * FROM livros ORDER BY data_upload DESC");
 ?>
 
 <!DOCTYPE html>
@@ -73,11 +75,10 @@ $resultado = $conn->query("SELECT * FROM livros ORDER BY data_upload DESC");
       <?php endif; ?> 
    <form action="princUpload.php" method="POST" enctype="multipart/form-data">
     <button type="submit"> <label for="livro" class="custom-file-label">Escolher arquivo</label> </button>
-    <input type="file" id="livro" name="livro" class="custom-file-input" required><br>
-        <button type="submit">Enviar</button>
+    <input type="file" id="livro" name="livro" class="custom-file-input" required><br> <br>
+        <center><button type="submit">Enviar</button></center> 
     </form>
     <?php
-
 /*echo"<br/> <br/> ";
 echo"<form method='post' enctype='multipart/form-data' action='princUpload.php'> ";
 echo"<h3>Selecione uma imagem: </h3>
@@ -85,11 +86,9 @@ echo"<h3>Selecione uma imagem: </h3>
 echo"<br/> <br/>  <input type='submit' value='Salvar' />  ";
 echo"</form>";
 */
-
 ?>
 
-
-<h2>Livros disponíveis:</h2>
+<br> <h2>Livros disponíveis:</h2>
     <ul>
         <?php while ($row = $resultado->fetch_assoc()): ?>
             <li>

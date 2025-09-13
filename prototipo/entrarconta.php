@@ -62,7 +62,7 @@
         <div class="login-container">
             
         <h2>Entrar na Conta</h2>
-        <form class="login-form">
+        <form class="login-form" method="POST" action="BDentrarconta.php">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" required>
 
@@ -207,7 +207,7 @@ function mudacor2(){
      bolalupa.addEventListener("mousemove", mudacor , false);
      bolalupa.addEventListener("mouseleave", mudacor2, false)
     </script>
-      <footer class="footer"> <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies </p></footer>
+      
 </body>
 
 </html>

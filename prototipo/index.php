@@ -1,8 +1,17 @@
 <?php //BANCO DE DADOS
-require 'bd.php';
-
+require_once('bd.php');
+$mysql = new BancodeDados();
+	$mysql -> conecta();
 // Buscar arquivos no bd
-if ($resultado = $conn->query("SELECT * FROM livros ORDER BY data_upload DESC"));
+$sqlstring = "sELECT * FROM livros ORDER BY data_upload DESC"  ;
+    echo $sqlstring;
+//	$resultdo = @mysqli_query($mysql->conn, $sqlstring);
+if ($resultado = @mysqli_query($mysql->conn,"SELECT * FROM livros ORDER BY data_upload DESC"));
+
+if ($resultado){
+  echo "oisdsadfdfadsfdsffdsadsf";
+
+}
 ?>
 
 <!DOCTYPE html>

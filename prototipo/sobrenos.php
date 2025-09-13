@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,33 +9,39 @@
 </head>
 <style>
     body {
+      background-image: url("src/img/fundologin.png");
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f7f7f7;
+      background-color: #fff;
       color: #333;
     }
 
     .container {
-      width: 90%;
+      width: 150%;
       max-width: 1200px;
       margin: auto;
-      padding: 40px 20px;
-    }
-
-    h2.section-title {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-      color: #1c164e;
+      background-color: #e3dfdf;
     }
 
     .forte {
-      color: #393bb5;
+      color: #ffffff;
       font-weight: bold;
     }
 
+    .forteb {
+      color: #393bb5;
+      font-weight: bold;
+    }
     /* --- SOBRE A EMPRESA --- */
-    .about {
+    .titulo-empresa {
+      font-size: 2.2rem;
+      margin-top: 25px;
+      margin-bottom: 25px;
+      color: #1c164e;
+    }
+
+    .sobre {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
@@ -43,25 +49,25 @@
       margin-bottom: 60px;
     }
 
-    .about-text {
+    .sobre-texto {
       flex: 1;
       min-width: 280px;
       font-weight: normal;
     }
 
-    .about-text h2 {
+    .sobre-texto  h2{
       font-size: 2rem;
       margin-bottom: 20px;
        font-weight: normal;
     }
 
-    .about-text p {
+    .sobre-texto p {
       font-size: 1.1rem;
       line-height: 1.6;
       margin-bottom: 10px;
     }
 
-    .about-image {
+    .sobre-imagem {
       flex: 1;
       min-width: 300px;
     }
@@ -69,103 +75,114 @@
 b, strong {
   font-weight: normal;
 }
-    .about-image img {
+    .sobre-imagem img {
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     /* --- MISSÃO, VISÃO E VALORES --- */
-    .mission-section {
-      background-color: #eaeaea;
+    .secao-missao {
+      background-color: #393bb5;
       padding: 40px 20px;
       border-radius: 12px;
       margin-bottom: 60px;
       text-align: center;
-       font-weight: normal;
+      font-weight: normal;
+      color: #ffffff;
     }
 
-    .mission-section h3 {
+    .secao-missao h3 {
       font-style: italic;
       color: #555;
-      margin-bottom: 8px;
+      margin-bottom: 25px;
+      margin-top: 25px;
+       color: #ffffff ;
     }
 
-    .mission-section h2 {
+    .secao-missao h2 {
       font-size: 1.8rem;
-      color: #1c164e;
-      margin-bottom: 30px;
-      font-weight: normal;
+      color: #393bb5;
+      margin-bottom: 35px;
+      margin-top: 35px;
+      font-weight: bold;
+      color: #ffffff ;
     }
 
-    .mission-items {
+    .itens-missao {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
       gap: 20px;
+      color: #ffffff;
     }
 
-    .mission-item {
+    .item-missao {
       flex: 1;
       min-width: 200px;
       max-width: 300px;
+       color: #ffffff ;
     }
 
-    .mission-item h4 {
+    .item-missao h4 {
       font-size: 1.2rem;
       color: #1c164e;
       margin-bottom: 10px;
+       color: #ffffff ;
     }
 
-    .mission-item p {
+    .item-missao p {
       font-size: 1rem;
       color: #444;
+       color: #ffffff ;
     }
 
     /* --- NÚMEROS --- */
-    .numbers-section {
+    .secao-numero {
       text-align: center;
       padding: 40px 20px;
     }
 
-    .numbers-section h2 {
+    .secao-numero h2 {
       font-size: 2rem;
       color: #1c164e;
       margin-bottom: 10px;
     }
 
-    .numbers-section p {
+    .secao-numero p {
       color: #888;
       margin-bottom: 30px;
     }
 
-    .numbers-grid {
+    .grid-dos-numero {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 30px;
     }
 
-    .number-item {
+    .item-numero {
       font-size: 1.8rem;
       color: #1c164e;
     }
 
-    .number-item span {
+    .item-numero span {
       display: block;
-      font-size: 0.9rem;
       color: #f26522;
       margin-top: 5px;
     }
 
     /* --- RESPONSIVO --- */
     @media (max-width: 768px) {
-      .about {
+      .sobre {
         flex-direction: column;
       }
-      .mission-items {
+      .itens-missao {
         flex-direction: column;
         align-items: center;
       }
+    }
+    .espaço {
+      margin-bottom: 100px;
     }
   </style>
 </head>
@@ -212,54 +229,48 @@ b, strong {
         <a href="./entrarconta.php" class="home-btn">Login</a>
       </div>
     </nav>
+   <div class="titulo-empresa">
+    
+   <center>
 
+     <strong class="forteb"> <h1>Sobre a empresa</h1> </strong>
+
+    </center>
+
+   </div>
   <div class="container">
     <!-- SOBRE A EMPRESA -->
-    <section class="about">
-      <div class="about-text">
-        <h2>Sobre a <strong class="forte">empresa</strong></h2>
-        <p>Com foco em transformar a jornada acadêmica, a <span class="forte">Bibliotec</span> foi idealizada para ser a sua biblioteca digital definitiva. Desde sua fundação, a Bibliotec tem se dedicado a oferecer um acervo vasto e de alta qualidade, com ferramentas de pesquisa avançadas e uma interface intuitiva. Nossa plataforma é a solução ideal para as necessidades de estudantes, oferecendo acesso ilimitado a livros, artigos e materiais de estudo essenciais para o seu sucesso.</p>
-        <p>Nossa prioridade é o seu aprendizado. A <span class="forte">Bibliotec</span> foi criada para simplificar a sua pesquisa, garantindo que você encontre o conhecimento que precisa de forma rápida e eficiente, com a transparência e profissionalismo que você merece.</p>
+    <section class="sobre">
+      <div class="sobre-texto">
+        <p>Com foco em transformar a jornada acadêmica, a <span class="forteb">Bibliotec</span> foi idealizada para ser a sua biblioteca digital definitiva. Desde sua fundação, a Bibliotec tem se dedicado a oferecer um acervo vasto e de alta qualidade, com ferramentas de pesquisa avançadas e uma interface intuitiva. Nossa plataforma é a solução ideal para as necessidades de estudantes, oferecendo acesso ilimitado a livros, artigos e materiais de estudo essenciais para o seu sucesso.</p>
+        <p>Nossa prioridade é o seu aprendizasdo. A <span class="forteb">Bibliotec</span> foi criada para simplificar a sua pesquisa, garantindo que você encontre o conhecimento que precisa de forma rápida e eficiente, com a transparência e profissionalismo que você merece.</p>
       </div>
-      <div class="about-image">
-        <img src="src/img/canaa.jpg" alt="Fachada da SK Condomínios">
+      <div class="sobre-imagem">
+        <img src="src/img/MAIAM.jpg" alt="Fachada da SK Condomínios">
       </div>
     </section>
 
     <!-- MISSÃO VISÃO VALORES -->
-    <section class="mission-section">
+    <section class="secao-missao">
       <h3>Missão, Visão e Valores</h3>
-      <h2>Saiba<span class="forte"> o que nos move</span></h2>
+     <h2>Saiba o que nos move </h2>
 
-      <div class="mission-items">
-        <div class="mission-item">
-          <h4><span class="forte">MISSÃO</span></h4>
+      <div class="itens-missao">
+        <div class="item-missao">
+          <h4><strong class="forte">MISSÃO</strong></h4>
           <p>Atender personalizadamente a cada cliente, ouvir e apresentar a melhor solução com profissionalismo.</p>
         </div>
-        <div class="mission-item">
-          <h4><span class="forte">VISÃO</span></h4>
+        <div class="item-missao">
+          <h4><strong class="forte">VISÃO</strong></h4>
           <p>Liderar o mercado da administração condominial e gerar soluções aos nossos clientes e rentabilidade a seus negócios.</p>
         </div>
-        <div class="mission-item">
-          <h4><span class="forte">VALORES</span></h4>
+        <div class="item-missao">
+          <h4><strong class="forte">VALORES</strong></h4>
           <p>Transparência, imparcialidade, especialização, inovação, competência e qualidade.</p>
         </div>
       </div>
-    </section>
-
-    <!-- NÚMEROS -->
-    <section class="numbers-section">
-      <h2>Números</h2>
-      <p>que exemplificam a excelência de nosso atendimento</p>
-
-      <div class="numbers-grid">
-        <div class="number-item">+ 180 <span>CONDOMÍNIOS</span></div>
-        <div class="number-item">+ 55 mil <span>CONDÔMINOS</span></div>
-        <div class="number-item">9 anos <span>MÉDIA DE PERMANÊNCIA</span></div>
-        <div class="number-item">+ 11 mil <span>UNIDADES</span></div>
-      </div>
-    </section>
-  </div>
+</div>
+<div class="espaço"></div>
     <footer class="footer"> <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies </p></footer>
 </body>
 </html>
