@@ -6,7 +6,7 @@
 	
    $plogin=$_POST['email'];
    $psenha=$_POST['senha'];
-   // ajustando a instru��o select verificar usuario e senha
+   // ajustando a instrucaoo select verificar usuario e senha
     $sqlstring = "select * from usuarios where email='$plogin' and senha='$psenha'"  ;
     echo $sqlstring;
 	$result = @mysqli_query($mysql->conn, $sqlstring);
@@ -20,6 +20,8 @@
     $_SESSION['email'] =$dados['email'] ;
     $_SESSION['idade'] =$dados['idade'] ;
 
+    $_SESSION['logado'] = true;
+
 		
   
 
@@ -28,6 +30,8 @@
           </script>";
 
   }
+
+
       $mysql->fechar();
  ?>
 

@@ -29,11 +29,15 @@
 
 
     }
-body{
-    font-family: Arial, sans-serif;
+
+  body {
+    font-family: "Segoe UI", Roboto !important;
+
     margin: 0;
     padding: 0;
 }
+    
+
 
 .bloco1{
     width: 100%;
@@ -190,7 +194,7 @@ body{
     padding: 10px 20px;               /* Espaçamento interno */
     border-radius: 5px;               /* Bordas arredondadas */
     text-decoration: none;            /* Remove sublinhado */
-    font-weight: bold;                /* Texto em negrito */
+    font-weight: none;                /* Texto em negrito */
     font-size: 18px;                  /* Tamanho da fonte */
     border: none;                     /* Remove borda */
     cursor: pointer;                  /* Cursor de ponteiro */
@@ -253,7 +257,7 @@ body{
     
 }
 .nav-list li a:hover {
-    font-weight: bold;
+    font-weight: none;
 }
 
 .form{
@@ -412,7 +416,7 @@ body{
     border-radius: 5px;                   
     text-decoration: none;              
     font-size: 18px;                      
-    font-weight: bold;                   
+    font-weight: none;                   
     display: inline-block;                
     transition: background 0.3s, transform 0.2s; 
     text-align: center;                  
@@ -523,7 +527,7 @@ border-color: white;
 
 .title {
   color: black;
-  font-weight: 300;
+  font-weight: none;
   position: absolute;
   left: 20px;
   top: 15px;

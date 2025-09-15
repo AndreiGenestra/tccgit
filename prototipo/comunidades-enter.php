@@ -5,8 +5,17 @@ require_once ('bd.php');
 	$mysql = new BancodeDados();
 	$mysql -> conecta();
 // Buscar arquivos no banco
-$resultado = conecta()->query("SELECT * FROM livros ORDER BY data_upload DESC");
+
+
+  $sqlstring = "select * from livros"; 
+    echo $sqlstring;
+	$resultado = @mysqli_query($mysql->conn, $sqlstring);
+	$total = $resultado -> num_rows;
+
+  $stmt =$mysql->conn->prepare("INSERT INTO usuarios (nome, email, senha, idade, Data_Cadastro) VALUES (?, ?, ?, ?, null)");
 ?>
+
+ 
 
 <!DOCTYPE html>
 <html lang="pt-br">

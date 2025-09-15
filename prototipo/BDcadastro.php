@@ -229,7 +229,7 @@ $mysql = new BancodeDados();
 	$mysql -> conecta();
 
 
-;
+
   $stmt =$mysql->conn->prepare("INSERT INTO usuarios (nome, email, senha, idade, Data_Cadastro) VALUES (?, ?, ?, ?, null)");
        $stmt->bind_param("sssi", $nome, $email, $senhausuario, $idade);
         $stmt->execute();

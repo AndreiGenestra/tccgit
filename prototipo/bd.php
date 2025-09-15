@@ -4,17 +4,20 @@
 class BancodeDados {
     // Nas linhas abaixo você poderá colocar as informações do Banco de Dados.
    // private $host = "localhost:3308";
+
+   /*
    private $host = "localhost:3306"; 	// Nome ou IP do Servidor
     private $user = "root"; 		// Usuário do Servidor MySQL
     private $senha = "prof@3t3c"; 		// Senha do Usuário MySQL
     private $banco = "compartilhador"; 		// Nome do seu Banco de Dados
-    public $conn;
+    public $conn;*/
 
 /* BD CASA DO ANDREI */
-  //$host = 'localhost';
- //$usuario = 'root';
- //$senha = 'dedei2007';
-  //$banco = 'compartilhador';
+    private $host = "localhost:3306"; 	// Nome ou IP do Servidor
+    private $user = "root"; 		// Usuário do Servidor MySQL
+    private $senha = "dedei2007"; 		// Senha do Usuário MySQL
+    private $banco = "compartilhador"; 		// Nome do seu Banco de Dados
+    public $conn;
 function conecta(){
         $this->conn = mysqli_connect($this->host,$this->user,$this->senha, $this->banco);
 /* if ($this->conn->connect_error) {

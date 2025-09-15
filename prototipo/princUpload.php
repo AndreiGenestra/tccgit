@@ -14,7 +14,7 @@ $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
 
 $extensao = strtolower ( $extensao );
 
-if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ) {
+if ( strstr ( '.jpg;.jpeg;.gif;.png;.jfif', $extensao ) ) {
 
 $novoNome = uniqid ( time () ) .".". $extensao;
 //$novoNome = uniqid ( time () ) . $extensao;
@@ -24,8 +24,10 @@ if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ){
 //if (move_uploaded_file ( $arquivo_tmp, $destino ) ){
 echo"salvo na pasta \n\n";
 echo '<center><img src = "' . $destino . '" height=400 width=790/></center>';
- require 'bd.php';
-  $stmt = $conn->prepare("INSERT INTO livros (nome_arquivo, caminho) VALUES (?,?)");
+ require_once('bd.php');
+$mysql = new BancodeDados();
+	$mysql -> conecta();
+  $stmt = $mysql->conn->prepare("INSERT INTO livros (nome_arquivo, caminho) VALUES (?,?)");
        $stmt->bind_param("ss", $nome, $destino);
         $stmt->execute();
         $stmt->close();
@@ -36,8 +38,7 @@ echo '<center><img src = "' . $destino . '" height=400 width=790/></center>';
 else
  echo ('Erro ao salvar o arquivo. Aparentemente você não tem permissão  de escrita.<br />');}
 else
- echo ("Você pode enviar apenas arquivos *.jpg;*.jpeg;*.gif;*.png <br />");}
-
+echo ("Você pode enviar apenas arquivos *.jpg;*.jpeg;*.gif;*.png <br />");}
 else
  echo ('Você não enviou nenhum arquivo!');
 
