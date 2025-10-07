@@ -42,7 +42,7 @@ $strerro = $_SESSION['strerrolog'];
         <form class="search-form" action="#" method="get">
         </form>
       </div>
-       <img style="width: 250px;"class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+       <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
        
 
@@ -74,6 +74,13 @@ $strerro = $_SESSION['strerrolog'];
          background-image: url("src/img/fundologin.png");
      }
 
+      .navbar-logo {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    display: block;
+    
+}
     .coroalogin {
         z-index: -1;
         max-height: 300px;

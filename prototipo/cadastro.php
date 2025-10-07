@@ -57,13 +57,12 @@ $strerro=$_SESSION["strCadErro"];
             <input type="email" id="email" name="email" required>
             <label for="">Idade</label>
             <input type="int" id="idade" name="idade" required>
-
             <label for="senha">Criar Senha</label>
             <input type="password" id="senha" name="senha" required>
 
             <button type="submit" class="btn-login">Entrar</button>
         </form>
-
+<br>
   <strong class="erro"> 
         <?php 
 
@@ -178,13 +177,12 @@ echo "$strerro";
             text-decoration: underline;
         }
 
-        .navbar-logo {
+         .navbar-logo {
     max-width: 200px;
     width: 100%;
     height: auto;
-    margin-right: 0px;
-    /* Remove o margin-right negativo */
     display: block;
+    
 }
 
 @media (max-width: 768px) {
