@@ -53,6 +53,7 @@
 
 .bloco1-texto{
     text-align: center;
+    margin-right: 200px;
 }
 
 .bloco1 h1{
@@ -239,6 +240,10 @@
     
 }
 
+    .navlogo {
+    width: 250px;
+
+}
 .nav-list li a::after {
     content: '';
     position: absolute;
@@ -266,12 +271,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
     width: 100%;
 }
 
 
-.footer{
+footer{
     width: 100%;
     height: 50px;
     background-color: var(--cor-footer);
@@ -279,9 +283,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: auto;
-    
-    
+    margin-top: 100%;
+    position: fixed;
+    bottom: 0;
     
 }
 
@@ -380,8 +384,6 @@
     transform: translateX(0);
 }
 
-
-
 .selecione-arquivo{
     
     width: 400px;
@@ -421,7 +423,7 @@
     transition: background 0.3s, transform 0.2s; 
     text-align: center;                  
     border: none;                         
-    cursor: pointer;                      
+    cursor: pointer;                    
 }
 
 .home-btn:hover {
@@ -571,8 +573,6 @@ max-width: 80%;
      height:15px;
 
 }
-
-
 
 .search-area {
     background-color: var(--cor-texto-navbar);

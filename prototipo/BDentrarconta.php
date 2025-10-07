@@ -8,7 +8,7 @@
    $psenha=$_POST['senha'];
    // ajustando a instrucaoo select verificar usuario e senha
     $sqlstring = "select * from usuarios where email='$plogin' and senha='$psenha'"  ;
-    echo $sqlstring;
+    
 	$result = @mysqli_query($mysql->conn, $sqlstring);
 	$total = $result -> num_rows;
   if($total==1){
@@ -19,7 +19,6 @@
     $_SESSION['senha'] =$dados['senha'] ;
     $_SESSION['email'] =$dados['email'] ;
     $_SESSION['idade'] =$dados['idade'] ;
-
     $_SESSION['logado'] = true;
 
 		
@@ -34,5 +33,3 @@
 
       $mysql->fechar();
  ?>
-
-

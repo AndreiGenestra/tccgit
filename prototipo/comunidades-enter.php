@@ -8,7 +8,6 @@ require_once ('bd.php');
 
 
   $sqlstring = "select * from livros"; 
-    echo $sqlstring;
 	$resultado = @mysqli_query($mysql->conn, $sqlstring);
 	$total = $resultado -> num_rows;
 

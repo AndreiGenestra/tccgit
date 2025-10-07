@@ -14,22 +14,81 @@ $senha = $_SESSION['senha'];
 $email = $_SESSION['email'];
 $idade = $_SESSION['idade'];
 ?>
+
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Astro v5.13.2">
-    <title>Página Inicial</title>
+       <link rel="stylesheet" href="./src/style.css">
+    <link rel="script" href="script.js">
+
+    <title>Sistema Bibliotec</title>
     
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./src/bootstrapcss/css/bootstrap.css" rel="stylesheet">
 
     
   
    
     <style>
+        .dropdown {
+  position: relative;
+}
+
+/* Estiliza o botão dropdown */
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Conteúdo do dropdown */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links dentro do conteúdo do dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:rgb(28, 35, 129);
+}
+
+/* Mostra o conteúdo do dropdown no hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Muda a cor de fundo do botão dropdown no hover */
+.dropdown:hover .dropbtn {
+}
+        .containero{
+    min-width: 992px;
+    max-width: 960px;
+    margin: 40px auto;
+    background: #e3dfdf;
+    border-radius: 8px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    
+        }
+        .containero a{
+  width: auto;
+        }
+
         .bd-placeholder-img{
             font-size:1.125rem;text-anchor:middle;-webkit-user-select:none;-moz-user-select:none;user-select:none
         }
@@ -53,32 +112,6 @@ $idade = $_SESSION['idade'];
                 
                 
              }
-            .btn{
-                --bs-btn-color: #333bb5;
-                --bs-btn-hover-color: #5158b5ff;
-                
-                --bs-btn-focus-shadow-rgb: 57, 59, 181;
-                --bs-btn-active-color: #fff;
-                --bs-btn-active-bg: #24266f;
-                --bs-btn-disabled-color: #393bb5;
-             }
-        .btn-bd-primary{
-            --bd-violet-bg: #712cf9;--bd-violet-rgb: 112.520718, 44.062154, 249.437846;--bs-btn-font-weight: 600;--bs-btn-color: var(--bs-white);--bs-btn-bg: var(--bd-violet-bg);--bs-btn-border-color: var(--bd-violet-bg);--bs-btn-hover-color: var(--bs-white);--bs-btn-hover-bg: #6528e0;--bs-btn-hover-border-color: #6528e0;--bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);--bs-btn-active-color: var(--bs-btn-hover-color);--bs-btn-active-bg: #5a23c8;--bs-btn-active-border-color: #5a23c8}
-            .bd-mode-toggle{z-index:1500}.bd-mode-toggle .bi{width:1em;height:1em}.bd-mode-toggle .dropdown-menu .active .bi{display:block!important}
-
-       
-        :root[data-bs-theme="light"] { 
-             --bs-body-bg:  #eae6ff; /* --cor-de-fundo */
-             --bs-body-color:  #222; /*--cor-texto */
-             --bs-primary: #393bb5;
-             --bs-secondary: #060025ff;
-             --cor-lead: #ffffff; /* cor do texto lead */
-             .bg-body-secondary{
-                background-color: var(--bs-primary) !important;
-                color: var(--bs-body-bg) !important;
-             }
-
-
              .btn{
                 --bs-btn-color: #333bb5;
                 --bs-btn-border-color: #393bb5;
@@ -93,15 +126,45 @@ $idade = $_SESSION['idade'];
                 
                 --bs-btn-disabled-border-color: #393bb5;
              }
+        .btn-bd-primary{
+            --bd-violet-bg:  #333bb5;--bd-violet-rgb: 112.520718, 44.062154, 249.437846;--bs-btn-font-weight: 600;--bs-btn-color: var(--bs-white);--bs-btn-bg: var(--bd-violet-bg);--bs-btn-border-color: var(--bd-violet-bg);--bs-btn-hover-color: var(--bs-white);--bs-btn-hover-bg: #2c2e8c;--bs-btn-hover-border-color:  #2c2e8c;--bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);--bs-btn-active-color: var(--bs-btn-hover-color);--bs-btn-active-bg:  #2c2e8c;--bs-btn-active-border-color:  #2c2e8c}
+            .bd-mode-toggle{z-index:1500}.bd-mode-toggle .bi{width:1em;height:1em}.bd-mode-toggle .dropdown-menu .active .bi{display:block!important}
+
+       
+        
+        :root[data-bs-theme="light"] { 
+             --bs-body-bg:  #eae6ff; /* --cor-de-fundo */
+             --bs-body-color:  black; /*--cor-texto */
+             --bs-primary: #393bb5;
+             --bs-secondary: #060025ff;
+             --cor-lead: #ffffff; /* cor do texto lead */
+             .bg-body-secondary{
+                background-color: var(--bs-primary) !important;
+                color: var(--bs-body-bg) !important;
+             }
+
+
+           
   /* Adicione outras variáveis para o modo claro aqui */
             }
 
         :root[data-bs-theme="dark"] {
         --bs-body-bg: #181a1b;
         --bs-body-color: #f8f9fa;
-        --bs-primary: #4f8cff;
+        --bs-primary: #393bb5;
         --bs-secondary: #b0b3b8;
         --cor-lead: #ffffff;
+        --bs-btn-color: #333bb5;
+        --bs-btn-border-color: #393bb5;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #2c2e8c;
+        --bs-btn-hover-border-color: #2c2e8c;
+        --bs-btn-focus-shadow-rgb: 57, 59, 181;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #24266f;
+        --bs-btn-active-border-color: #24266f;
+        --bs-btn-disabled-color: #393bb5;
+        --bs-btn-disabled-border-color: #393bb5;
         /* Adicione outras variáveis para o modo escuro aqui */
         }
 
@@ -114,9 +177,134 @@ $idade = $_SESSION['idade'];
             
         }
         
+        .footer{
+            background-color:  #393bb5;
+            color: #ffffff;
+        }
+
+        .link{
+            color: #ffffff !important;
+            text-decoration: none;
+        }
+        .navbarladinho {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000000;
+  top: 0;
+  left: 0;
+  background-color:rgb(39, 41, 150);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  color: #ffffff;
+}
+
+.navbarladinho a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.navbarladinho a:hover {
+  color: #f1f1f1;
+}
+
+.navbarladinho .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+
+}
+.tresrisco{
+    color: #ffffff !important;
+
+}
+.saudacao {
+  font-size: 30px;
+  text-decoration: none;
+  color: #333bb5 !important;
+  width: ;
+
+}
+.col {
+  margin: 100px;
+
+}
+
+   .navlogo {
+    width: 250px;
+
+}
     </style>
 </head>
+
 <body>
+     <nav class="navbar">
+     <div id="mySidenav" class="navbarladinho">
+  <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+ 
+
+ 
+  <a href="comunidades-list.php"> <span class="generos-text">Comunidades</span></a>
+  <a href="sobrenos.php"> <span class="generos-text">Sobre Nós</span></a>
+    <div class="dropdown">
+  <a class="dropbtn generos-text">Gêneros</a>
+  <div class="dropdown-content">
+    <a href="#">Poesia</a>
+    <a href="#">Romance</a>
+    <a href="#">Mistério</a>
+    <a href="#">Fantasia</a>
+    <a href="#">Ficção Científica</a>
+  </div>
+</div>
+</div>
+
+ <div class="menuo"> <span class="tresrisco"  style="font-size:30px;cursor:pointer;margin-left:50px;" onclick="openNav()">&#9776;</span> </div>
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.body.style.backgroundColor = "white";
+}
+</script> 
+      <div class="search-area">
+        <form class="search-form" action="#" method="get">
+          <input type="text" style="align-items: center;" name="q" class="search-input" placeholder="Pesquisar...">
+          <button type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg></button>
+        </form>
+      </div>
+       <div class="col-4 d-flex justify-content-end align-items- header-1">
+                    <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
+                </div>
+    </nav>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
@@ -133,14 +321,14 @@ $idade = $_SESSION['idade'];
         </symbol>
     </svg>
  
+<!--
+  Dropdown de seleção de tema (Normal, Escuro, Claro)
+-->
 <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-  <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Alternar tema (auto)">
-    <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
-    <span class="visually-hidden" id="bd-theme-text">Alternar tema</span>
-  </button>
   <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
     <li>
       <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+        <!-- Ícone modo normal -->
         <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
         Normal
         <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
@@ -148,6 +336,7 @@ $idade = $_SESSION['idade'];
     </li>
     <li>
       <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+        <!-- Ícone modo escuro -->
         <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
         Escuro
         <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
@@ -155,7 +344,7 @@ $idade = $_SESSION['idade'];
     </li>
     <li>
       <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
-        
+        <!-- Ícone modo claro -->
         <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
         Claro
         <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
@@ -163,118 +352,110 @@ $idade = $_SESSION['idade'];
     </li>
   </ul>
 </div>
+<!-- Container principal do conteúdo da página -->
+<div class="container">
+  <div class="row align-items-center py-4">
+    <!-- Saudação personalizada centralizada -->
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <a class="saudacao" href="paginaperfil.php" style="white-space: nowrap;">
+        Bem-vindo(a) <span style="font-weight:bold;"><?php echo htmlspecialchars($nome_usuario); ?></span>!
+      </a>
+     <div class="col"></div>
+       <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
 
-    <div class="container">
-        <header class="border-bottom lh-1 py-3">
-            <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-4 pt-1">
-                    <a class="link-secondary" href="#"><?php echo "Bem-vindo(a) " . $nome_usuario . "!"; ?></a>
-                </div>
-                <div class="col-4 text-center">
-                    <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Bibliotec</a>
-                </div>
-                <div class="col-4 d-flex justify-content-end align-items-center header-1">
-                    <a class="link-secondary" href="#" aria-label="Buscar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Buscar</title><circle cx="10.5" cy="10.5" r="7.5"></circle><path d="M21 21l-5.2-5.2"></path></svg>
-                    </a>
-                    <a class="btn icon" href="#"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
-                </div>
-            </div>
-        </header>
-        <div class="nav-scroller py-1 mb-3 border-bottom">
-            <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis active" href="#">Poesia</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Romance</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Drama</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Fantasia</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Ficção científica</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Terror</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Aventura</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Biografia</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">História</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Política</a>
-            </nav>
-        </div>
     </div>
-    <main class="container">
-        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-            <div class="col-lg-6 px-0">
-                <h1 class="display-4 fst-italic">Destaques da Bibliotec!</h1>
-                <p class="lead my-3">Aventuras Perigosas, romances melancólicos... Veja o que as pessoas mais estão lendo!</p>
-                <p class=""><a href="#" class="text-body-emphasis fw-bold lead">Acessar</a></p>
-            </div>
+  </div>
+</div>
+
+<main class="container">
+  <!-- Bloco de destaque principal -->
+  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary destaque">
+    <div class="col-lg-6 px-0">
+      <h1 class="display-4 fst-italic">Destaques da Bibliotec!</h1>
+      <p class="lead my-3">Aventuras Perigosas, romances melancólicos... Descubra seu próximo livro favorito!</p>
+      <p class="">
+        <a href="#" class="text-body-emphasis fw-bold lead" onclick="openNav()">Acessar</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Cards de postagens em destaque -->
+  <div class="row mb-2">
+    <!-- Card 1 -->
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary-emphasis">Mundo</strong>
+          <h3 class="mb-0">Postagem em destaque</h3>
+          <div class="mb-1 text-body-secondary">12 de novembro</div>
+          <p class="card-text mb-auto">Este é um cartão mais amplo com texto de apoio abaixo como uma introdução natural ao conteúdo adicional.</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue lendo
+            <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
+          </a>
         </div>
-        <div class="row mb-2">
-            <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary-emphasis">Mundo</strong>
-                        <h3 class="mb-0">Postagem em destaque</h3>
-                        <div class="mb-1 text-body-secondary">12 de novembro</div>
-                        <p class="card-text mb-auto">Este é um cartão mais amplo com texto de apoio abaixo como uma introdução natural ao conteúdo adicional.</p>
-                        <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                            Continue lendo
-                            <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
-                        </a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg aria-label="Placeholder: Miniatura" class="bd-placeholder-img " height="250" preserveAspectRatio="xMidYMid slice" role="img" width="200" xmlns="http://www.w3.org/2000/svg">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Miniatura</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
-                        <h3 class="mb-0">Título do Post</h3>
-                        <div class="mb-1 text-body-secondary">11 de novembro</div>
-                        <p class="mb-auto">Este é um cartão mais amplo com texto de apoio abaixo como uma introdução natural ao conteúdo adicional.</p>
-                        <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                            Continue lendo
-                            <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
-                        </a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg aria-label="Placeholder: Miniatura" class="bd-placeholder-img " height="250" preserveAspectRatio="xMidYMid slice" role="img" width="200" xmlns="http://www.w3.org/2000/svg">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Miniatura</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
+        <div class="col-auto d-none d-lg-block">
+          <!-- Miniatura do card -->
+          <svg aria-label="Placeholder: Miniatura" class="bd-placeholder-img " height="250" preserveAspectRatio="xMidYMid slice" role="img" width="200" xmlns="http://www.w3.org/2000/svg">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#55595c"></rect>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Miniatura</text>
+          </svg>
         </div>
-        <div class="row g-5">
-            <div class="col-md-8">
-                <h3 class="pb-4 mb-4 fst-italic border-bottom">
-                    Do Firehose
-                </h3>
-                <article class="blog-post">
-                    <h2 class="display-5 link-body-emphasis mb-1">Exemplo de Postagem</h2>
-                    <p class="blog-post-meta">1 de janeiro de 2021 por <a href="#">Mark</a></p>
-                    <p>Esta postagem de blog mostra alguns tipos diferentes de conteúdo suportados e estilizados com Bootstrap. Textos básicos, imagens e códigos são totalmente suportados.</p>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
+          <h3 class="mb-0">Título do Post fhfhfh</h3>
+          <div class="mb-1 text-body-secondary">11 de novembro</div>
+          <p class="mb-auto">Este é um cartão mais amplo com texto de apoio abaixo como uma introdução natural ao conteúdo adicional.</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue lendo
+            <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
+          </a>
+            <!-- Link vazio para exemplo -->
+          </a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <!-- Miniatura do card -->
+          <svg aria-label="Placeholder: Miniatura" class="bd-placeholder-img " height="250" preserveAspectRatio="xMidYMid slice" role="img" width="200" xmlns="http://www.w3.org/2000/svg">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#55595c"></rect>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Miniatura</text>
+        </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção de artigos e postagens -->
+  <div class="row g-5">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+    Da Maiam Technologies para você
+      </h3>
+      <article class="blog-post">
+        <h2 class="display-5 link-body-emphasis mb-1">O Poder da Palavra Compartilhada: Por Que Você Precisa de uma Comunidade Literária</h2>
+        <p class="blog-post-meta">1 de agosto de 2025 por Murilo Minghini dos Santos</p>
+        <p>Muito mais do que apenas um grupo de leitores, uma comunidade literária é um <strong>ecossistema vibrante</strong> onde o amor pelos livros se transforma em conhecimento, amizade e novas descobertas.</p>
                     <hr>
-                    <p>Garantir a segurança alimentar no futuro é uma questão que preocupa governos e cientistas em todo o mundo. Durante o século XX, a população mundial quadruplicou, e estima-se que chegará a dez bilhões de pessoas até 2050. Esse aumento representará um grande desafio e pressão sobre a capacidade de produção agrícola, o que exige o desenvolvimento de tecnologias inovadoras para produção de alimentos além da agricultura, como a fabricação de alimentos a partir do ar.</p>
+                    <p>Você já terminou um livro que te transformou e sentiu aquela necessidade urgente de falar sobre ele com alguém? De debater o final, analisar a motivação dos personagens ou até mesmo criticar a tradução? Se sim, você sabe que a leitura, apesar de ser um ato solitário, <strong>floresce quando é compartilhada.</strong> É aí que entram as <strong>comunidades literárias.</strong> Onde o ato solitário da leitura se torna uma jornada coletiva, as comunidades literárias oferecem <strong>perspectivas que jamais encontraríamos sozinhos</strong>. Ao discutir um romance, cada membro traz sua bagagem de vida, suas experiências e sua interpretação única, desvendando camadas de significado que poderiam ter passado despercebidas. O que para você era apenas um conflito de enredo, para outro pode ser uma metáfora social profunda. Essa riqueza de visões amplia não só a sua compreensão do texto, mas também a sua empatia pelo mundo, ensinando a ver além da sua própria lente.
+
+</p>
                     <blockquote class="blockquote">
-                        <p>A agricultura ocupa grandes áreas de terra, consome enormes quantidades de água e contribui significativamente para as emissões globais de gases de efeito estufa.</p>
-                    </blockquote>
-                    <p>A agricultura ocupa grandes áreas de terra e consome muita água. Além disso, a produção de alimentos por meio da agricultura contribui com uma alta porcentagem das emissões globais de gases de efeito estufa, superando até mesmo o setor de transporte.</p>
-                    <h2>Título</h2>
-                    <p>As plantas obtêm seu alimento por meio da fotossíntese, processo em que convertem luz solar, água e dióxido de carbono em alimento, liberando oxigênio como subproduto. Esse processo ocorre nos cloroplastos. As plantas usam a energia da luz solar para dividir a água em hidrogênio e oxigênio, e outras reações químicas produzem glicose, usada como fonte de alimento, enquanto o oxigênio é liberado na atmosfera. Ou seja, as plantas transformam dióxido de carbono em alimento por meio de reações químicas complexas. A fotossíntese é uma das reações químicas mais importantes da Terra, pois permitiu o surgimento da vida. As plantas usam CO₂ para produzir alimento e liberam oxigênio para outros seres vivos respirarem!</p>
-                    <h3>Subtítulo</h3>
-                    <p>Esse processo inspirou cientistas da NASA nos anos 1960 a pesquisar formas de alimentar astronautas em missões longas, como viagens a Marte. Uma ideia promissora era produzir alimento a partir do CO₂ exalado pelos astronautas, não por plantas, mas por microrganismos unicelulares capazes de transformar CO₂ em proteína em pó, sem sabor, que pode ser usada em alimentos comuns.</p>
-                    <pre><code>Exemplo de bloco de código</code></pre>
-                    <p>Diferente das plantas, esses microrganismos não usam luz, podendo crescer no escuro. Chamadas de "hidrogenotróficas", essas bactérias usam hidrogênio como combustível para produzir alimento a partir do CO₂. Assim, o CO₂ exalado é capturado pelos microrganismos e transformado, junto com outros insumos, em alimento rico em carbono, criando um ciclo fechado de carbono.</p>
-                    <h3>Subtítulo</h3>
-                    <p>Mais de meio século depois das pesquisas da NASA, empresas como Air Protein e Solar Foods desenvolvem novos produtos alimentícios sustentáveis, sem pegada de carbono, para todos os habitantes da Terra, produzidos rapidamente e sem depender de terras agrícolas. Isso permite obter mais alimentos em menos espaço.</p>
-                    <p>A alimentação humana é composta por três tipos principais:</p>
+                    <h3>Conhecimento Compartilhado e a Curva de Aprendizado Acelerada</h3>
+                    <p>Uma das maiores vantagens de fazer parte de uma comunidade literária é o <strong>acesso a um vasto leque de conhecimento </strong>e a aceleração da sua curva de aprendizado. Imagine que você está tentando se aprofundar em um gênero novo, como a ficção científica soviética, mas não sabe por onde começar. Em um grupo, você rapidamente receberá recomendações de clássicos essenciais, autores contemporâneos importantes e, o que é melhor, contexto histórico e análises já prontas de quem já percorreu esse caminho.
+
+Não se trata apenas de receber dicas de leitura; <strong> é sobre aprender a ler melhor. </strong>As discussões em grupo frequentemente abordam teoria literária de forma acessível: o que é um narrador não confiável, a estrutura de um soneto, o uso de flashback. Você absorve técnicas de análise e crítica sem sequer perceber, elevando o nível da sua própria leitura solitária. O insight de um membro sobre o simbolismo das cores em um livro pode ser a chave que faltava para você começar a enxergar esses padrões em todas as suas leituras futuras.</p>
+                   <h3>Motivos para estar em uma comunidade literária</h3>
+                    <p>Uma comunidade literária se faz importante pois estimula a criatividade, colaboração, cooperação e camaradagem.</p>
+                    <p>É composta por três principais tipos:</p>
                     <ul>
-                        <li>Proteínas</li>
-                        <li>Carboidratos</li>
+                        <li>Programação</li>
+                        <li>Design</li>
                         <li>Gorduras</li>
                     </ul>
                     <p>As proteínas são formadas por aminoácidos, compostos orgânicos dos quais o corpo humano possui vinte, sendo nove essenciais obtidos pela alimentação. Os aminoácidos são compostos principalmente de:</p>
@@ -318,8 +499,9 @@ $idade = $_SESSION['idade'];
                 <div class="position-sticky" style="top: 2rem;">
                     <div class="p-4 mb-3 bg-body-tertiary rounded">
                         <h4 class="fst-italic">Sobre</h4>
-                        <p class="mb-0">Você chegou, e com você veio a vida em todas as suas formas e cores: as plantas crescem, as árvores florescem, o gato mia, o pássaro canta, as ovelhas balem, as vacas mugem, e todos os seres chamam seus pares. Tudo sente a vida, esquece as preocupações e só lembra da felicidade. Se o tempo fosse um corpo, você seria sua alma; se fosse uma vida, você seria sua juventude.</p>
-                    </div>
+                        <p class="mb-0">Com foco em transformar a jornada acadêmica, a Bibliotec foi <strong>idealizada para ser a sua biblioteca digital definitiva</strong>. Desde sua fundação, a Bibliotec tem se dedicado a oferecer um <strong>acervo vasto e de alta qualidade</strong>, com ferramentas de pesquisa avançadas e uma interface intuitiva. Nossa plataforma é a <strong>solução ideal</strong> para as necessidades de estudantes, oferecendo <strong>acesso ilimitado</strong> a livros, artigos e materiais de estudo essenciais para o seu sucesso.</p>
+                    <br><a style="color: #333bb5; text-decoration: none;"href="sobrenos.php" class="icon-link gap-1 icon-link-hover stretched-link"> Ler mais </a>
+                      </div>
                     <div>
                         <h4 class="fst-italic">Postagens recentes</h4>
                         <ul class="list-unstyled">
@@ -387,14 +569,15 @@ $idade = $_SESSION['idade'];
             </div>
         </div>
     </main>
-    <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
+    <br>
+    <div class="footer">
+    <footer class="py-5 text-center  bg-body-primary footer">
         <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies</p>
         <p class="mb-0">
-            <a href="#">Voltar ao topo</a>
+        <a class="link"href="#"> Voltar ao topo </a>
         </p>
     </footer>
-
-     <footer class="footer">  </p></footer>
+    </div>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 // Script oficial do Bootstrap para alternância de tema

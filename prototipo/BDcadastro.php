@@ -13,11 +13,14 @@ Grupo MAIAM TECH - Allan Araujo, Andrei Genestra, Isabelle Lima, Milena Mazzo, M
     <link rel="stylesheet" href="./src/style.css">
     <title>Login</title>
 </head>
+<?php
+session_start();
+?>
 
 
 
 <body>
-
+ <!-- Começo da navbar -->
    <nav class="navbar">
       <button class="navbar-toggle" aria-label="Abrir menu" onclick="toggleNavbar()">☰</button>
       <ul class="nav-list">
@@ -219,6 +222,8 @@ function mudacor2(){
 </html>
 
 <?php
+
+
 $nome = $_POST['nome']; 
 $email = $_POST['email'];
 $idade = $_POST['idade'];
@@ -228,14 +233,32 @@ require_once('bd.php');
 $mysql = new BancodeDados();
 	$mysql -> conecta();
 
+ $sqlstring = "select * from usuarios where email='$email' and nome='$nome'"  ;
+    
+	$result = @mysqli_query($mysql->conn, $sqlstring);
+	$total = $result -> num_rows;
+  if($total==1){
+    {
+      $_SESSION["strCadErro"] = " <p class='erro_cadastro'> Este nome de usuário ja existe </p>";
+      echo"<script language='javascript' type='text/javascript'>
+          ;window.location.href='cadastro.php';
+          </script>";
+       
+    }
+  }
+  else{
 
-
-  $stmt =$mysql->conn->prepare("INSERT INTO usuarios (nome, email, senha, idade, Data_Cadastro) VALUES (?, ?, ?, ?, null)");
+       $stmt =$mysql->conn->prepare("INSERT INTO usuarios (nome, email, senha, idade, Data_Cadastro) VALUES (?, ?, ?, ?, null)");
        $stmt->bind_param("sssi", $nome, $email, $senhausuario, $idade);
         $stmt->execute();
         $stmt->close();
-       
+        
+         $_SESSION["strCadErro"] = "";
+         
         exit;
+  }
+
+ 
 
 
 
