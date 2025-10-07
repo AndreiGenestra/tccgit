@@ -42,7 +42,7 @@ $strerro = $_SESSION['strerrolog'];
         <form class="search-form" action="#" method="get">
         </form>
       </div>
-       <img style="margin-right: 0px" width="37.5px" src="src/img/logo.png" alt="Logo da Bibliotec">
+       <img style="width: 250px;"class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
        
 
