@@ -38,10 +38,6 @@ $strerro = $_SESSION['strerrolog'];
           </a>
         </li>
       </ul>
-      <div class="search-area">
-        <form class="search-form" action="#" method="get">
-        </form>
-      </div>
        <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
        
@@ -79,7 +75,7 @@ $strerro = $_SESSION['strerrolog'];
     width: 100%;
     height: auto;
     display: block;
-    
+
 }
     .coroalogin {
         z-index: -1;
