@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="./src/style.css">
     <title>Login</title>
 </head>
-
+<?php
+session_start();
+$strerro = $_SESSION["strErrolog"];
+?>
 
 
 <body>
@@ -59,6 +62,7 @@
 
             <button type="submit" class="btn-login">Entrar</button>
         </form>
+        <?php echo $strerro ?>
         <p class="cadastro-link">Não tem uma conta? <a href="cadastro.php">Cadastre-se</a></p>
     </div>
     </div>
