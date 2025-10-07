@@ -565,19 +565,13 @@ Não se trata apenas de receber dicas de leitura; <strong> é sobre aprender a l
                             <li><a href="#">Facebook</a></li>
                         </ol>
                     </div>
+                    <a class="link"href="#"> Voltar ao topo </a>
                 </div>
             </div>
+            <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies</p>
         </div>
     </main>
-    <br>
-    <div class="footer">
-    <footer class="py-5 text-center  bg-body-primary footer">
-        <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies</p>
-        <p class="mb-0">
-        <a class="link"href="#"> Voltar ao topo </a>
-        </p>
-    </footer>
-    </div>
+        
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 // Script oficial do Bootstrap para alternância de tema
