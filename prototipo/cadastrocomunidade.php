@@ -12,6 +12,8 @@
 session_start();
 $strerro=$_SESSION["strCadErro"];
 ?>
+
+
 <body>
 
             <nav class="navbar">
@@ -74,14 +76,15 @@ function closeNav() {
         <h2>Crie sua Comunidade</h2>
         <form class="login-form" action="BDcadastrocomunidade.php" method="POST">
             <label for="nome">Nome da comunidade</label>
-            <input type="text" id="nome" name="nome" required>
-            <label for="email">Descrição</label>
-            
-            <input type="email" id="email" name="email" required>
-            <label for="">Idade</label>
-            <input type="int" id="idade" name="idade" required>
-            <label for="senha">Criar Senha</label>
-            <input type="password" id="senha" name="senha" required>
+            <input type="text" id="nomecom" name="nomecom" required>
+
+            <label for="text">Descrição</label>
+            <input type="text" id="descricaocom" name="descricaocom" required>
+
+           
+            <label for="livro" class="custom-file-label"> Foto da comunidade</label> 
+            <input type="file" id="livro" name="livro" class="custom-file-input" required>
+
 
             <button type="submit" class="btn-login">Entrar</button>
         </form>

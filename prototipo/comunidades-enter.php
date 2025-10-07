@@ -10,8 +10,6 @@ require_once ('bd.php');
   $sqlstring = "select * from livros"; 
 	$resultado = @mysqli_query($mysql->conn, $sqlstring);
 	$total = $resultado -> num_rows;
-
-  $stmt =$mysql->conn->prepare("INSERT INTO usuarios (nome, email, senha, idade, Data_Cadastro) VALUES (?, ?, ?, ?, null)");
 ?>
 
  
@@ -82,10 +80,23 @@ require_once ('bd.php');
         <p style="color: green;">arquivo enviado com sucesso!</p>
       <?php endif; ?> 
    <form action="princUpload.php" method="POST" enctype="multipart/form-data">
-    <button type="submit"> <label for="livro" class="custom-file-label">Escolher arquivo</label> </button>
-    <input type="file" id="livro" name="livro" class="custom-file-input" required><br> <br>
-        <center><button type="submit">Enviar</button></center> 
-    </form>
+    <label for="livro" class="custom-file-label">Escolher arquivo</label>
+    <input type="file" id="livro" name="livro" class="custom-file-input" required><br><br>
+
+    <label for="genero">Gênero do livro:</label>
+    <select name="genero" id="genero" required>
+        <option value="">Selecione...</option>
+        <option value="Romance">Romance</option>
+        <option value="Ficção">Ficção</option>
+        <option value="Fantasia">Fantasia</option>
+        <option value="Terror">Terror</option>
+        <option value="Programação">Programação</option>
+        <option value="Outro">Outro</option>
+    </select>
+    <br><br>
+
+    <center><button type="submit">Enviar</button></center>
+</form>
     <?php
 /*echo"<br/> <br/> ";
 echo"<form method='post' enctype='multipart/form-data' action='princUpload.php'> ";
