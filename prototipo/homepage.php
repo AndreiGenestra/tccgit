@@ -172,11 +172,6 @@ $idade = $_SESSION['idade'];
             color: var(--bs-body-) !important;
         }
 
-        .footer{
-            background-color:  #393bb5;
-            color: #ffffff;
-        }
-
         .link{
             color: #ffffff !important;
             text-decoration: none;
@@ -193,6 +188,13 @@ $idade = $_SESSION['idade'];
   transition: 0.5s;
   padding-top: 60px;
   color: #ffffff;
+
+}
+
+.finterna{
+align-items: center;
+text-align: center;
+
 }
 
 .navbarladinho a {
@@ -560,10 +562,10 @@ Não se trata apenas de receber dicas de leitura; <strong> é sobre aprender a l
                             <li><a href="#">Facebook</a></li>
                         </ol>
                     </div>
-                    <a class="link"href="#"> Voltar ao topo </a>
                 </div>
             </div>
-           <center> <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies</p> </center>
+           <div class="finterna"> <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies</p> <br>
+           <a class="link"href="#"> Voltar ao topo </a> </div>
         </div>
     </main>
         
