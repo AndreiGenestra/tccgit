@@ -8,6 +8,7 @@
     <title>Login</title>
 </head>
 aaaaaaaaaaaa
+aaaaaaaaaaa eu andrei
 <?php
 session_start();
 $strerro=$_SESSION["strCadErro"];
