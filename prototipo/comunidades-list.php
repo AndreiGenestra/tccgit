@@ -71,39 +71,56 @@
   </style>
 <body>
 
-    <nav class="navbar">
-      <button class="navbar-toggle" aria-label="Abrir menu" onclick="toggleNavbar()">☰</button>
-      <ul class="nav-list">
-        <li class="nav-list-item home-item">
-          <a href="./index.php">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
-              <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
-              <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
-            </svg>
-            <span class="home-text">Home</span>
-          </a>
-        </li>
-        <li class="nav-list-item generos-item">
-        <li class="nav-list-item sobre-item">
-          <a href="sobrenos.php">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
-              <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
-            </svg>
-            <span class="sobre-text">Sobre Nós</span>
-          </a>
-        </li>
-      </ul>
+     <nav class="navbar">
+     <div id="mySidenav" class="navbarladinho">
+  <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+ 
+
+ <a href="homepage.php"> <span class="generos-text">Home</span></a>
+  <a href="comunidades-list.php"> <span class="generos-text">Comunidades</span></a>
+  <a href="sobrenos.php"> <span class="generos-text">Sobre Nós</span></a>
+    <div class="dropdown">
+  <a class="dropbtn generos-text">Gêneros</a>
+  <div class="dropdown-content">
+    <a href="#">Poesia</a>
+    <a href="#">Romance</a>
+    <a href="#">Mistério</a>
+    <a href="#">Fantasia</a>
+    <a href="#">Ficção Científica</a>
+  </div>
+</div>
+</div>
+
+ <div class="menuo"> <span class="tresrisco"  style="font-size:30px;cursor:pointer;margin-left:50px;" onclick="openNav()">&#9776;</span> </div>
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.body.style.backgroundColor = "white";
+}
+</script> 
       <div class="search-area">
         <form class="search-form" action="#" method="get">
-          <input type="text" name="q" class="search-input" placeholder="Pesquisar...">
+          <input type="text" style="align-items: center;" name="q" class="search-input" placeholder="Pesquisar...">
           <button type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
           </svg></button>
         </form>
       </div>
-      <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
-
+       <div class="col-4 d-flex justify-content-end align-items- header-1">
+                    <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
+                </div>
+	<img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
+
     <section class="comunidades-hero" style="text-align:center; margin-top:40px; margin-bottom:30px;">
       <h1 class="titulo1" style="font-size:2.5rem; color:#393bb5; margin-bottom:10px;">Comunidades</h1>
       <p style="font-size:1.2rem; color:#333; max-width:600px; margin:0 auto 10px auto;">Seja bem-vindo à página de comunidades da <b>Bibliotec</b>!<br>Encontre, crie e participe de comunidades literárias para discutir seu livro favorito, fazer amigos e compartilhar conhecimento.</p>

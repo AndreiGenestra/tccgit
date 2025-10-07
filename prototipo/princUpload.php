@@ -32,6 +32,9 @@ $mysql = new BancodeDados();
         $stmt->execute();
         $stmt->close();
         header("Location: comunidades-enter.php?sucesso=1");
+
+session_start();
+$_SESSION['destino'] = $destino;
         exit;
 
 }

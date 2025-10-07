@@ -100,7 +100,7 @@ echo"</form>";
     <ul>
         <?php while ($row = $resultado->fetch_assoc()): ?>
             <li>
-                <a href="<?= $row['caminho'] ?>" download><?= htmlspecialchars($row['nome_arquivo']) ?></a>
+                <img src=""><a href="<?= $row['caminho'] ?>" download><?= htmlspecialchars($row['nome_arquivo']) ?></a>
                 (enviado em <?= $row['data_upload'] ?>)
             </li>
         <?php endwhile; ?>
