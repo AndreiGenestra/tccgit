@@ -14,7 +14,7 @@ $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
 
 $extensao = strtolower ( $extensao );
 
-if ( strstr ( '.jpg;.jpeg;.gif;.png;.jfif', $extensao ) ) {
+if ( strstr ( '.jpg;.jpeg;.gif;.png;.jfif;.pdf;.doc;.docx', $extensao ) ) {
 
 $novoNome = uniqid ( time () ) .".". $extensao;
 //$novoNome = uniqid ( time () ) . $extensao;
