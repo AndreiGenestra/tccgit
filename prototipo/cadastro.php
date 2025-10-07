@@ -82,14 +82,15 @@ $strerro=$_SESSION["strCadErro"];
             <button type="submit" class="btn-login">Entrar</button>
         </form>
 
-
+  <strong class="erro"> 
         <?php 
 
 
 
-  echo "$strerro";
+echo "$strerro";
 
 ?>
+  </strong> 
         <p class="cadastro-link">Já tem uma conta? <a href="entrarconta.php">Faça login</a></p>
     </div>
     </div>

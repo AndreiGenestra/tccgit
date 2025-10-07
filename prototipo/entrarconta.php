@@ -62,7 +62,7 @@ $strerro = $_SESSION['strerrolog'];
 
             <button type="submit" class="btn-login">Entrar</button>
         </form>
-        <?php echo $strerro; ?>
+        <strong class="erro"><?php echo $strerro; ?></strong>
         <p class="cadastro-link">Não tem uma conta? <a href="cadastro.php">Cadastre-se</a></p>
     </div>
     </div>
@@ -75,19 +75,14 @@ $strerro = $_SESSION['strerrolog'];
      }
 
     .coroalogin {
-        
-        
         z-index: -1;
         max-height: 300px;
         min-height:300px; 
         min-width: 400px; ;
         max-width: 600px;
         
-      
     }
         .login-area{
-
-
             width:100%;
             height: 80vh;
             display:flex;
@@ -111,23 +106,27 @@ $strerro = $_SESSION['strerrolog'];
             position: relative;
             bottom:100px;
             z-index: 1;
+
         }
 
         .login-container h2 {
             margin-bottom: 18px;
             font-size: 1.4rem;
             font-weight: 600;
+
         }
 
         .login-form {
             width: 100%;
             display: flex;
             flex-direction: column;
+
         }
 
         .login-form label {
             margin-bottom: 6px;
             font-weight: 500;
+
         }
 
         .login-form input {
@@ -136,6 +135,7 @@ $strerro = $_SESSION['strerrolog'];
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1rem;
+
         }
 
         .btn-login {
@@ -148,20 +148,24 @@ $strerro = $_SESSION['strerrolog'];
             font-size: 1rem;
             cursor: pointer;
             transition: background 0.2s;
+
         }
 
         .btn-login:hover {
             background: var(--cor-gradiente);
+
         }
 
         .cadastro-link {
             margin-top: 14px;
             font-size: 0.95rem;
+
         }
 
         .cadastro-link a {
             color: #007bff;
             text-decoration: none;
+
         }
 
         .cadastro-link a:hover {
