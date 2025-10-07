@@ -66,8 +66,6 @@ $strerro=$_SESSION["strCadErro"];
   <strong class="erro"> 
         <?php 
 
-
-
 echo "$strerro";
 
 ?>
@@ -182,7 +180,7 @@ echo "$strerro";
     width: 100%;
     height: auto;
     display: block;
-    
+
 }
 
 @media (max-width: 768px) {

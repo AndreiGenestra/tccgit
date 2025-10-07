@@ -17,8 +17,6 @@ Grupo MAIAM TECH - Allan Araujo, Andrei Genestra, Isabelle Lima, Milena Mazzo, M
 session_start();
 ?>
 
-
-sdsaf
 <body>
  <!-- Começo da navbar -->
    <nav class="navbar">
@@ -33,34 +31,9 @@ sdsaf
             <span class="home-text">Home</span>
           </a>
         </li>
-        <li class="nav-list-item generos-item">
-          <a href="comunidades-list.php">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
-              <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
-            </svg>
-            <span class="generos-text">Comunidades</span>
-          </a>
-        </li>
-        <li class="nav-list-item sobre-item">
-          <a href="sobrenos.php">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
-              <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
-            </svg>
-            <span class="sobre-text">Sobre Nós</span>
-          </a>
-        </li>
-      </ul>
-      <div class="search-area">
-        <form class="search-form" action="#" method="get">
-          <input type="text" name="q" class="search-input" placeholder="Pesquisar...">
-          <button type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-          </svg></button>
-        </form>
-      </div>
-      <div class="nav-actions">
-        <a href="./entrarconta.php" class="home-btn">Login</a>
-      </div>
+       
+<img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+
     </nav>
         
 
@@ -88,6 +61,15 @@ sdsaf
      body{
          background-image: url("src/img/fundologin.png");
      }
+
+         .navbar-logo {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    display: block;
+    justify-content: end;
+    
+}
 
     .coroalogin {
         
