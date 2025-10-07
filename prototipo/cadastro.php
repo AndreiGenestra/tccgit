@@ -59,13 +59,12 @@ $strerro=$_SESSION["strCadErro"];
             <input type="email" id="email" name="email" required>
             <label for="">Idade</label>
             <input type="int" id="idade" name="idade" required>
-
             <label for="senha">Criar Senha</label>
             <input type="password" id="senha" name="senha" required>
 
             <button type="submit" class="btn-login">Entrar</button>
         </form>
-
+<br>
   <strong class="erro"> 
         <?php 
 
