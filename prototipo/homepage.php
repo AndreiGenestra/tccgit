@@ -173,7 +173,7 @@ $idade = $_SESSION['idade'];
         }
 
         .link{
-            color: #ffffff !important;
+            color: #333bb5 !important;
             text-decoration: none;
         }
         .navbarladinho {
@@ -194,6 +194,8 @@ $idade = $_SESSION['idade'];
 .finterna{
 align-items: center;
 text-align: center;
+justify-content: center;
+margin: auto;
 
 }
 
