@@ -74,6 +74,13 @@ $strerro = $_SESSION['strerrolog'];
          background-image: url("src/img/fundologin.png");
      }
 
+      .navbar-logo {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    display: block;
+    
+}
     .coroalogin {
         z-index: -1;
         max-height: 300px;
