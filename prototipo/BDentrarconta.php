@@ -33,7 +33,7 @@
 
   }
   else{
-      $_SESSION["strerrolog"] = " <p class='erro-cadastro'> Email e/ou Usuário incorretos </p>";
+      $_SESSION["strerrolog"] = " <p class='erro-cadastro'> Email e/ou usuário incorretos. </p>";
       echo"<script language='javascript' type='text/javascript'>
           ;window.location.href='entrarconta.php';
           </script>";

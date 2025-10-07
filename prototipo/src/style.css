@@ -16,17 +16,22 @@
     --cor-navbar: #fdcd9a;
 }
 
+.erro {
+    color: red;
+    margin-top: 10px;
+    font-size: 0.9rem;
+
+        }
 
 .bloco-comunidades {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Alinha à esquerda */
-        padding: 10px;
-        padding-left: 7%; /* Move um pouco para a direita */
-        padding-top:30px;
-
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha à esquerda */
+    padding: 10px;
+    padding-left: 7%; /* Move um pouco para a direita */
+    padding-top:30px;
 
     }
 
