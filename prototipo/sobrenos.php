@@ -248,7 +248,6 @@ b, strong {
                 </button>
             </form>
         </div>
-         <img style="margin-right: -500px" width="37.5px" src="src/img/logo.png" alt="Logo da Bibliotec">
         <!-- Botão de Login -->
         <div class="nav-actions">
             <a href="./entrarconta.php" class="home-btn">Login</a>
