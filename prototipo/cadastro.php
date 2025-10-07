@@ -14,7 +14,7 @@ $strerro=$_SESSION["strCadErro"];
 ?>
 <body>
 
-       <nav class="navbar">
+    <nav class="navbar">
       <button class="navbar-toggle" aria-label="Abrir menu" onclick="toggleNavbar()">☰</button>
       <ul class="nav-list">
         <li class="nav-list-item home-item">
@@ -37,9 +37,7 @@ $strerro=$_SESSION["strCadErro"];
           </a>
         </li>
       </ul>
-     
-      <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
-      
+       <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
         
 
