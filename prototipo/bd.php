@@ -20,7 +20,7 @@ class BancodeDados {
 */
 private $host = "localhost:3306"; 	// Nome ou IP do Servidor
     private $user = "root"; 		// Usuário do Servidor MySQL
-    private $senha = ""; 		// Senha do Usuário MySQL
+    private $senha = "prof@3t3c"; 		// Senha do Usuário MySQL
     private $banco = "compartilhador"; 		// Nome do seu Banco de Dados
     public $conn;
 function conecta(){
