@@ -9,7 +9,7 @@
 </head>
 <?php
 session_start();
-$strerro = $_SESSION["strErrolog"];
+$strerro = $_SESSION['strerrolog'];
 ?>
 
 
@@ -62,7 +62,7 @@ $strerro = $_SESSION["strErrolog"];
 
             <button type="submit" class="btn-login">Entrar</button>
         </form>
-        <?php echo $strerro ?>
+        <?php echo $strerro; ?>
         <p class="cadastro-link">Não tem uma conta? <a href="cadastro.php">Cadastre-se</a></p>
     </div>
     </div>

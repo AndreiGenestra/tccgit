@@ -3,16 +3,19 @@
 require_once('bd.php');
 $mysql = new BancodeDados();
 $mysql->conecta();
+session_start();
+$_SESSION['strerrolog'] ="";
+// Inicia a sessão e define o estado de login
+
+$_SESSION['logado'] = false;
+$_SESSION['strCadErro'] ="";
 // Buscar arquivos no banco de dados
 $sqlstring = "SELECT * FROM livros ORDER BY data_upload DESC";
 // $resultado = @mysqli_query($mysql->conn, $sqlstring);
 if ($resultado = @mysqli_query($mysql->conn, "SELECT * FROM livros ORDER BY data_upload DESC"));
 
-// Inicia a sessão e define o estado de login
-session_start();
-$_SESSION['logado'] = false;
-$_SESSION["strCadErro"] ="";
-$_SESSION["strErroLog"] ="";
+
+
 ?>
 
 <!DOCTYPE html>
