@@ -202,7 +202,7 @@ if (!isset($logado) || $logado !== true) {
   <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec" style="height:40px;margin-left:32px;">
 </nav>
 
-  <main style="display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding:0;">
+  <main style="display:flex;align-items:center;justify-content:center;min-height:87.55vh;padding:0;">
   <section style="width:100%;max-width:900px;background:rgba(255,255,255,0.98);border-radius:16px;box-shadow:0 8px 32px rgba(57,59,181,0.15);padding:56px 0;display:flex;flex-direction:row;align-items:center;gap:0;">
     <!-- Avatar e nome -->
     <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
@@ -213,7 +213,7 @@ if (!isset($logado) || $logado !== true) {
       <span style="color:#917bff;font-size:1.1rem;">@<?php echo htmlspecialchars($nome_usuario); ?></span>
     </div>
     <!-- Dados do usuário -->
-    <div style="flex:2;display:flex;flex-direction:column;gap:28px;padding:0 48px;">
+    <div style="flex:2;display:flex;flex-direction:column;gap:28px;padding:0 24px;">
       <div style="background:#e3e0fa;border-radius:8px;padding:20px 32px;box-shadow:0 1px 4px rgba(57,59,181,0.07);margin-bottom:0;">
         <label style="font-weight:600;color:#393bb5;">E-mail</label>
         <div style="font-size:1.15rem;color:#393bb5;"><?php echo htmlspecialchars($email); ?></div>
