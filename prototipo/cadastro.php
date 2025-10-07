@@ -58,7 +58,7 @@ $strerro=$_SESSION["strCadErro"];
             <label for="senha">Criar Senha</label>
             <input type="password" id="senha" name="senha" required>
 
-            <button type="submit" class="btn-login">Entrar</button>
+            <button type="submit" class="btn-login">Cadastrar</button>
         </form>
 <br>
   <strong class="erro"> 

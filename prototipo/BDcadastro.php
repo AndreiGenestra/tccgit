@@ -31,9 +31,18 @@ session_start();
             <span class="home-text">Home</span>
           </a>
         </li>
-       
-<img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
-
+        <li class="nav-list-item generos-item">
+        </li>
+        <li class="nav-list-item sobre-item">
+          <a href="sobrenos.php">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
+              <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
+            </svg>
+            <span class="sobre-text">Sobre Nós</span>
+          </a>
+        </li>
+      </ul>
+       <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
         
 
@@ -67,7 +76,7 @@ session_start();
     width: 100%;
     height: auto;
     display: block;
-    justify-content: end;
+  
     
 }
 
@@ -169,38 +178,7 @@ session_start();
         }
     </style>
 
-     <script>
-       
-const texto = "Bibliotec é uma biblioteca digital que oferece uma ampla gama de livros e recursos para leitores de todas as idades.";
-const elemento = document.getElementById("typewriter-text");
-let i = 0;
-
-function digitar() {
-    if (i < texto.length) {
-        elemento.innerHTML += texto.charAt(i);
-        i++;
-        setTimeout(digitar, 35); // velocidade da digitação
-    }
-}
-window.onload = digitar;
-
-var lupa = document.getElementById("lupa");
-var bolalupa = document.getElementById("bolalupa")
-
-function mudacor(){
-    lupa.style.color = "Blue";
-}
-
-function mudacor2(){
-    lupa.style.color = "var(--cor-fundo)";
-}
-
-     
-     bolalupa.addEventListener("mousemove", mudacor , false);
-     bolalupa.addEventListener("mouseleave", mudacor2, false)
-    </script>
 </body>
-
 </html>
 
 <?php
