@@ -102,9 +102,7 @@
         </form>
       </div>
       <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
-      <div class="nav-actions">
-        <a href="./entrarconta.php" class="home-btn">Login</a>
-      </div>
+
     </nav>
     <section class="comunidades-hero" style="text-align:center; margin-top:40px; margin-bottom:30px;">
       <h1 class="titulo1" style="font-size:2.5rem; color:#393bb5; margin-bottom:10px;">Comunidades</h1>

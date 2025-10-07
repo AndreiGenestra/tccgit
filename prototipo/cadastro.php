@@ -37,11 +37,9 @@ $strerro=$_SESSION["strCadErro"];
           </a>
         </li>
       </ul>
-      <div class="search-area">
-        <form class="search-form" action="#" method="get">
-        </form>
-      </div>
-       <img style="width: 250px;"class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+     
+      <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+      
     </nav>
         
 
