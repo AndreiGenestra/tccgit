@@ -177,15 +177,6 @@ echo "$strerro";
             text-decoration: underline;
         }
 
-        .navbar-logo {
-    max-width: 200px;
-    width: 100%;
-    height: auto;
-    margin-right: 0px;
-    /* Remove o margin-right negativo */
-    display: block;
-}
-
 @media (max-width: 768px) {
     .navbar-logo {
         max-width: 120px;
