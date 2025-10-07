@@ -4,6 +4,7 @@
 	$mysql = new BancodeDados();
 	$mysql -> conecta();
 	session_start();
+  $_SESSION["strErrolog"] ="";
    //recebendo os dados do formulario
    $plogin=$_POST['email'];
    $psenha=$_POST['senha'];
@@ -32,7 +33,7 @@
 
   }
   else{
-      $_SESSION["strErrolog"] = " <p class='erro_cadastro'> Email e/ou Usuário incorretos </p>";
+      $_SESSION["strErrolog"] = " <p class='erro-cadastro'> Email e/ou Usuário incorretos </p>";
       echo"<script language='javascript' type='text/javascript'>
           ;window.location.href='entrarconta.php';
           </script>";
