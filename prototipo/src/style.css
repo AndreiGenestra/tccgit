@@ -632,3 +632,10 @@ button[type="file"] {
     background-color: #e3dfdf;
 
 }
+
+.erro-cadastro{
+    color: red;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+}

@@ -239,7 +239,7 @@ $mysql = new BancodeDados();
 	$total = $result -> num_rows;
   if($total==1){
     {
-      $_SESSION["strCadErro"] = " <p class='erro_cadastro'> Este nome de usuário ja existe </p>";
+      $_SESSION["strCadErro"] = " <p class='erro-cadastro'> Este nome de usuário ja existe </p>";
       echo"<script language='javascript' type='text/javascript'>
           ;window.location.href='cadastro.php';
           </script>";
