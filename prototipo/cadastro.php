@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="./src/style.css">
     <title>Login</title>
 </head>
-aaaaaaaaaaaa
-aaaaaaaaaaa eu andrei
+
 <?php
 session_start();
 $strerro=$_SESSION["strCadErro"];
