@@ -68,8 +68,7 @@ $idade = $_SESSION['idade'];
 }
 
 /* Muda a cor de fundo do botão dropdown no hover */
-.dropdown:hover .dropbtn {
-}
+
         .containero{
     min-width: 992px;
     max-width: 960px;
@@ -173,10 +172,6 @@ $idade = $_SESSION['idade'];
             color: var(--bs-body-) !important;
         }
 
-        .header-1{
-            
-        }
-        
         .footer{
             background-color:  #393bb5;
             color: #ffffff;
@@ -241,7 +236,7 @@ $idade = $_SESSION['idade'];
   font-size: 30px;
   text-decoration: none;
   color: #333bb5 !important;
-  width: ;
+  width: auto;
 
 }
 .col {
@@ -568,7 +563,7 @@ Não se trata apenas de receber dicas de leitura; <strong> é sobre aprender a l
                     <a class="link"href="#"> Voltar ao topo </a>
                 </div>
             </div>
-            <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies</p>
+           <center> <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies</p> </center>
         </div>
     </main>
         
