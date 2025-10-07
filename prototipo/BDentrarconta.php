@@ -3,7 +3,8 @@
 	//criando o objeto mysql e conectando ao banco de dados
 	$mysql = new BancodeDados();
 	$mysql -> conecta();
-	
+	session_start();
+   //recebendo os dados do formulario
    $plogin=$_POST['email'];
    $psenha=$_POST['senha'];
    // ajustando a instrucaoo select verificar usuario e senha
@@ -13,7 +14,8 @@
 	$total = $result -> num_rows;
   if($total==1){
     $dados=mysqli_fetch_array($result) ;
-    session_start();
+
+     $_SESSION["strErrolog"] ="";
   	$_SESSION['id']= $dados['id'];
  		$_SESSION['nome'] =$dados['nome'] ;
     $_SESSION['senha'] =$dados['senha'] ;
@@ -28,6 +30,12 @@
           alert('Bem vindo à Bibliotec');window.location.href='homepage.php';
           </script>";
 
+  }
+  else{
+      $_SESSION["strErrolog"] = " <p class='erro_cadastro'> Email e/ou Usuário incorretos </p>";
+      echo"<script language='javascript' type='text/javascript'>
+          ;window.location.href='entrarconta.php';
+          </script>";
   }
 
 

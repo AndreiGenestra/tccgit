@@ -12,6 +12,7 @@ if ($resultado = @mysqli_query($mysql->conn, "SELECT * FROM livros ORDER BY data
 session_start();
 $_SESSION['logado'] = false;
 $_SESSION["strCadErro"] ="";
+$_SESSION["strErroLog"] ="";
 ?>
 
 <!DOCTYPE html>
