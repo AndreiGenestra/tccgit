@@ -14,12 +14,9 @@ $strerro=$_SESSION["strCadErro"];
 ?>
 <body>
 
-   <nav class="navbar">
+       <nav class="navbar">
       <button class="navbar-toggle" aria-label="Abrir menu" onclick="toggleNavbar()">☰</button>
- 
-
       <ul class="nav-list">
-
         <li class="nav-list-item home-item">
           <a href="./index.php">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
@@ -28,6 +25,8 @@ $strerro=$_SESSION["strCadErro"];
             </svg>
             <span class="home-text">Home</span>
           </a>
+        </li>
+        <li class="nav-list-item generos-item">
         </li>
         <li class="nav-list-item sobre-item">
           <a href="sobrenos.php">
@@ -40,13 +39,9 @@ $strerro=$_SESSION["strCadErro"];
       </ul>
       <div class="search-area">
         <form class="search-form" action="#" method="get">
-          <input type="text" name="q" class="search-input" placeholder="Pesquisar...">
-          <button type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-          </svg></button>
         </form>
       </div>
-      <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+       <img style="width: 250px;"class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
         
 
