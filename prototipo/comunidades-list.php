@@ -1,125 +1,101 @@
+<?php
+session_start();
 
+if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
+
+    echo "<script language='javascript' type='text/javascript'>
+
+    alert('Acesso negado! Entre na conta para acessar');window.location.href='entrarconta.php';</script>";
+
+    die();
+
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/bootstrapIcons/bootstrap-icons.css">
+    <link href="./csspaginas/comunidadeslist.css" rel="stylesheet">
     <title>Comunidades disponíveis</title>
 </head>
-<style>
-  
-     .bloco-comunidades {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Alinha ao centro */
-        padding-top: 25px;
 
-    }
-
-    /*  cards das comunidades   */
-    .comunidade-card {
-        background: #f5f5f5;
-        border-radius: 8px;
-        padding: 16px 24px;
-        margin: 12px 0;
-        display: flex;
-        align-items: center;
-        justify-content:space-between;
-        width: 350px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
-    }
-    .comunidade-nomie {
-        font-size: 1.1rem;
-        font-weight: 500;
-
-    }
-    .btn-entraro {
-        background: #007bff;
-        color: #fff;
-        padding: 8px 18px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: 500;
-        transition: background 0.2s;
-
-    }
-    .btn-entraro:hover {
-        background: #0056b3;
-
-    }
-
-    .titulo1 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-        color: black;
-        text-align: center;
-    }
-    .titulo2 {
-        font-size: 1.75rem;
-        margin-bottom: 20px;
-        color: black;
-        text-align: center;
-    }
-       .navlogo {
-    width: 250px;
-
-}
-  </style>
 <body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+  <div id="mySidenav" class="navbarladinho">
+    <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="homepage.php"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
+      </svg>
+      <span class="generos-text">Home</span>
+    </a>
+    
+    <a href="comunidades-list.php"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+      </svg>
+      <span class="generos-text">Comunidades</span>
+    </a>
+    
+    <a href="sobrenos.php"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
+        <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
+      </svg>  
+      <span class="generos-text">Sobre Nós</span>
+    </a>
 
-     <nav class="navbar">
-     <div id="mySidenav" class="navbarladinho">
-  <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
- 
-
- <a href="homepage.php"> <span class="generos-text">Home</span></a>
-  <a href="comunidades-list.php"> <span class="generos-text">Comunidades</span></a>
-  <a href="sobrenos.php"> <span class="generos-text">Sobre Nós</span></a>
-    <div class="dropdown">
-  <a class="dropbtn generos-text">Gêneros</a>
-  <div class="dropdown-content">
-    <a href="#">Poesia</a>
-    <a href="#">Romance</a>
-    <a href="#">Mistério</a>
-    <a href="#">Fantasia</a>
-    <a href="#">Ficção Científica</a>
+      <div class="dropdown">
+        <a class="dropbtn generos-text" href="livros.php">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
+            <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+          </svg>  
+        Livros</a>
+          <div class="dropdown-content">
+            <a href="livropoesias.php">Poesia</a>
+            <a href="livroromance.php">Romance</a>
+            <a href="livromisterio.php">Mistério</a>
+            <a href="livrofantasia.php">Fantasia</a>
+            <a href="livroficcao.php">Ficção Científica</a>
+            <a href="livrodidaticos.php">Didáticos</a>
+          </div>
+    </div>
   </div>
-</div>
-</div>
 
- <div class="menuo"> <span class="tresrisco"  style="font-size:30px;cursor:pointer;margin-left:50px;" onclick="openNav()">&#9776;</span> </div>
-</div>
+  <div class="menuo"> <span class="tresrisco"  style="font-size:30px;cursor:pointer;margin-left:50px;" onclick="openNav()">&#9776;</span> </div>
+  </div>
 
-<script>
-function openNav() {
+  <script>
+  function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
   document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
+  }
 
-function closeNav() {
+  function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
   document.body.style.backgroundColor = "white";
-}
-</script> 
+  }
+  </script> 
       <div class="search-area">
         <form class="search-form" action="#" method="get">
           <input type="text" style="align-items: center;" name="q" class="search-input" placeholder="Pesquisar...">
           <button type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-          </svg></button>
+            </svg>
+          </button>
         </form>
       </div>
-       <div class="col-4 d-flex justify-content-end align-items- header-1">
-                    <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
-                </div>
 	<img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
-    </nav>
+</nav>
+  <!--  fim da Navbar --> 
+
 
     <section class="comunidades-hero" style="text-align:center; margin-top:40px; margin-bottom:30px;">
       <h1 class="titulo1" style="font-size:2.5rem; color:#393bb5; margin-bottom:10px;">Comunidades</h1>
@@ -135,7 +111,7 @@ function closeNav() {
             <div style="font-size:0.95rem; color:#eae6ff;">Discussões sobre linguagens, projetos e tecnologia.</div>
           </div>
         </div>
-        <a href="comunidades-enter.php" class="btn-entraro" style="background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; margin-top:16px;">Entrar</a>
+        <a href="comunidade-programação.php" class="btn-entraro" style="background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; margin-top:16px;">Entrar</a>
       </div>
       <div class="comunidade-card" style="background:linear-gradient(90deg,#917bff 60%,#393bb5 100%); color:#fff; box-shadow:0 4px 16px #917bff40; border:none; min-width:320px; max-width:350px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:16px;">
@@ -145,22 +121,25 @@ function closeNav() {
             <div style="font-size:0.95rem; color:#eae6ff;"><p>Arte, criatividade, UI/UX e</p><p> inspiração visual.</p></div>
           </div>
         </div>
-        <a href="comunidades-enter.php" class="btn-entraro" style="background:#fff;color:#917bff;font-weight:600;box-shadow:0 2px 8px #917bff20; margin-top:16px;">Entrar</a>
+        <a href="comunidade-design.php" class="btn-entraro" style="background:#fff;color:#917bff;font-weight:600;box-shadow:0 2px 8px #917bff20; margin-top:16px;">Entrar</a>
       </div>
-      <div class="comunidade-card" style="background:linear-gradient(90deg,#ffb347 60%,#ffcc80 100%); color:#393bb5; box-shadow:0 4px 16px #ffb34740; border:none; min-width:320px; max-width:350px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div class="comunidade-card" style="background:linear-gradient(90deg,#393bb5 60%,#917bff 100%); color:#fff; box-shadow:0 4px 16px #393bb540; border:none; min-width:320px; max-width:350px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:16px;">
-          <span style="font-size:2rem;"><svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-controller' viewBox='0 0 16 16'><path d='M11.5 6a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 0 1H12v.5a.5.5 0 0 1-1 0V8h-.5a.5.5 0 0 1 0-1H11v-.5a.5.5 0 0 1 .5-.5z'/><path d='M6.5 7a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 0 1H7v.5a.5.5 0 0 1-1 0V9h-.5a.5.5 0 0 1 0-1H6v-.5a.5.5 0 0 1 .5-.5z'/><path d='M8 1a7 7 0 0 0-7 7c0 1.657 1.567 3 3.5 3 .276 0 .5-.224.5-.5s-.224-.5-.5-.5C2.672 10 2 9.105 2 8c0-1.105.672-2 1.5-2 .276 0 .5-.224.5-.5s-.224-.5-.5-.5C1.567 5 0 6.343 0 8a8 8 0 1 0 16 0c0-1.657-1.567-3-3.5-3-.276 0-.5.224-.5.5s.224.5.5.5c.828 0 1.5.895 1.5 2 0 1.105-.672 2-1.5 2-.276 0-.5.224-.5.5s.224.5.5.5c1.933 0 3.5-1.343 3.5-3A7 7 0 0 0 8 1z'/></svg></span>
+      <i class="bi bi-controller"></i>
           <div>
             <span class="comunidade-nomie" style="font-size:1.2rem;font-weight:600;">Comunidade de Jogos</span>
-            <div style="font-size:0.95rem; color:#393bb5;">Games, e-sports, diversão e novidades do mundo gamer.</div>
+            <div style="font-size:0.95rem; color:#eae6ff;">Games, e-sports e novidades do mundo gamer.</div>
           </div>
         </div>
-        <a href="comunidades-enter.php" class="btn-entraro" style="background:#fff;color:#ffb347;font-weight:600;box-shadow:0 2px 8px #ffb34720; margin-top:16px;">Entrar</a>
+        <a href="comunidade-jogos.php" class="btn-entraro" style="background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; margin-top:16px;">Entrar</a>
       </div>
     </div>
+    <br><br><br><br><br> <br>
+    <center> <div class="btcom"><a href="cadastrocomunidade.php" >Crie sua comunidade</a> </div> </center>
         <!-- Footer -->
-    <footer class="footer">
+   <footer class="footer">
         <p>&copy; 2025 Bibliotec. Todos os direitos reservados by Maiam Technologies</p>
-    </footer>
+</footer>
+
 </body>
 </html>

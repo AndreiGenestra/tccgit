@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Segoe UI", Roboto !important;
 }
 
 :root {
@@ -36,13 +37,6 @@
     padding-top: 30px;
 
 }
-
-body {
-    font-family: "Segoe UI", Roboto !important;
-    margin: 0;
-    padding: 0;
-}
-
 
 
 .bloco1 {
@@ -96,24 +90,6 @@ body {
     /* Centraliza verticalmente */
 }
 
-.container {
-    min-width: 400px;
-    ;
-    max-width: 600px;
-    margin: 40px auto;
-    background: #e3dfdf;
-    border-radius: 8px;
-    padding: 32px 24px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    position: relative;
-
-    z-index: 1;
-
-}
 
 .navbar {
     display: flex;
@@ -318,11 +294,13 @@ footer {
     background-color: var(--cor-footer);
     color: var(--cor-texto-navbar);
     display: flex;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
-    bottom: 0;
 
 }
+
+
 
 /*
 
@@ -643,6 +621,8 @@ footer {
     font-size: 16px;
     outline: none;
     margin: 0px;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .search-btn {
@@ -732,10 +712,9 @@ button[type="file"] {
 /* Muda a cor de fundo do botão dropdown no hover */
 
 .containero {
-    min-width: 992px;
-    max-width: 960px;
-    margin: 40px auto;
-    background: #e3dfdf;
+
+    margin: auto;
+    background: var(--bs-body-bg);
     border-radius: 8px;
     padding: 32px 24px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
@@ -751,163 +730,445 @@ button[type="file"] {
     width: auto;
 }
 
- .bd-placeholder-img{
-            font-size:1.125rem;text-anchor:middle;-webkit-user-select:none;-moz-user-select:none;user-select:none
-        }
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+}
 
-     @media (min-width: 768px){
-            .bd-placeholder-img-lg{font-size:3.5rem}
-        }
-        .b-example-divider{
-            width:100%;height:3rem;background-color:#0000001a;border:solid rgba(0,0,0,.15);border-width:1px 0;box-shadow:inset 0 .5em 1.5em #0000001a,inset 0 .125em .5em #00000026}
-        .b-example-vr{
-            flex-shrink:0;width:1.5rem;height:100vh}
-        .bi{vertical-align:-.125em;fill:currentColor}
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem
+    }
+}
 
-        .nav-scroller{
-            position:relative;z-index:2;height:2.75rem;overflow-y:hidden}
-        .nav-scroller .nav{
-            display:flex;flex-wrap:nowrap;padding-bottom:1rem;margin-top:-1px;overflow-x:auto;text-align:center;white-space:nowrap;-webkit-overflow-scrolling:touch}
-            
-             .icon{
-                
-                border-radius:100%;
-                
-                
-             }
-             .btn{
-                --bs-btn-color: #333bb5;
-                --bs-btn-border-color: #393bb5;
-                --bs-btn-hover-color: #fff;
-                --bs-btn-hover-bg: #2c2e8c;
-                --bs-btn-hover-border-color: #2c2e8c;
-                --bs-btn-focus-shadow-rgb: 57, 59, 181;
-                --bs-btn-active-color: #fff;
-                --bs-btn-active-bg: #24266f;
-                --bs-btn-active-border-color: #24266f;
-                --bs-btn-disabled-color: #393bb5;
-                
-                --bs-btn-disabled-border-color: #393bb5;
-             }
-        .btn-bd-primary{
-            --bd-violet-bg:  #333bb5;--bd-violet-rgb: 112.520718, 44.062154, 249.437846;--bs-btn-font-weight: 600;--bs-btn-color: var(--bs-white);--bs-btn-bg: var(--bd-violet-bg);--bs-btn-border-color: var(--bd-violet-bg);--bs-btn-hover-color: var(--bs-white);--bs-btn-hover-bg: #2c2e8c;--bs-btn-hover-border-color:  #2c2e8c;--bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);--bs-btn-active-color: var(--bs-btn-hover-color);--bs-btn-active-bg:  #2c2e8c;--bs-btn-active-border-color:  #2c2e8c}
-            .bd-mode-toggle{z-index:1500}.bd-mode-toggle .bi{width:1em;height:1em}.bd-mode-toggle .dropdown-menu .active .bi{display:block!important}
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: #0000001a;
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em #0000001a, inset 0 .125em .5em #00000026
+}
 
-       
-        
-        :root[data-bs-theme="light"] { 
-             --bs-body-bg:  #eae6ff; /* --cor-de-fundo */
-             --bs-body-color:  black; /*--cor-texto */
-             --bs-primary: #393bb5;
-             --bs-secondary: #060025ff;
-             --cor-lead: #ffffff; /* cor do texto lead */
-             .bg-body-secondary{
-                background-color: var(--bs-primary) !important;
-                color: var(--bs-body-bg) !important;
-             }
+.b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh
+}
 
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor
+}
 
-           
-  /* Adicione outras variáveis para o modo claro aqui */
-            }
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden
+}
 
-        :root[data-bs-theme="dark"] {
-        --bs-body-bg: #181a1b;
-        --bs-body-color: #f8f9fa;
-        --bs-primary: #393bb5;
-        --bs-secondary: #b0b3b8;
-        --cor-lead: #ffffff;
-        --bs-btn-color: #333bb5;
-        --bs-btn-border-color: #393bb5;
-        --bs-btn-hover-color: #fff;
-        --bs-btn-hover-bg: #2c2e8c;
-        --bs-btn-hover-border-color: #2c2e8c;
-        --bs-btn-focus-shadow-rgb: 57, 59, 181;
-        --bs-btn-active-color: #fff;
-        --bs-btn-active-bg: #24266f;
-        --bs-btn-active-border-color: #24266f;
-        --bs-btn-disabled-color: #393bb5;
-        --bs-btn-disabled-border-color: #393bb5;
-        /* Adicione outras variáveis para o modo escuro aqui */
-        }
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch
+}
 
+.icon {
 
-         .lead{
-            color: var(--bs-body-) !important;
-        }
+    border-radius: 100%;
 
-        .link{
-            color: #333bb5 !important;
-            text-decoration: none;
-        }
-        .navbarladinho {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1000000;
-  top: 0;
-  left: 0;
-  background-color:rgb(39, 41, 150);
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-  color: #ffffff;
 
 }
 
-.finterna{
-align-items: center;
-text-align: center;
-justify-content: center;
-margin: auto;
+.btn {
+    --bs-btn-color: #333bb5;
+    --bs-btn-border-color: #393bb5;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #2c2e8c;
+    --bs-btn-hover-border-color: #2c2e8c;
+    --bs-btn-focus-shadow-rgb: 57, 59, 181;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #24266f;
+    --bs-btn-active-border-color: #24266f;
+    --bs-btn-disabled-color: #393bb5;
+
+    --bs-btn-disabled-border-color: #393bb5;
+}
+
+.btn-bd-primary {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #2c2e8c;
+    --bs-btn-hover-border-color: #2c2e8c;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #2c2e8c;
+    --bs-btn-active-border-color: #2c2e8c;
+
+}
+
+.bd-mode-toggle {
+    z-index: 1500
+}
+
+.bd-mode-toggle .bi {
+    width: 1em;
+    height: 1em
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+    display: block !important
+}
+
+/* Adicione outras variáveis para o modo claro aqui */
+:root[data-bs-theme="light"] {
+    --bs-body-bg: #eae6ff;
+     --bs-secondary-bg: #393bb5;
+    /* --cor-de-fundo */
+    --bs-body-color: black;
+    --destaque:#917bff;
+    /*--cor-texto */
+    --bs-primary: #393bb5;
+    --bs-secondary: #060025ff;
+    --cor-lead: #000000;
+
+    /* cor do texto lead */
+    
+
+
+}
+.container {
+    min-width: 400px;
+    ;
+    max-width: 600px;
+    margin: 40px auto;
+    background: var(--bs-secondary-bg);
+    border-radius: 8px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+
+    z-index: 1;
+
+}
+.containeri {
+    min-width: 400px;
+    ;
+    max-width: 600px;
+    margin: 40px auto;
+    background: #eae6ff;
+    border-radius: 8px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+
+    z-index: 1;
+
+}
+/* Adicione outras variáveis para o modo escuro aqui */
+:root[data-bs-theme="dark"] {
+    --bs-body-bg: #151518;
+    --bs-secondary-bg: rgb(25, 25, 29);
+    --bs-body-color: #eae6ff;
+    --bs-primary: #ffffff;
+    --bs-secondary: #1164f5;
+    --cor-lead: #ffffff;
+    --destaque:none;
+    --bs-btn-color: #333bb5;
+    --bs-btn-border-color: #393bb5;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #2c2e8c;
+    --bs-btn-hover-border-color: #2c2e8c;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #24266f;
+    --bs-btn-active-border-color: #24266f;
+    --bs-btn-disabled-color: #393bb5;
+    --bs-btn-disabled-border-color: #393bb5;
+    transition: background 0.3s, color 0.3s;
+}
+
+
+.lead {
+    color: var(--bs-body-) !important;
+}
+
+.link {
+    color: #333bb5 !important;
+    text-decoration: none;
+}
+
+.navbarladinho {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000000;
+    top: 0;
+    left: 0;
+    background-color: rgb(39, 41, 150);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: #ffffff;
+
+}
+
+.finterna {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
 
 }
 
 .navbarladinho a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #ffffff;
-  display: block;
-  transition: 0.3s;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
 }
 
 .navbarladinho a:hover {
-  color: #f1f1f1;
+    color: #f1f1f1;
 }
 
 .navbarladinho .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 
 }
 
 #main {
-  transition: margin-left .5s;
-  padding: 16px;
+    transition: margin-left .5s;
+    padding: 16px;
 
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 
 }
-.tresrisco{
+
+.tresrisco {
     color: #ffffff !important;
 
 }
+
 .saudacao {
-  font-size: 30px;
-  text-decoration: none;
-  color: #333bb5 !important;
-  width: auto;
+    font-size: 30px;
+    text-decoration: none;
+    color: var(--bs-primary);
+    width: auto;
+    padding-right: 100px;
+}
+
+.coroalogin {
+    z-index: -1;
+    max-height: 300px;
+    min-height: 300px;
+    min-width: 400px;
+    ;
+    max-width: 600px;
+
 
 }
-.col {
-  margin: 100px;
+
+.login-area {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    min-width: 400px;
+    ;
+    max-width: 600px;
+    margin: 40px auto;
+    background: #e3dfdf;
+    border-radius: 8px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+
+    bottom: 100px;
+    z-index: 1;
+}
+
+.login-container h2 {
+    margin-bottom: 18px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.login-form input {
+    padding: 8px 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn-login {
+    background: var(--cor-primaria);
+    color: #fff;
+    padding: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-login:hover {
+    background: var(--cor-gradiente);
+}
+
+.cadastro-link {
+    margin-top: 14px;
+    font-size: 0.95rem;
+}
+
+.cadastro-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.cadastro-link a:hover {
+    text-decoration: underline;
+}
+
+.navbar-logo {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    display: block;
+
+}
+
+@media (max-width: 768px) {
+    .navbar-logo {
+        max-width: 120px;
+        margin-right: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-logo {
+        max-width: 90px;
+        margin-right: 4px;
+    }
+}
+
+/* INDEX */
+.logo {
+    width: auto;
+    height: auto;
+    border-radius: 0%;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+}
+
+.card-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* css para o modal que faz o div aparecer e desfocar o fundo*/
+.modal-fundo {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* Caixa do modal */
+.modal-conteudo {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  position: relative;
+}
+
+/* Botão de fechar */
+.fechar {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: #aaa;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.fechar:hover {
+  color: black;
+}
+/*botao baixar*/
+.btn-entraro {
+    background: #007bff;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
 
 }

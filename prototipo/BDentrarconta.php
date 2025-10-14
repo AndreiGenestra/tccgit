@@ -22,18 +22,15 @@
     $_SESSION['senha'] =$dados['senha'] ;
     $_SESSION['email'] =$dados['email'] ;
     $_SESSION['idade'] =$dados['idade'] ;
+    $_SESSION['cargo'] =$dados['cargo'];
     $_SESSION['logado'] = true;
-
-		
-  
-
+    
 		  echo"<script language='javascript' type='text/javascript'>
           alert('Bem vindo à Bibliotec');window.location.href='homepage.php';
           </script>";
-
   }
   else{
-      $_SESSION["strerrolog"] = " <p class='erro-cadastro'> Email e/ou usuário incorretos. </p>";
+      $_SESSION["strerrolog"] = " <p class='erro-cadastro'> Email e/ou senha incorretos. </p>";
       echo"<script language='javascript' type='text/javascript'>
           ;window.location.href='entrarconta.php';
           </script>";

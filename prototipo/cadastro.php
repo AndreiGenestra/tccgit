@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
+    <link href="./csspaginas/cadastro.css" rel="stylesheet">
     <title>Login</title>
 </head>
-
 <?php
 session_start();
 $strerro=$_SESSION["strCadErro"];
 ?>
 <body>
 
+<!-- Navbar --> 
     <nav class="navbar">
       <button class="navbar-toggle" aria-label="Abrir menu" onclick="toggleNavbar()">☰</button>
       <ul class="nav-list">
@@ -39,7 +40,7 @@ $strerro=$_SESSION["strCadErro"];
       </ul>
        <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
-        
+  <!-- Navbar --> 
 
     <div class="login-area">
 
@@ -57,6 +58,8 @@ $strerro=$_SESSION["strCadErro"];
             <input type="int" id="idade" name="idade" required>
             <label for="senha">Criar Senha</label>
             <input type="password" id="senha" name="senha" required>
+            <label for="senha2">Confirme sua senha</label>
+            <input type="password" id="senha2" name="senha2" required>
 
             <button type="submit" class="btn-login">Cadastrar</button>
         </form>
@@ -71,132 +74,6 @@ echo "$strerro";
         <p class="cadastro-link">Já tem uma conta? <a href="entrarconta.php">Faça login</a></p>
     </div>
     </div>
-
-
-    <style>
-
-     body{
-         background-image: url("src/img/fundologin.png");
-     }
-
-    .coroalogin {
-        
-        
-        z-index: -1;
-        max-height: 300px;
-        min-height:300px; 
-        min-width: 400px; ;
-        max-width: 600px;
-        
-      
-    }
-        .login-area{
-
-
-            width:100%;
-            height: 80vh;
-            display:flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-         .login-container {
-            min-width: 400px; ;
-            max-width: 600px;
-            margin: 40px auto;
-            background: #e3dfdf;
-            border-radius: 8px;
-            padding: 32px 24px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-items: center;
-            position: relative;
-            bottom:100px;
-            z-index: 1;
-        }
-
-        .login-container h2 {
-            margin-bottom: 18px;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
-
-        .login-form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .login-form label {
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-
-        .login-form input {
-            padding: 8px 10px;
-            margin-bottom: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .btn-login {
-            background: var(--cor-primaria);
-            color: #fff;
-            padding: 10px 0;
-            border: none;
-            border-radius: 5px;
-            font-weight: 500;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-login:hover {
-            background: var(--cor-gradiente);
-        }
-
-        .cadastro-link {
-            margin-top: 14px;
-            font-size: 0.95rem;
-        }
-
-        .cadastro-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .cadastro-link a:hover {
-            text-decoration: underline;
-        }
-
-         .navbar-logo {
-    max-width: 200px;
-    width: 100%;
-    height: auto;
-    display: block;
-
-}
-
-@media (max-width: 768px) {
-    .navbar-logo {
-        max-width: 120px;
-        margin-right: 8px;
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar-logo {
-        max-width: 90px;
-        margin-right: 4px;
-    }
-}
-    </style>
-
-  
 </body>
 
 </html>

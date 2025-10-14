@@ -11,6 +11,7 @@ Grupo MAIAM TECH - Allan Araujo, Andrei Genestra, Isabelle Lima, Milena Mazzo, M
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
+    <link href="./src/csspaginas/BDcadastro.css" rel="stylesheet">
     <title>Login</title>
 </head>
 <?php
@@ -44,7 +45,7 @@ session_start();
       </ul>
        <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
-        
+    <!-- Navbar --> 
 
     <div class="login-area">
 
@@ -56,7 +57,7 @@ session_start();
             
         <h2>Cadastro realizado com sucesso!</h2>
         <span> Volte para a página inicial e faça o login!</span>
-        <br>
+        <br> <br> <br>
         <a href="entrarconta.php"><button class="btn-login">Voltar para o Login</button></a>
         
         
@@ -157,6 +158,7 @@ session_start();
             font-size: 1rem;
             cursor: pointer;
             transition: background 0.2s;
+            margin-top: 20px;
         }
 
         .btn-login:hover {
@@ -187,29 +189,42 @@ session_start();
 $nome = $_POST['nome']; 
 $email = $_POST['email'];
 $idade = $_POST['idade'];
-$senhausuario = $_POST['senha']; 
+$senhausuario = $_POST['senha'];
+$senhausuario2 = $_POST['senha2']; 
+$cargo = "usuario";
 
 require_once('bd.php');
 $mysql = new BancodeDados();
 	$mysql -> conecta();
 
- $sqlstring = "select * from usuarios where email='$email' and nome='$nome'"  ;
+ $sqlstring = "select * from usuarios where email='$email' || nome='$nome' "  ;
     
 	$result = @mysqli_query($mysql->conn, $sqlstring);
 	$total = $result -> num_rows;
+ 
+
   if($total==1){
     {
-      $_SESSION["strCadErro"] = " <p class='erro-cadastro'> Este nome de usuário ja existe </p>";
+      $_SESSION["strCadErro"] = " <p class='erro-cadastro'>  Essa conta já existe. </p>";
       echo"<script language='javascript' type='text/javascript'>
           ;window.location.href='cadastro.php';
           </script>";
        
     }
   }
-  else{
+     elseif($senhausuario != $senhausuario2){
+    {
+      $_SESSION["strCadErro"] = " <p class='erro-cadastro'>  As senhas devem ser correspondentes. </p>";
+      echo"<script language='javascript' type='text/javascript'>
+          ;window.location.href='cadastro.php';
+          </script>";
+       
+    }
+  }
+  elseif(strlen($senhausuario) < 20000){
 
-       $stmt =$mysql->conn->prepare("INSERT INTO usuarios (nome, email, senha, idade, Data_Cadastro) VALUES (?, ?, ?, ?, null)");
-       $stmt->bind_param("sssi", $nome, $email, $senhausuario, $idade);
+       $stmt =$mysql->conn->prepare("INSERT INTO usuarios (nome, email, senha, idade, cargo, Data_Cadastro) VALUES (?, ?, ?, ?, ?, null)");
+       $stmt->bind_param("sssis", $nome, $email, $senhausuario, $idade, $cargo);
         $stmt->execute();
         $stmt->close();
         

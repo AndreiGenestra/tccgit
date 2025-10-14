@@ -8,11 +8,12 @@ require_once ('bd.php');
 
 
   $sqlstring = "select * from livros"; 
+    
 	$resultado = @mysqli_query($mysql->conn, $sqlstring);
 	$total = $resultado -> num_rows;
-?>
 
- 
+  $stmt =$mysql->conn->prepare("INSERT INTO usuarios (nome, email, senha, idade, Data_Cadastro) VALUES (?, ?, ?, ?, null)");
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -28,7 +29,7 @@ require_once ('bd.php');
       <button class="navbar-toggle" aria-label="Abrir menu" onclick="toggleNavbar()">☰</button>
       <ul class="nav-list">
         <li class="nav-list-item home-item">
-          <a href="./index.php">
+          <a href="./homepage.php">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
               <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
               <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
@@ -71,32 +72,36 @@ require_once ('bd.php');
         <div class="content-above">
             <h1 class="titulo1"><img class="perfil-foto-comunidade" src="">Comunidade de Programação</h1>
              <div class="container com">  
-          
-          
+
+
             <h1 class="titulo-card"> Compartilhe seu livro!</h1>
 
     <!-- Banco de dados -->
     <?php if (isset($_GET['sucesso'])): ?>
-        <p style="color: green;">arquivo enviado com sucesso!</p>
+        <p style="color: green;">Arquivo enviado com sucesso!</p>
       <?php endif; ?> 
    <form action="princUpload.php" method="POST" enctype="multipart/form-data">
-    <label for="livro" class="custom-file-label">Escolher arquivo</label>
-    <input type="file" id="livro" name="livro" class="custom-file-input" required><br><br>
-
-    <label for="genero">Gênero do livro:</label>
-    <select name="genero" id="genero" required>
+    <label for="titulo" class="custom-file-label">titulo</label> 
+    <input type="text" id="titulo" name="titulo" required><br> <br>
+      <label for="sinopse" >sinopse</label> 
+    <input type="text" id="sinopse" name="sinopse" required><br> <br>
+    <button type="submit"> <label for="livro" class="custom-file-label">Escolher arquivo</label> </button>
+    
+        <label for="genero">Gênero do livro:</label>
+        
+        <select name="genero" id="genero" required>
         <option value="">Selecione...</option>
-        <option value="Romance">Romance</option>
-        <option value="Ficção">Ficção</option>
-        <option value="Fantasia">Fantasia</option>
-        <option value="Terror">Terror</option>
-        <option value="Programação">Programação</option>
-        <option value="Outro">Outro</option>
-    </select>
+        <option value="1">Poesia</option>
+        <option value="2">Romance</option>
+        <option value="3">Terror</option>
+        <option value="4">Ficcao</option>
+        <option value="5">Fantasia</option>
+        
+        </select>
     <br><br>
-
-    <center><button type="submit">Enviar</button></center>
-</form>
+    <input type="file" id="livro" name="livro" class="custom-file-input" required><br> <br>
+        <center><button type="submit">Enviar</button></center> 
+    </form>
     <?php
 /*echo"<br/> <br/> ";
 echo"<form method='post' enctype='multipart/form-data' action='princUpload.php'> ";
@@ -111,17 +116,16 @@ echo"</form>";
     <ul>
         <?php while ($row = $resultado->fetch_assoc()): ?>
             <li>
-                <img src=""><a href="<?= $row['caminho'] ?>" download><?= htmlspecialchars($row['nome_arquivo']) ?></a>
+                <a href="<?= $row['caminho'] ?>" download><?= htmlspecialchars($row['nome_arquivo']) ?></a>
                 (enviado em <?= $row['data_upload'] ?>)
             </li>
         <?php endwhile; ?>
     </ul>
 
             <br>
-            
+
         </div>
     </div>
         </div>   
-       
+
 </body>
-</html>

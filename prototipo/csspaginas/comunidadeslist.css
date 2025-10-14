@@ -1,0 +1,84 @@
+body {
+    background-image: url("img/fundologin.png");
+}
+
+ .bloco-comunidades {
+     width: 100%;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     /* Alinha ao centro */
+     padding-top: 25px;
+
+ }
+
+ /*  cards das comunidades   */
+ .comunidade-card {
+     background: #f5f5f5;
+     border-radius: 8px;
+     padding: 16px 24px;
+     margin: 12px 0;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 350px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+ }
+
+ .comunidade-nomie {
+     font-size: 1.1rem;
+     font-weight: 500;
+
+ }
+
+ .btn-entraro {
+     background: #007bff;
+     color: #fff;
+     padding: 8px 18px;
+     border-radius: 5px;
+     text-decoration: none;
+     font-weight: 500;
+     transition: background 0.2s;
+
+ }
+
+ .btn-entraro:hover {
+     background: #0056b3;
+
+ }
+
+ .titulo1 {
+     font-size: 2rem;
+     margin-bottom: 20px;
+     color: black;
+     text-align: center;
+ }
+
+ .titulo2 {
+     font-size: 1.75rem;
+     margin-bottom: 20px;
+     color: black;
+     text-align: center;
+ }
+
+ .navlogo {
+     width: 250px;
+
+ }
+
+ .btcom a {
+     background: #393bb5;
+     color: #ffffff;
+     padding: 20px;
+     border-radius: 8px;
+     font-weight: 700;
+     font-size: 1.1rem;
+     cursor: pointer;
+     text-decoration: none;
+     transition: background 0.2s;
+     text-align: center;
+     box-shadow: 0 2px 8px rgba(57, 59, 181, 0.10);
+
+ }

@@ -29,7 +29,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #0d6efd;
+  --bs-primary: #ffffff;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -86,7 +86,7 @@
   --bs-emphasis-color-rgb: 0, 0, 0;
   --bs-secondary-color: rgba(33, 37, 41, 0.75);
   --bs-secondary-color-rgb: 33, 37, 41;
-  --bs-secondary-bg: #e9ecef;
+  --bs-secondary-bg: #393bb5;
   --bs-secondary-bg-rgb: 233, 236, 239;
   --bs-tertiary-color: rgba(33, 37, 41, 0.5);
   --bs-tertiary-color-rgb: 33, 37, 41;
@@ -187,6 +187,10 @@
   box-sizing: border-box;
 }
 
+.icon-link{
+  box-sizing: border-box;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -199,7 +203,7 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: rgb(0, 0, 0);
+  color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
@@ -7172,8 +7176,10 @@ textarea.form-control-lg {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: 0;
   content: "";
+  color:#ffffff;
+  background-color: transparent;
 }
 
 .text-truncate {

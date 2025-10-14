@@ -27,26 +27,6 @@ if ($resultado = @mysqli_query($mysql->conn, "SELECT * FROM livros ORDER BY data
     <link rel="script" href="script.js">
     <title>Bibliotec</title>
 </head>
-<!-- Estilização -->
-<style>
-    .logo {
-        width: auto;
-        height: auto;
-        border-radius: 0%;
-        margin-top: 20px;
-        margin-right: 0px;
-        margin-bottom: 20px;
-    }
-    .card-area {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 20px;
-    }
- 
-</style>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar">
@@ -90,7 +70,7 @@ if ($resultado = @mysqli_query($mysql->conn, "SELECT * FROM livros ORDER BY data
         <img src="./src/img/logo.png" class="logo" alt="Logo da Bibliotec" style="margin: 100px">
     </div>
     <div class="apresentacao">
-        <h1 style="font-size: 100px; color:var(--cor-primaria)">Vasta Biblioteca</h1>
+        <h1 style="font-size: 100px; color:var(--cor-primaria)">Acervo Disponível</h1>
         <br>
         <br>
         <div class="card-area">

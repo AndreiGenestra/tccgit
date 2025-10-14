@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
+    <link href="./csspaginas/sobrenos.css" rel="stylesheet">
     <title>Conheça a Maiam Tech</title>
 </head>
 <?php
 // Inicia sessão e recupera dados do usuário se estiver logado
 session_start();
+
+if(empty($_SESSION['nome'] $_SESSION['senha'] $_SESSION['email'] $_SESSION['idade'] ))
 if ($_SESSION['logado']) {
     $id = $_SESSION['id'];
     $nome_usuario = $_SESSION['nome'];
@@ -18,189 +21,7 @@ if ($_SESSION['logado']) {
 }
 ?>
 
-<style>
-    body {
-      background-image: url("src/img/fundologin.png");
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-      color: #333;
-    }
 
-    .container {
-      width: 150%;
-      max-width: 1200px;
-      margin: auto;
-      background-color: #e3dfdf;
-    }
-
-    .forte {
-      color: #ffffff;
-      font-weight: bold;
-    }
-
-    .forteb {
-      color: #393bb5;
-      font-weight: bold;
-    }
-    /* --- SOBRE A EMPRESA --- */
-    .titulo-empresa {
-      font-size: 2.2rem;
-      margin-top: 25px;
-      margin-bottom: 25px;
-      color: #1c164e;
-    }
-
-    .sobre {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-
-    .sobre-texto {
-      flex: 1;
-      flex: 1;
-      min-width: 280px;
-      font-weight: normal;
-    }
-
-    .sobre-texto  h2{
-      font-size: 2rem;
-      margin-bottom: 20px;
-       font-weight: normal;
-    }
-
-    .sobre-texto p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .sobre-imagem {
-      flex: 1;
-      min-width: 300px;
-  
-    border-radius: 100%
-    }
-
-b, strong {
-  font-weight: normal;
-}
-    .sobre-imagem img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      background-color: #393bb5;
-    }
-
-    /* --- MISSÃO, VISÃO E VALORES --- */
-    .secao-missao {
-      background-color: #393bb5;
-    
-      padding: 40px 20px;
-      border-radius: 12px;
-      margin-bottom: 60px;
-      text-align: center;
-      font-weight: normal;
-      color: #ffffff;
-    }
-
-    .secao-missao h3 {
-      font-style: italic;
-      color: #555;
-      margin-bottom: 25px;
-      margin-top: 25px;
-       color: #ffffff ;
-    }
-
-    .secao-missao h2 {
-      font-size: 1.8rem;
-      color: #393bb5;
-      margin-bottom: 35px;
-      margin-top: 35px;
-      font-weight: bold;
-      color: #ffffff ;
-    }
-
-    .itens-missao {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 20px;
-      color: #ffffff;
-    }
-
-    .item-missao {
-      flex: 1;
-      min-width: 200px;
-      max-width: 300px;
-       color: #ffffff ;
-    }
-
-    .item-missao h4 {
-      font-size: 1.2rem;
-      color: #1c164e;
-      margin-bottom: 10px;
-       color: #ffffff ;
-    }
-
-    .item-missao p {
-      font-size: 1rem;
-      color: #444;
-       color: #ffffff ;
-    }
-
-    /* --- NÚMEROS --- */
-    .secao-numero {
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .secao-numero h2 {
-      font-size: 2rem;
-      color: #1c164e;
-      margin-bottom: 10px;
-    }
-
-    .secao-numero p {
-      color: #888;
-      margin-bottom: 30px;
-    }
-
-    .grid-dos-numero {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 30px;
-    }
-
-    .item-numero {
-      font-size: 1.8rem;
-      color: #1c164e;
-    }
-
-    .item-numero span {
-      display: block;
-      color: #f26522;
-      margin-top: 5px;
-    }
-
-    /* --- RESPONSIVO --- */
-    @media (max-width: 768px) {
-      .sobre {
-        flex-direction: column;
-      }
-      .itens-missao {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-    .espaço {
-      margin-bottom: 100px;
-    }
-  </style>
 </head>
 <body>
     <!-- Navbar principal -->
@@ -237,12 +58,7 @@ b, strong {
                 </a>
             </li>
         </ul>
-        <!-- Área de busca -->
-
-        <!-- Botão de Login -->
-        <div class="nav-actions">
-            <a href="./entrarconta.php" class="home-btn">Login</a>
-        </div>
+    <img class="navbar-logo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
     </nav>
 
     <!-- Título da empresa -->

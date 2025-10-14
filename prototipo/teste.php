@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Conheça a MAIAM Tech</title>
+  <link href="./csspaginas/teste.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
