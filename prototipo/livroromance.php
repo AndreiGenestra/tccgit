@@ -126,11 +126,12 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
     </section>
     <div class="bloco-comunidades" style="display: flex; flex-direction: column; gap: 24px; justify-content: center; align-items: center;">
         <h2 class="titulo2" style="color:#222; font-size:1.7rem; margin-bottom:10px; width:100%;">Livros de romance em destaque:</h2>
-        <?php
+       <?php
         while ($livro = mysqli_fetch_assoc($result)) {
-            echo "<div class='comunidade-card' style='background: #393bb5; color:#fff; box-shadow:0 4px 16px #393bb540; border:none; min-width:320px; max-width:350px; width:100%; margin: 0 12px; display:flex; flex-direction:column; justify-content: space-between;'>";
+            echo "<div class='comunidade-card' style='background: #393bb5; color:#fff; box-shadow:0 4px 16px #393bb540; border:none; min-width:320px; max-width:350px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;'>";
             echo "<div style='display:flex;align-items:center;gap:16px;'>";
-            echo "<img src=' {$livro['caminhoimg']}' alt='Capa do livro' style='width:64px; height:64px; object-fit:cover; border-radius:8px; box-shadow:0 2px 8px #393bb520;'></img>";
+            echo"<img src='{$livro['caminhoimg']}' alt='Capa do Livro' style='width:80px; height:120px; object-fit:cover; border-radius:8px; margin:16px; box-shadow:0 2px 8px #00000040;'/>";
+            // Conteúdo do card
             echo "<div>";
             echo "<span class='comunidade-nomie' style='font-size:1.2rem;font-weight:700;'>{$livro['titulo']}</span><br><br>";
             echo "<div style='font-size:0.95rem; color:#eae6ff;'>";
@@ -141,9 +142,30 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
             // Botão Baixar encaixado na base do card
             echo "<div style='display:flex; justify-content:flex-end; align-items:flex-end; margin-top:auto; padding-top:24px;'>";
             echo "<a href='{$livro['caminho']}' download class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;'>Baixar</a>";
+
+                if ($_SESSION['cargo']=="adm"){
+                echo"<form action='deletar.php' method='POST'>"; 
+
+                  echo"<li class='list'>";
+                  
+                echo"<input type='hidden' id='id' name='id' value='{$livro['id']}'>"; 
+
+                echo"<input type='hidden' id='url' name='url' value='{$_SERVER['REQUEST_URI']}'>"; 
+
+                 echo"<input type='hidden' id='caminho' name='caminho' value='{$livro['caminho']}'>"; 
+
+                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$livro['caminhoimg']}'>"; 
+
+                
+                echo"<button id='deletar' class='btn-entraro'>Apagar</button>";
+  //estrutura do modal
+            echo"</li>";
+            echo"</form>";
+                }
             echo "</div>";
             echo "</div>";
-        }
+              
+            }
         ?>
     </div>
     <footer class="footer">

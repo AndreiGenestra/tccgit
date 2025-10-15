@@ -25,8 +25,8 @@ if ( strstr ( '.docx;.doc;.pdf', $extensao ) ) {
 
   if( strstr ( '.jpg;.jpeg;.gif;.png;.jfif', $extensaoimg ) ){
 
-$novoNome = uniqid ( time () ) .".". $extensao;
-$novoNomeimg = uniqid ( time () ) .".". $extensaoimg;
+$novoNome = uniqid ( time () ). $nome .".". $extensao;
+$novoNomeimg = uniqid ( time () ) . $img .".". $extensaoimg;
 //$novoNome = uniqid ( time () ) . $extensao;
  $destino = 'uploads/' . $novoNome;
   $destinoimg = 'uploads/' . $novoNomeimg;

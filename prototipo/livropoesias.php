@@ -142,10 +142,23 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
             // Botão Baixar encaixado na base do card
             echo "<div style='display:flex; justify-content:flex-end; align-items:flex-end; margin-top:auto; padding-top:24px;'>";
             echo "<a href='{$livro['caminho']}' download class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;'>Baixar</a>";
+
+                if ($_SESSION['cargo']=="adm"){
+                echo"<form action='deletar.php' method='POST'>"; 
+                  echo"<li class='list'>";
+                echo"<input type='hidden' id='id' name='id' value='{$livro['id']}'>"; 
+                echo"<input type='hidden' id='url' name='url' value='{$_SERVER['REQUEST_URI']}'>"; 
+                
+                echo"<button id='deletar' class='btn-entraro'>Apagar</button>";
+  //estrutura do modal
+            echo"</li>";
+            echo"</form>";
+                }
             echo "</div>";
             echo "</div>";
-        }
-        ?>$
+              
+            }
+        ?>
     </div>
     <footer class="footer">
         <p>&copy; 2025 Bibliotec. Todos os direitos reservados by Maiam Technologies</p>
