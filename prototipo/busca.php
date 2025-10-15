@@ -218,6 +218,10 @@
         while($dados=mysqli_fetch_array($query))
         {
             $idLivro = $dados['id'];
+
+            $sqlstringGenero = "SELECT classificacao FROM genero WHERE id_genero = {$dados['id_genero']}";
+            $queryGenero = @mysqli_query($mysql->conn, $sqlstringGenero);
+            $dadosgenero=mysqli_fetch_array($queryGenero);
             echo "<tr>";
             echo "<td align='center'>". $dados['id']."</td>";
             echo "<td align='center'><b>". $dados['titulo']."</b></td>";
@@ -227,7 +231,7 @@
                     <button type='button' class='mostrar-btn' onclick=\"toggleSinopse('$idLivro', this)\">Mostrar mais</button>
                   </td>";
             echo "<td align='center'><b> <img src='{$dados['caminhoimg']}' alt='Capa do Livro' style='width:80px; height:120px; object-fit:cover; border-radius:8px; margin:16px; box-shadow:0 2px 8px #00000040;'/>"."</b></td>";
-            echo "<td align='center'><b>". $dados['id_genero']."</b></td>";
+            echo "<td align='center'><b>". $dadosgenero['classificacao']."</b></td>";
             echo "<td align='center'><b>". $dados['autor']."</b></td>";
             echo "<td style='padding:0;'>
                     <div style='display:flex; justify-content:center; align-items:center; height:100%;'>

@@ -19,7 +19,7 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
 
 $id = $_SESSION['id'];
 
-$nome_usuario = $_SESSION['nome'];
+$nomeusuario = $_SESSION['nome'];
 
 $senha = $_SESSION['senha'];
 
@@ -102,7 +102,7 @@ footer, .finterna {
   margin: 10% auto;
   padding: 20px;
   border-radius: 10px;
-  width: 300px;
+  min-width: 600px;
   position: relative;
 }
 
@@ -350,7 +350,7 @@ footer, .finterna {
 
                 <a class="saudacao" href="paginaperfil.php" style="white-space: nowrap;">
 
-                    Bem-vindo(a) <span style="font-weight:bold;"><?php echo htmlspecialchars($nome_usuario); ?></span>!
+                    Bem-vindo (a) <span style="font-weight:bold;"><?php echo "$nomeusuario"; ?></span>!
 
                 </a>
 
@@ -385,7 +385,7 @@ footer, .finterna {
 
              <?php if ($_SESSION['cargo']=="adm"): ?>
             <li class="list">
-                <button id="abrirModal" class="btn-entraro">Abrir Modal</button>
+                <button id="abrirModal" class="btn-entraro">Alterar</button>
 
   <!-- Estrutura do modal -->
   
@@ -397,8 +397,24 @@ footer, .finterna {
         <div id="meuModal" class="modal-fundo">
     <div class="modal-conteudo">
       <span class="fechar">&times;</span>
-      <h3>Olá!</h3>
-      <p>Este é um exemplo de modal simples 😄</p>
+     <form action="princUpload.php" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label for="titulo" style="font-weight: 600; color: var(--cor-primaria);">Título</label>
+          <input type="text" id="titulo" name="titulo" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label for="img" style="font-weight: 600; color: var(--cor-primaria);">Background</label>
+          <input type="file" id="img" name="img" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label for="sinopse" style="font-weight: 600; color: var(--cor-primaria);">Descrição</label>
+          <input type="text" id="sinopse" name="sinopse" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
+        </div>
+        
+      
+        <button type="submit" style="background: var(--cor-primaria); color: #fff; padding: 12px 0; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-decoration: none; transition: background 0.2s; width: 100%; text-align: center; box-shadow: 0 2px 8px rgba(57,59,181,0.10);">Alterar</button>
+        
+      </form>
     </div>
   </div>
 <script>

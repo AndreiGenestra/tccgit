@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
     <link href="./csspaginas/poesias.css" rel="stylesheet">
-    <title>Livros de Mistério</title>
+    <title>Livros de Poesia</title>e>
     <style>
         body {
             min-height: 100vh;
@@ -32,12 +32,12 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
 require_once('bd.php');
 $mysql = new BancodeDados();
 $mysql -> conecta();
-$sqlstring = "select * from livros where id_genero=3"; 
+$sqlstring = "select * from livros where id_genero=1"; 
 $result = @mysqli_query($mysql->conn, $sqlstring);
 ?>
 <body>
  <!-- NAVBAR -->
-  <nav class="navbar">
+   <nav class="navbar">
   <div id="mySidenav" class="navbarladinho">
     <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="homepage.php"> 
@@ -118,17 +118,17 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
   <!--  fim da Navbar --> 
 
     <section class="comunidades-hero" style="text-align:center; margin-top:40px; margin-bottom:30px;">
-        <h1 class="titulo1" style="font-size:2.5rem; color:#393bb5; margin-bottom:10px;">Mistério</h1>
+        <h1 class="titulo1" style="font-size:2.5rem; color:#393bb5; margin-bottom:10px;">Poesias</h1>>
         <p style="font-size:1.2rem; color:#333; max-width:600px; margin:0 auto 10px auto;">
-           <strong>Seja bem-vindo à página de Mistério Bibliotec!</strong><br>
-            Encontre, crie e leia livros de mistério compartilhados por nossa comunidade apaixonada por literatura.<br>
+            Seja bem-vindo à página de Poesia <strong>Bibliotec</strong>!<br>>
+            Encontre, crie e leia livros de poesia compartilhados por nossa comunidade apaixonada por literatura.<br>r>
         </p>
     </section>
     <div class="bloco-comunidades" style="gap: 24px; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: stretch;">
-        <h2 class="titulo2" style="color:#222; font-size:1.7rem; margin-bottom:10px; width:100%;">Livros de mistério em destaque:</h2>
+        <h2 class="titulo2" style="color:#222; font-size:1.7rem; margin-bottom:10px; width:100%;">Livros de poesia em destaque:</h2>2>
         <?php
         while ($livro = mysqli_fetch_assoc($result)) {
-            echo "<div class='comunidade-card' style='background: #393bb5; color:#fff; box-shadow:0 4px 16px #393bb540; border:none; min-width:320px; max-width:350px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;'>";
+            echo "<div class='comunidade-card' style='background: #393bb5; color:#fff; box-shadow:0 4px 16px #393bb540; border:none; min-width:320px; width:fit-content; max-width:900px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;'>";
             echo "<div style='display:flex;align-items:center;gap:16px;'>";
             echo"<img src='{$livro['caminhoimg']}' alt='Capa do Livro' style='width:80px; height:120px; object-fit:cover; border-radius:8px; margin:16px; box-shadow:0 2px 8px #00000040;'/>";
             // Conteúdo do card

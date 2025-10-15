@@ -44,22 +44,42 @@ $mysql = new BancodeDados();
         $stmt->execute();
         $stmt->close();
 
-        echo"<script>alert('Livro enviado scom sucesso!');</script>";
+        echo"<script>alert('Livro enviado com sucesso!');</script>";
         header("Location: {$url}?sucesso=1");
         exit;
 
 }
 else
- echo ('Erro ao salvar o arquivo. Aparentemente você não tem permissão  de escrita.<br>');
+ 
+ echo"<script language='javascript' type='text/javascript'>
+          alert('Erro ao salvar o arquivo. Aparentemente você não tem permissão  de escrita.');window.location.href='".$url."';
+          </script>";        
+
 }
 else
-  echo"voce nao enviou uma imagem em formato .jpg;.jpeg;.gif;.png;.jfif \n\n";
+   echo"<script language='javascript' type='text/javascript'>
+          alert('Voce nao enviou uma imagem em formato .jpg;.jpeg;.gif;.png;.jfif');window.location.href='".$url."';
+          </script>"; 
+        
 
 
 }
 else
-echo ("Você pode enviar apenas documentos de livro em formato *.docx, *.doc e *.pdf <br>");}
+
+
+  echo" <script language='javascript' type='text/javascript'>
+          alert('Você pode enviar apenas documentos de livro em formato *.docx, *.doc e *.pdf ');window.location.href='".$url."';
+          </script>"; 
+      
+
+
+}
 else
- echo ('Você não enviou nenhum arquivo!');
+ 
+
+   echo"<script language='javascript' type='text/javascript'>
+          alert('Você não enviou nenhum arquivo!');window.location.href='".$url."';
+          </script>"; 
+        
 
 ?>

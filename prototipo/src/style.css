@@ -1172,3 +1172,19 @@ button[type="file"] {
     transition: background 0.2s;
 
 }
+
+.comunidade-card {
+    background: #393bb5;
+    color: #fff;
+    box-shadow: 0 4px 16px #393bb540;
+    border: none;
+    min-width: 320px;
+    width: fit-content;
+    max-width: 900px;
+    flex: 1 1 320px;
+    margin: 0 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-break: break-word;
+}
