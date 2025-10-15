@@ -11,7 +11,7 @@
 // Inicia sessão e recupera dados do usuário se estiver logado
 session_start();
 
-if(empty($_SESSION['nome'] $_SESSION['senha'] $_SESSION['email'] $_SESSION['idade'] ))
+if(empty($_SESSION['nome']['senha']['email']['idade'] ))
 if ($_SESSION['logado']) {
     $id = $_SESSION['id'];
     $nome_usuario = $_SESSION['nome'];
