@@ -37,7 +37,7 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
 ?>
 <body>
  <!-- NAVBAR -->
-  <nav class="navbar">
+   <nav class="navbar">
   <div id="mySidenav" class="navbarladinho">
     <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="homepage.php"> 
@@ -102,8 +102,8 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
   }
   </script> 
       <div class="search-area">
-        <form class="search-form" action="#" method="get">
-          <input type="text" style="align-items: center;" name="q" class="search-input" placeholder="Pesquisar...">
+        <form class="search-form" action="busca.php" method="get">
+          <input type="text" style="align-items: center;" id="nomelivro" name="nomelivro" class="search-input" placeholder="Pesquisar...">
           <button type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
             </svg>
@@ -111,9 +111,9 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
         </form>
       </div>
       <div class="col-4 d-flex justify-content-end align-items- header-1">
-        <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
+      <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
       </div>
-	<img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+
 </nav>
   <!--  fim da Navbar --> 
 
@@ -171,15 +171,6 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
     <footer class="footer">
         <p>&copy; 2025 Bibliotec. Todos os direitos reservados by Maiam Technologies</p>
     </footer>
-    <script>
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-    }
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.body.style.backgroundColor = "white";
-    }
-    </script>
+   
 </body>
 </html>

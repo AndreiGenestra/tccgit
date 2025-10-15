@@ -137,7 +137,7 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
     <br><br><br><br><br> <br>
     <center> <div class="btcom"><a href="cadastrocomunidade.php" >Crie sua comunidade</a> </div> </center>
         <!-- Footer -->
-   <footer class="footer">
+   <footer class="footer" style="margin-top: 10%;">
         <p>&copy; 2025 Bibliotec. Todos os direitos reservados by Maiam Technologies</p>
 </footer>
 

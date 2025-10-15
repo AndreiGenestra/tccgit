@@ -33,12 +33,12 @@ require_once ('bd.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
     <link href="./csspaginas/comunidadeprogramacao.css" rel="stylesheet">
-    <title>Comunidade de Design</title>
+    <title>Comunidade de Programação</title>
 </head>
 
 <body>
         <!-- NAVBAR -->
-  <nav class="navbar">
+ <nav class="navbar">
   <div id="mySidenav" class="navbarladinho">
     <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="homepage.php"> 
@@ -71,7 +71,7 @@ require_once ('bd.php');
     </a>
 
       <div class="dropdown">
-        <a class="dropbtn generos-text">
+        <a class="dropbtn generos-text" href="livros.php">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
             <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
           </svg>  
@@ -81,7 +81,7 @@ require_once ('bd.php');
             <a href="livroromance.php">Romance</a>
             <a href="livromisterio.php">Mistério</a>
             <a href="livrofantasia.php">Fantasia</a>
-            <a href="livroficcaophp">Ficção Científica</a>
+            <a href="livroficcao.php">Ficção Científica</a>
           </div>
     </div>
   </div>
@@ -103,8 +103,8 @@ require_once ('bd.php');
   }
   </script> 
       <div class="search-area">
-        <form class="search-form" action="#" method="get">
-          <input type="text" style="align-items: center;" name="q" class="search-input" placeholder="Pesquisar...">
+        <form class="search-form" action="busca.php" method="get">
+          <input type="text" style="align-items: center;" id="nomelivro" name="nomelivro" class="search-input" placeholder="Pesquisar...">
           <button type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
             </svg>
@@ -112,16 +112,16 @@ require_once ('bd.php');
         </form>
       </div>
       <div class="col-4 d-flex justify-content-end align-items- header-1">
-        <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
+      <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
       </div>
-	<img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+
 </nav>
   <!--  fim da Navbar --> 
 
         <div class="bloco-comunidades">
         <img src="./src/img/design.jpg"class="background-comunidade-perfil">  
         <div class="content-above">
-            <h1 class="titulo1"><img class="perfil-foto-comunidade" src="">Comunidade de Design</h1>
+            <h1 class="titulo1"><img class="perfil-foto-comunidade" src=""> aaaComunidade de Design</h1>
              
           
           
@@ -129,12 +129,13 @@ require_once ('bd.php');
 
     <!-- Banco de dados -->
      <br>
-    <?php if (isset($_GET['sucesso'])):
-        echo"<p style='color: green;'> Arquivo enviado com sucesso!</p>";
-      endif; ?> 
+    
   <div class="login-area">
     <div class="login-container" style="background: #fff; border-radius: 16px; box-shadow: 0 2px 8px rgba(57,59,181,0.10); padding: 32px 24px; max-width: 500px; width: 100%;">
       <h1 style="color: var(--cor-primaria); font-size: 2rem; font-weight: 700; margin-bottom: 18px; text-align:center;">Poste seu livro</h1>
+      <?php if (isset($_GET['sucesso'])):
+        echo"<p style='color: green; margin: auto;'>Arquivo enviado com sucesso!</p>";
+      endif; ?> 
       <form action="princUpload.php" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 18px;">
         <div style="display: flex; flex-direction: column; gap: 6px;">
           <label for="titulo" style="font-weight: 600; color: var(--cor-primaria);">Título</label>
@@ -150,6 +151,10 @@ require_once ('bd.php');
         </div>
         <div style="display: flex; flex-direction: column; gap: 6px;">
           <label for="genero" style="font-weight: 600; color: var(--cor-primaria);">Gênero do livro</label>
+          <?php 
+           echo"<input type='hidden' id='url' name='url' value='{$_SERVER['REQUEST_URI']}'>"; 
+          ?>        
+
           <select name="genero" id="genero" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
             <option value="">Selecione...</option>
             <option value="1">Poesia</option>
@@ -164,6 +169,7 @@ require_once ('bd.php');
           <input type="file" id="livro" name="livro" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
         </div>
         <button type="submit" style="background: var(--cor-primaria); color: #fff; padding: 12px 0; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-decoration: none; transition: background 0.2s; width: 100%; text-align: center; box-shadow: 0 2px 8px rgba(57,59,181,0.10);">Enviar</button>
+        
       </form>
     </div>
 </body>

@@ -12,6 +12,7 @@ $nome = $_FILES[ 'livro' ][ 'name' ];
 $arquivo_img_tmp = $_FILES[ 'img' ][ 'tmp_name' ];
 $img = $_FILES['img']['name'];
 $titulo = $_POST['titulo'];
+$url = $_POST['url'];
 $sinopse = $_POST['sinopse'];
 $genero = $_POST['genero'];
 $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
@@ -42,7 +43,9 @@ $mysql = new BancodeDados();
        $stmt->bind_param("sssssi", $nome, $destinoimg, $destino, $titulo, $sinopse, $genero);
         $stmt->execute();
         $stmt->close();
-        header("Location: homepage.php?sucesso=1");
+
+        echo"<script>alert('Livro enviado scom sucesso!');</script>";
+        header("Location: {$url}?sucesso=1");
         exit;
 
 }

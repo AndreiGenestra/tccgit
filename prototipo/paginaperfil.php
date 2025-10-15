@@ -32,7 +32,7 @@ if (!isset($logado) || $logado !== true) {
 <body>
 
 <!-- NAVBAR -->
-  <nav class="navbar">
+ <nav class="navbar">
   <div id="mySidenav" class="navbarladinho">
     <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="homepage.php"> 
@@ -76,7 +76,6 @@ if (!isset($logado) || $logado !== true) {
             <a href="livromisterio.php">Mistério</a>
             <a href="livrofantasia.php">Fantasia</a>
             <a href="livroficcao.php">Ficção Científica</a>
-            <a href="livrodidaticos.php">Didáticos</a>
           </div>
     </div>
   </div>
@@ -98,18 +97,18 @@ if (!isset($logado) || $logado !== true) {
   }
   </script> 
       <div class="search-area">
-        <form class="search-form" action="busca.php" method="POST">
-          <input type="text" style="align-items: center;" name="nome_livro" class="search-input" placeholder="Pesquisar...">
-          <button name="#" type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
+        <form class="search-form" action="busca.php" method="get">
+          <input type="text" style="align-items: center;" id="nomelivro" name="nomelivro" class="search-input" placeholder="Pesquisar...">
+          <button type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
             </svg>
           </button>
         </form>
       </div>
       <div class="col-4 d-flex justify-content-end align-items- header-1">
-        <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
+      <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
       </div>
-	<img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+
 </nav>
   <!--  fim da Navbar --> 
 

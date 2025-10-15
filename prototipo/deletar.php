@@ -25,7 +25,7 @@ $mysql = new BancodeDados();
         
   $mysql -> fechar();
 
-echo "<script language='javascript' type='text/javascript'> window.location.href='{$url}';</script>"; 
+echo "<script language='javascript' type='text/javascript'> alert('Deletado com sucesso'); window.location.href='{$url}';</script>"; 
 
 
 

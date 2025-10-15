@@ -102,8 +102,8 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
   }
   </script> 
       <div class="search-area">
-        <form class="search-form" action="#" method="get">
-          <input type="text" style="align-items: center;" name="q" class="search-input" placeholder="Pesquisar...">
+        <form class="search-form" action="busca.php" method="get">
+          <input type="text" style="align-items: center;" id="nomelivro" name="nomelivro" class="search-input" placeholder="Pesquisar...">
           <button type="submit" class="search-btn" id="bolalupa"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="lupa">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
             </svg>
@@ -111,9 +111,9 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
         </form>
       </div>
       <div class="col-4 d-flex justify-content-end align-items- header-1">
-        <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
+      <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
       </div>
-	<img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+
 </nav>
   <!--  fim da Navbar --> 
 
@@ -130,9 +130,10 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
         while ($livro = mysqli_fetch_assoc($result)) {
             echo "<div class='comunidade-card' style='background: #393bb5; color:#fff; box-shadow:0 4px 16px #393bb540; border:none; min-width:320px; max-width:350px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;'>";
             echo "<div style='display:flex;align-items:center;gap:16px;'>";
-            echo "<img src=' {$livro['caminhoimg']}' alt='Capa do livro' style='width:64px; height:64px; object-fit:cover; border-radius:8px; box-shadow:0 2px 8px #393bb520;'>";
+            echo"<img src='{$livro['caminhoimg']}' alt='Capa do Livro' style='width:80px; height:120px; object-fit:cover; border-radius:8px; margin:16px; box-shadow:0 2px 8px #00000040;'/>";
+            // Conteúdo do card
             echo "<div>";
-            echo "<span class='comunidade-nomie' style='font-size:1.2rem;font-weight:600;'>{$livro['titulo']}</span><br><br>";
+            echo "<span class='comunidade-nomie' style='font-size:1.2rem;font-weight:700;'>{$livro['titulo']}</span><br><br>";
             echo "<div style='font-size:0.95rem; color:#eae6ff;'>";
             echo "<p>{$livro['sinopse']}</p>";
             echo "</div>";
@@ -141,23 +142,35 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
             // Botão Baixar encaixado na base do card
             echo "<div style='display:flex; justify-content:flex-end; align-items:flex-end; margin-top:auto; padding-top:24px;'>";
             echo "<a href='{$livro['caminho']}' download class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;'>Baixar</a>";
+
+                if ($_SESSION['cargo']=="adm"){
+                echo"<form action='deletar.php' method='POST'>"; 
+
+                  echo"<li class='list'>";
+                  
+                echo"<input type='hidden' id='id' name='id' value='{$livro['id']}'>"; 
+
+                echo"<input type='hidden' id='url' name='url' value='{$_SERVER['REQUEST_URI']}'>"; 
+
+                 echo"<input type='hidden' id='caminho' name='caminho' value='{$livro['caminho']}'>"; 
+
+                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$livro['caminhoimg']}'>"; 
+
+                
+                echo"<button id='deletar' class='btn-entraro'>Apagar</button>";
+  //estrutura do modal
+            echo"</li>";
+            echo"</form>";
+                }
             echo "</div>";
             echo "</div>";
-        }
+              
+            }
         ?>
     </div>
     <footer class="footer">
         <p>&copy; 2025 Bibliotec. Todos os direitos reservados by Maiam Technologies</p>
     </footer>
-    <script>
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-    }
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.body.style.backgroundColor = "white";
-    }
-    </script>
+    
 </body>
 </html>

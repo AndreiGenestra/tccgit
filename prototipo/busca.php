@@ -243,7 +243,7 @@
 
         $mysql->fechar();
         ?>
-        <a href='homepage.php' class="voltar-link">Voltar para tela de cadastro</a>
+        <a href='homepage.php' class="voltar-link">Voltar para a Home</a>
     </div>
 </div>
 <script>
