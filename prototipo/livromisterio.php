@@ -131,7 +131,10 @@ $livro = mysqli_fetch_assoc($result);
     <div class="bloco-comunidades" style="gap: 24px; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: stretch;">
         <h2 class="titulo2" style="color:#222; font-size:1.7rem; margin-bottom:10px; width:100%;">Livros de poesia em destaque:</h2>
         <?php
-        echo"<embed src='{$livro['caminho']}' type='application/pdf' width='100%' height='600px' />";
+        echo "<iframe src='pdf.js/web/viewer.html?file=http://localhost/tccgit/prototipo/src/antologia.pdf#tooglebar=0' width='100%' height='600px'></iframe>";
+          #Caso nao seja possível instalar o node modules tentar essa alternativa online
+          //<iframe src="https://mozilla.github.io/pdf.js/web/viewer.html?file=/uploads/arquivo.pdf#toolbar=0"width="100%" height="600px"></iframe>
+
         
         while ($livro = mysqli_fetch_assoc($result)) {
             echo "<div class='comunidade-card' style='background: #393bb5; color:#fff; box-shadow:0 4px 16px #393bb540; border:none; min-width:320px; width:fit-content; max-width:900px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;'>";
