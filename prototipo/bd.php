@@ -36,7 +36,7 @@ function conecta(){
       		// Caso ocorra um erro, exibe uma mensagem com o erro
 			die ("Problemas com a conex&atildeo");
         }
-}aaaaa
+}
 function fechar(){
 		mysqli_close($this->conn);
 		return;
