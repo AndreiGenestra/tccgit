@@ -5,20 +5,21 @@ class BancodeDados {
     // Nas linhas abaixo você poderá colocar as informações do Banco de Dados.
    // private $host = "localhost:3308";
 /* BD DOS LABARATÓRIOS */
-/*
+
     private $host = "localhost:3306"; 	// Nome ou IP do Servidor
     private $user = "root"; 		// Usuário do Servidor MySQL
     private $senha = "prof@3t3c"; 		// Senha do Usuário MySQL
     private $banco = "compartilhador"; 		// Nome do seu Banco de Dados
     public $conn;
-*/
+
 /* BD CASA DO ANDREI */
+/* 
     private $host = "localhost:3306"; 	// Nome ou IP do Servidor
     private $user = "root"; 		// Usuário do Servidor MySQL
     private $senha = "dedei2007"; 		// Senha do Usuário MySQL
     private $banco = "compartilhador"; 		// Nome do seu Banco de Dados
     public $conn;
-
+*/
 
 /*
 private $host = "localhost:3306"; 	// Nome ou IP do Servidor
@@ -35,7 +36,7 @@ function conecta(){
       		// Caso ocorra um erro, exibe uma mensagem com o erro
 			die ("Problemas com a conex&atildeo");
         }
-}
+}aaaaa
 function fechar(){
 		mysqli_close($this->conn);
 		return;
