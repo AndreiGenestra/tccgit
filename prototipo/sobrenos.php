@@ -11,20 +11,26 @@
 // Inicia sessão e recupera dados do usuário se estiver logado
 session_start();
 
-if(empty($_SESSION['id']['nome']['senha']['email']['idade'] )){
-    $_SESSiON['id']="";
-    $_SESSiON['senha']="";
-    $_SESSiON['email']="";
-    $_SESSiON['nome']="";
-    $_SESSiON['idade']="";
+if(empty($_SESSION['id']) || empty($_SESSION['nome']) || empty($_SESSION['senha']) || empty($_SESSION['email']) || empty($SESSION['idade'])){
+    $_SESSION['id']="";
+    $_SESSION['senha']="";
+    $_SESSION['email']="";
+    $_SESSION['nome']="";
+    $_SESSION['idade']="";
+    $strlink="index.php";
+    
+}
+else{
+    $strlink="homepage.php";
+}
 
-   if ($_SESSION['logado']) {
+ if ($_SESSION['logado']) {
     $id = $_SESSION['id'];
     $nome_usuario = $_SESSION['nome'];
     $senha = $_SESSION['senha'];
     $email = $_SESSION['email'];
     $idade = $_SESSION['idade'];
-}
+    
 }
 
 ?>
@@ -40,11 +46,10 @@ if(empty($_SESSION['id']['nome']['senha']['email']['idade'] )){
             <li class="nav-list-item home-item">
                 <?php
                 // Redireciona para homepage se logado, senão para index
-                if ($_SESSION['logado']) {
-                    echo "<a href='./homepage.php'>";
-                } else {
-                    echo "<a href='./index.php'>";
-                }
+                
+                    echo "<a href='./" . $strlink . "'>";
+                
+                   
                 ?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                         <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>

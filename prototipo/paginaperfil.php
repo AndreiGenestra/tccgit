@@ -31,7 +31,6 @@ if (!isset($logado) || $logado !== true) {
 
 <body>
 
-<!-- NAVBAR -->
  <nav class="navbar">
   <div id="mySidenav" class="navbarladinho">
     <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -39,7 +38,7 @@ if (!isset($logado) || $logado !== true) {
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
         <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
       </svg>
-      <span class="generos-text">Home</span>
+      <span class="generos-text">Pagina Inicial</span>
     </a>
     
     <a href="comunidades-list.php"> 
@@ -65,7 +64,7 @@ if (!isset($logado) || $logado !== true) {
     </a>
 
       <div class="dropdown">
-        <a class="dropbtn generos-text" href="livros.php">
+        <a class="dropbtn generos-text" href="busca.php?nomelivro=">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
             <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
           </svg>  
@@ -106,23 +105,24 @@ if (!isset($logado) || $logado !== true) {
         </form>
       </div>
       <div class="col-4 d-flex justify-content-end align-items- header-1">
-      <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
+        <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
+        <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
       </div>
-
 </nav>
+  
   <!--  fim da Navbar --> 
 
 
   <main style="display:flex;align-items:center;justify-content:center;min-height:87.45vh;padding:0;">
-  <section style="width:100%;max-width:900px;background:rgba(255,255,255,0.98);border-radius:16px;box-shadow:0 8px 32px rgba(57,59,181,0.15);padding:56px 0;display:flex;flex-direction:row;align-items:center;gap:0;">
-    <!-- Avatar e nome -->
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
-      <div style="width:160px;height:160px;border-radius:16px;background:#917bff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(57,59,181,0.12);font-size:5.5rem;color:#fff;font-weight:700;">
-        <?php echo strtoupper(substr($nome_usuario,0,1)); ?>
-      </div>
-      <span style="font-size:2rem;font-weight:700;color:#393bb5;"><?php echo ($nome_usuario); ?></span>
-      <span style="color:#917bff;font-size:1.1rem;">@<?php echo ($nome_usuario); ?></span>
-    </div>
+    <section style="width:100%;max-width:900px;background:rgba(255,255,255,0.98);border-radius:16px;box-shadow:0 8px 32px rgba(57,59,181,0.15);padding:56px 0;display:flex;flex-direction:row;align-items:center;gap:0;">
+      <!-- Avatar e nome -->
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
+        <div style="width:160px;height:160px;border-radius:16px;background:#917bff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(57,59,181,0.12);font-size:5.5rem;color:#fff;font-weight:700;">
+          <?php echo strtoupper(substr($nome_usuario,0,1)); ?>
+        </div>
+        <span style="font-size:2rem;font-weight:700;color:#393bb5;"><?php echo ($nome_usuario); ?></span>
+        <span style="color:#917bff;font-size:1.1rem;">@<?php echo ($nome_usuario); ?></span>
+        <!-- Cargo destacado acima do email -->
     <!-- Dados do usuário -->
     <div style="flex:2;display:flex;flex-direction:column;gap:28px;padding:0 48px;">
       <div style="background:#e3e0fa;border-radius:8px;padding:20px 32px;box-shadow:0 1px 4px rgba(57,59,181,0.07);margin-bottom:0;">
