@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
     <link href="./csspaginas/poesias.css" rel="stylesheet">
-    <title>Livros de Poesia</title>
+    <title>Livros de Mistério</title>
     <style>
         body {
             min-height: 100vh;
@@ -129,7 +129,7 @@ $livro = mysqli_fetch_assoc($result);
         
     </section>
     <div class="bloco-comunidades" style="gap: 24px; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: stretch;">
-        <h2 class="titulo2" style="color:#222; font-size:1.7rem; margin-bottom:10px; width:100%;">Livros de poesia em destaque:</h2>
+        <h2 class="titulo2" style="color:#222; font-size:1.7rem; margin-bottom:10px; width:100%;">Livros de Mistério em destaque:</h2>
         <?php
         echo "<iframe src='pdf.js/web/viewer.html?file=http://localhost/tccgit/prototipo/src/antologia.pdf#tooglebar=0' width='100%' height='600px'></iframe>";
           #Caso nao seja possível instalar o node modules tentar essa alternativa online

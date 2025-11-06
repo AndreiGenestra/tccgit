@@ -2,7 +2,7 @@
  
 Grupo MAIAM TECH - Allan Araujo, Andrei Genestra, Isabelle Lima, Milena Mazzo, Murilo Minghini
   Etec de Poá
- Salve como Upload.php -->
+-->
 <?php
 
 // Verifica se o arquivo foi enviado
