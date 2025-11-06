@@ -114,36 +114,34 @@ if (!isset($logado) || $logado !== true) {
 
 
   <main style="display:flex;align-items:center;justify-content:center;min-height:87.45vh;padding:0;">
-  <section style="width:100%;max-width:900px;background:rgba(255,255,255,0.98);border-radius:16px;box-shadow:0 8px 32px rgba(57,59,181,0.15);padding:56px 0;display:flex;flex-direction:row;align-items:center;gap:0;">
-    <!-- Avatar e nome -->
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
-      <div style="width:160px;height:160px;border-radius:16px;background:#917bff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(57,59,181,0.12);font-size:5.5rem;color:#fff;font-weight:700;">
-        <?php echo strtoupper(substr($nome_usuario,0,1)); ?>
-      </div>
-      <span style="font-size:2rem;font-weight:700;color:#393bb5;"><?php echo ($nome_usuario); ?></span>
-      <span style="color:#917bff;font-size:1.1rem;">@<?php echo ($nome_usuario); ?></span>
-    </div>
-    <!-- Dados do usuário -->
-    <div style="flex:2;display:flex;flex-direction:column;gap:28px;padding:0 48px;">
-      <div style="background:#e3e0fa;border-radius:8px;padding:20px 32px;box-shadow:0 1px 4px rgba(57,59,181,0.07);margin-bottom:0;">
-        <label style="font-weight:600;color:#393bb5;">E-mail</label>
-        <div style="font-size:1.15rem;color:#393bb5;"><?php echo ($email); ?></div>
-      </div>
-      <div style="background:#e3e0fa;border-radius:8px;padding:20px 32px;box-shadow:0 1px 4px rgba(57,59,181,0.07);margin-bottom:0;">
-        <label style="font-weight:600;color:#393bb5;">Idade</label>
-        <div style="font-size:1.15rem;color:#393bb5;"><?php echo ($idade); ?> anos</div> 
-      </div>
-      <div style="background:#e3e0fa;border-radius:8px;padding:20px 32px;box-shadow:0 1px 4px rgba(57,59,181,0.07);margin-bottom:0;">
-        <label style="font-weight:600;color:#393bb5;">Cargo</label>
-        <div style="font-size:1.15rem;color:#393bb5;"><?php echo ($cargo); ?></div>
-</div>
-      <div style="display:flex;gap:24px;width:100%;justify-content:flex-start;margin-top:24px;">
-        <a href="bddeslogar.php" style="background:#393bb5;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Logout</a>
-        <a href="homepage.php" style="background:#393bb5;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Voltar</a>
-      </div>
-    </div>
-  </section>
-</main>
+    <section style="width:100%;max-width:900px;background:rgba(255,255,255,0.98);border-radius:16px;box-shadow:0 8px 32px rgba(57,59,181,0.15);padding:56px 0;display:flex;flex-direction:row;align-items:center;gap:0;">
+      <!-- Avatar e nome -->
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
+        <div style="width:160px;height:160px;border-radius:16px;background:#917bff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(57,59,181,0.12);font-size:5.5rem;color:#fff;font-weight:700;">
+          <?php echo strtoupper(substr($nome_usuario,0,1)); ?>
+        </div>
+        <span style="font-size:2rem;font-weight:700;color:#393bb5;"><?php echo ($nome_usuario); ?></span>
+        <span style="color:#917bff;font-size:1.1rem;">@<?php echo ($nome_usuario); ?></span>
+            </div>
+            <!-- Dados do usuário -->
+            <div style="flex:2;display:flex;flex-direction:column;gap:28px;padding:0 48px;">
+              <div style="font-size:2rem;font-weight:700;color:#393bb5; align-items: center; display:flex;justify-content:center;width:100%;"><?php echo ($cargo); ?></div>
+        
+        <div style="background:#e3e0fa;border-radius:8px;padding:20px 32px;box-shadow:0 1px 4px rgba(57,59,181,0.07);margin-bottom:0;">
+          <label style="font-weight:600;color:#393bb5;">E-mail</label>
+          <div style="font-size:1.15rem;color:#393bb5;"><?php echo ($email); ?></div>
+        </div>
+        <div style="background:#e3e0fa;border-radius:8px;padding:20px 32px;box-shadow:0 1px 4px rgba(57,59,181,0.07);margin-bottom:0;">
+          <label style="font-weight:600;color:#393bb5;">Idade</label>
+          <div style="font-size:1.15rem;color:#393bb5;"><?php echo ($idade); ?> anos</div> 
+        </div>
+        <div style="display:flex;gap:24px;width:100%;justify-content:flex-start;margin-top:24px;">
+          <a href="bddeslogar.php" style="background:#393bb5;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Logout</a>
+          <a href="homepage.php" style="background:#393bb5;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Voltar</a>
+        </div>
+            </div>
+          </section>
+        </main>
         <!-- Rodapé -->
     <footer class="footer">
         <p>&copy; 2025 Bibliotec. Todos os direitos reservados by Maiam Technologies</p>
