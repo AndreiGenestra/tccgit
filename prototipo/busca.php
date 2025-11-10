@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+  <?php
+        session_start();
+
+  ?>
 <head>
     <title>Mostra Produto</title>
     <meta charset="utf-8">
@@ -52,7 +56,7 @@
             gap: 0.5rem;
         }
         th.sinopse-col, td.sinopse-col {
-            width: 600px;
+            width: auto;
             max-width: 800px;
             min-width: 300px;
             word-break: break-word;
@@ -60,6 +64,10 @@
             text-align: left;
         }
         .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;      /* Centraliza tudo horizontalmente */
+            justify-content: flex-start;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
@@ -68,6 +76,20 @@
             border-radius: 12px;
             box-shadow: 0 4px 24px #00000010;
         }
+
+        .container > h1 {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
+        .container table {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            /* Remove qualquer margin-top/margin-bottom se quiser */
+        }
+
         .sinopse-anim {
             max-height: 0;
             overflow: hidden;
@@ -98,6 +120,62 @@
             color: #fff;
             transform: scale(1.05);
         }
+        .formulario {
+            width: auto;
+            max-width: none;        /* permite o container crescer se necessário */
+            margin: 0 auto;         /* centraliza horizontalmente */
+            background: transparent;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: visible;      /* sem scroll horizontal no container */
+        }
+
+        /* tabela usa largura automática e fica centralizada */
+        .formulario table {
+            width: auto;            /* não força 100% que causava overflow */
+            max-width: 100%;        /* evita ultrapassar a largura da viewport */
+            margin: 0 auto;
+            border-collapse: collapse;
+            table-layout: auto;     /* colunas se ajustam conforme conteúdo */
+        }
+
+        /* permitir quebra natural de texto para evitar deslocamentos */
+        .formulario th,
+        .formulario td {
+            padding: 12px 10px;
+            text-align: center;
+            vertical-align: middle;
+            white-space: normal;    /* permite quebra de linhas para caber na tela */
+            word-break: break-word; /* evita juntar palavras sem quebra */
+        }
+
+        /* ajustar larguras desejadas por coluna (ajuste os valores se necessário) */
+        .formulario th:nth-child(1),
+        .formulario td:nth-child(1) { width: 100px; }   /* Código */
+        .formulario th:nth-child(2),
+        .formulario td:nth-child(2) { width: 200px; }  /* Título */
+        .formulario th:nth-child(3),
+        .formulario td:nth-child(3) { width: auto; max-width: 600px; text-align:left; } /* Sinopse */
+        .formulario th:nth-child(4),
+        .formulario td:nth-child(4) { width: 110px; }  /* Imagem */
+        .formulario th:nth-child(5),
+        .formulario td:nth-child(5) { width: 120px; }  /* Gênero */
+        .formulario th:nth-child(6),
+        .formulario td:nth-child(6) { width: 140px; }  /* Autor */
+        .formulario th:nth-child(7),
+        .formulario td:nth-child(7) { width: 110px; }  /* PDF */
+        .formulario th:nth-child(8),
+        .formulario td:nth-child(8) { width: 110px; }  /* Apagar (apenas se existir) */
+
+        /* mantém botão e imagens visíveis sem expandir demais */
+        .formulario img { max-width: 100px; height: auto; display:block; margin:0 auto; }
+        .btn-entraro { box-sizing: border-box; }
+
+        /* animação de sinopse continua */
+        .sinopse-anim { max-height: 0; overflow: hidden; transition: max-height .4s; padding:0; }
+        .sinopse-anim.open { max-height: 800px; padding: 8px 0; }
+
+        /* ...existing code... */
     </style>
 </head>
 <body>
@@ -183,11 +261,10 @@
   <!--  fim da Navbar --> 
 <div class="container">
     <h1 class="titulo-sessao">Lista dos produtos</h1>
-    <div class="formulario" style="width:100%;max-width:900px;">
+    <div class="formulario">
        
         
         <?php
-
 
         require_once('bd.php');
         $mysql = new BancodeDados();
@@ -206,16 +283,22 @@
 
 
        
-        echo "<table>";
+        echo "<table style='margin:auto;'>";
         echo "<tr>
-            <th width='30px'>Id livro</th>
+            <th width='30px'>Código livro</th>
             <th width='100px'>titulo</th>
             <th class='sinopse-col'>sinopse</th>
             <th width='100px'>imagem</th>
             <th width='100px'>genero</th>
             <th width='100px'>autor</th>
-            <th width='100px'>PDF</th>
-        </tr>";
+            <th width='100px'>PDF</th>";
+            
+            if ($_SESSION['cargo']=="adm"){
+            echo"
+            <th width='100px'>Apagar</th>";
+            }
+          echo"</tr>";
+          // mostra a tabela dos livros encontrados
 
         while($dados=mysqli_fetch_array($query))
         {
@@ -243,6 +326,27 @@
                         </a>
                     </div>
                   </td>";
+                   if ($_SESSION['cargo']=="adm"){
+                    echo "<td style='padding:0px;'>
+                     <div style='display:flex; justify-content:center; align-items:center; height:100%;'>";
+                echo"<form action='deletar.php' method='POST' style='margin:0; padding:0; display:inline; border:none;'>"; 
+
+                  echo"<li class='list' style='list-style:none;'>";
+                  
+                echo"<input type='hidden' id='id' name='id' value='{$dados['id']}'>"; 
+
+                echo"<input type='hidden' id='url' name='url' value='{$_SERVER['REQUEST_URI']}'>"; 
+
+                 echo"<input type='hidden' id='caminho' name='caminho' value='{$dados['caminho']}'>"; 
+
+                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$dados['caminhoimg']}'>"; 
+
+                
+                echo"<button id='deletar' class='btn-entraro' style='background:#e81515ff;color:#fff;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center; display:inline-block;'>Apagar</button>";
+              echo"</form>";
+                    echo "</div>";
+                    echo "</td>";
+                    }
             echo "</tr>";
         }
         echo "</table>";

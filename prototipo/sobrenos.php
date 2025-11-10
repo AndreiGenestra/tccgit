@@ -11,7 +11,7 @@
 // Inicia sessão e recupera dados do usuário se estiver logado
 session_start();
 
-if(empty($_SESSION['id']) || empty($_SESSION['nome']) || empty($_SESSION['senha']) || empty($_SESSION['email']) || empty($SESSION['idade'])){
+if( $_SESSION['logado'] != true ) {
     $_SESSION['id']="";
     $_SESSION['senha']="";
     $_SESSION['email']="";
@@ -20,17 +20,14 @@ if(empty($_SESSION['id']) || empty($_SESSION['nome']) || empty($_SESSION['senha'
     $strlink="index.php";
     
 }
-else{
-    $strlink="homepage.php";
-}
 
- if ($_SESSION['logado']) {
+ else {
     $id = $_SESSION['id'];
     $nome_usuario = $_SESSION['nome'];
     $senha = $_SESSION['senha'];
     $email = $_SESSION['email'];
     $idade = $_SESSION['idade'];
-    
+    $strlink="homepage.php";
 }
 
 ?>

@@ -10,6 +10,12 @@
 </head>
 <?php
 session_start();
+
+if( isset($_SESSION["strCadErro"]) ){
+  $strerro=$_SESSION["strCadErro"];
+    }else{
+        $_SESSION["strCadErro"]="";
+    }
 $strerro=$_SESSION["strCadErro"];
 ?>
 <body>

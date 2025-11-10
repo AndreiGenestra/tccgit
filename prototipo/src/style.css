@@ -1170,9 +1170,14 @@ button[type="file"] {
     text-decoration: none;
     font-weight: 500;
     transition: background 0.2s;
+    
 
 }
 
+.btn-entraro:hover {
+    background: #d10d0d;
+    cursor: pointer;
+}
 .comunidade-card {
     background: #393bb5;
     color: #fff;
@@ -1188,3 +1193,4 @@ button[type="file"] {
     justify-content: space-between;
     word-break: break-word;
 }
+

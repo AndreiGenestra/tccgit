@@ -28,6 +28,9 @@ if ( strstr ( '.docx;.doc;.pdf', $extensao ) ) {
 
 $novoNome = uniqid ( time () ). $nome .".". $extensao;
 $novoNomeimg = uniqid ( time () ) . $img .".". $extensaoimg;
+
+
+// <img src="curriculo/andrei.png"
 //$novoNome = uniqid ( time () ) . $extensao;
  $destino = 'uploads/' . $novoNome;
   $destinoimg = 'uploads/' . $novoNomeimg;
