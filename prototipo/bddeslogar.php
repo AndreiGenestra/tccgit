@@ -17,6 +17,7 @@
     $_SESSION['senha']="" ;
     $_SESSION['email']="" ;
     $_SESSION['idade'] = "";
+    $_SESSION['caminhoimgperfil'] = "" ;
     }
    
 		  

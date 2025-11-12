@@ -249,7 +249,17 @@ footer, .finterna {
         </form>
       </div>
       <div class="col-4 d-flex justify-content-end align-items- header-1">
-        <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
+        <a style="color: white" class="btn icon" href="paginaperfil.php"> 
+         <?php 
+          if(empty($_SESSION['caminhoimgperfil'])) {
+            
+          echo strtoupper(substr($nomeusuario,0,1));
+          }
+
+          else{
+            echo "<img src=" .$_SESSION['caminhoimgperfil'] . " alt='Avatar do usuário' style='width:30px;height:30px;border-radius:16px;object-fit:cover;'/>";
+          }
+           ?> <!-- Ícone de perfil --></a> 
       </div>
 
 </nav>

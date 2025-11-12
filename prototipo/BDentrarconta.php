@@ -24,6 +24,7 @@
     $_SESSION['idade'] =$dados['idade'] ;
     $_SESSION['cargo'] =$dados['cargo'];
     $_SESSION['logado'] = true;
+    $_SESSION['caminhoimgperfil'] = $dados['caminhoimgperfil'] ;
     
 		  echo"<script language='javascript' type='text/javascript'>
           alert('Bem vindo à Bibliotec');window.location.href='homepage.php';

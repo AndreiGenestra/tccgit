@@ -119,7 +119,7 @@ if (!isset($logado) || $logado !== true) {
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
         <div style="width:160px;height:160px;border-radius:16px;background:#917bff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(57,59,181,0.12);font-size:5.5rem;color:#fff;font-weight:700;">
           <?php 
-          if(!isset($_SESSION['caminhoimgperfil'])) {
+          if(empty($_SESSION['caminhoimgperfil'])) {
             
           echo strtoupper(substr($nome_usuario,0,1));
           }
