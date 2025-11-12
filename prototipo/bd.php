@@ -19,7 +19,7 @@ class BancodeDados {
     private $senha = "dedei2007"; 		// Senha do Usuário MySQL
     private $banco = "compartilhador"; 		// Nome do seu Banco de Dados
     public $conn;
-aaaaaaaaaaa
+
 /* BD CASA DO Allan */
  /*
     private $host = "localhost:3306"; 	// Nome ou IP do Servidor
