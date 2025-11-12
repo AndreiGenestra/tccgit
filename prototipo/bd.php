@@ -12,23 +12,23 @@ class BancodeDados {
     private $banco = "compartilhador"; 		// Nome do seu Banco de Dados
     public $conn;
 */
-/* BD CASA DO ANDREI 
+/* BD CASA DO ANDREI */
  
     private $host = "localhost:3306"; 	// Nome ou IP do Servidor
     private $user = "root"; 		// Usuário do Servidor MySQL
     private $senha = "dedei2007"; 		// Senha do Usuário MySQL
     private $banco = "compartilhador"; 		// Nome do seu Banco de Dados
     public $conn;
-*/
+
 /* BD CASA DO Allan */
- 
+ /*
     private $host = "localhost:3306"; 	// Nome ou IP do Servidor
     private $user = "root"; 		// Usuário do Servidor MySQL
     private $senha = ""; 		// Senha do Usuário MySQL
     private $banco = "compartilhador"; 		// Nome do seu Banco de Dados
     public $conn;
 
-
+*/
 /*
 private $host = "localhost:3306"; 	// Nome ou IP do Servidor
     private $user = "root"; 		// Usuário do Servidor MySQL
