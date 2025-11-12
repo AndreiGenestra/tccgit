@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $mensagem = "Arquivo muito grande! Máximo 5MB.";
                 $tipo_mensagem = "erro";
             } else {
-                // Criar nome único para o arquivo
+            
                 $extensao = pathinfo($nome_arquivo, PATHINFO_EXTENSION);
                 $nome_novo = 'avatar_' . $id . '_' . time() . '.' . $extensao;
                 $caminho_upload = 'src/img/perfis/' . $nome_novo;
@@ -72,9 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     mkdir('src/img/perfis', 0755, true);
                 }
 
-                // Mover arquivo
+    
                 if (move_uploaded_file($tmp_arquivo, $caminho_upload)) {
-                    // Deletar foto antiga se não for a padrão
+                
                     if ($foto_atual != 'src/img/default-avatar.png' && file_exists($foto_atual)) {
                         unlink($foto_atual);
                     }
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql = "UPDATE usuarios SET nome='$novo_nome', email='$novo_email', idade='$nova_idade', caminhoimgperfil='$foto_nova'";
             
             if (!empty($nova_senha)) {
-                // temporariamente sem hash (apenas para testes)
+                
                 $nova_senha_esc = mysqli_real_escape_string($mysql->conn, $nova_senha);
                 $sql .= ", senha='$nova_senha_esc'";
             }
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['idade'] = $nova_idade;
                 $_SESSION['caminhoimgperfil'] = $foto_nova;
                 if (!empty($nova_senha)) {
-                    // armazenar a senha em sessão sem hash (temporariamente)
+                  
                     $_SESSION['senha'] = $nova_senha;
                 }
                 

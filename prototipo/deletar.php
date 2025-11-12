@@ -27,20 +27,20 @@ $mysql = new BancodeDados();
 
 echo "<script language='javascript' type='text/javascript'> alert('Deletado com sucesso'); window.location.href='{$url}';</script>"; 
 
+//tirando da pasta do computador:
 
-
-// 1. Verifique se o arquivo existe
+//  Verifique se o arquivo existe
 if (file_exists($caminhoArquivo) && file_exists($caminhoimgArquivo)) {
-    // 2. Tente excluir o arquivo
+    //  Tente excluir o arquivo
     if (unlink($caminhoArquivo) && unlink($caminhoimgArquivo)) {
-        // 3. Se a exclusão for bem-sucedida
+        
         echo "Arquivo excluído com sucesso!";
     } else {
-        // 4. Se a exclusão falhar
+        
         echo "Não foi possível excluir o arquivo.";
     }
 } else {
-    // 5. Se o arquivo não existir
+    //  Se o arquivo não existir
     echo "O arquivo não foi encontrado.";
 }
 

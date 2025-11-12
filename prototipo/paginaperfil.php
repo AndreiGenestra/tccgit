@@ -145,9 +145,26 @@ if (!isset($logado) || $logado !== true) {
           <label style="font-weight:600;color:#393bb5;">Idade</label>
           <div style="font-size:1.15rem;color:#393bb5;"><?php echo ($idade); ?> anos</div> 
         </div>
+
+        <!-- Seção Pedidos -->
+
+        <?php 
+
+        if($cargo == 'adm')
+        echo"
+        <div style='background:#fff7e6;border-radius:8px;padding:20px 32px;box-shadow:0 1px 4px rgba(57,59,181,0.07);margin-bottom:0;'>
+          <label style='font-weight:600;color:#393bb5;'>Pedidos</label>
+          <div style='font-size:1.15rem;color:#393bb5; margin-top:8px;'>
+            <a href='pedidos.php' style='display:inline-block;background:#ff7043;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700;'>Ver Pedidos</a>
+          </div>
+        </div>
+        ";
+        ?>
+        <!-- fim da seção pedidos -->
         <div style="display:flex;gap:24px;width:100%;justify-content:flex-start;margin-top:24px;">
           <a href="bddeslogar.php" style="background:#393bb5;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Logout</a>
           <a href="homepage.php" style="background:#393bb5;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Voltar</a>
+          
           <a href="editarperfil.php" style="background:#5a57d8;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Alterar</a>
         </div>
             </div>
