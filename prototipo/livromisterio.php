@@ -132,20 +132,17 @@ $livro = mysqli_fetch_assoc($result);
     <div class="bloco-comunidades" style="gap: 24px; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: stretch;">
         <h2 class="titulo2" style="color:#222; font-size:1.7rem; margin-bottom:10px; width:100%;">Livros de Mistério em destaque:</h2>
         <?php
-        echo "<iframe src='pdf.js/web/viewer.html?file=http://localhost/tccgit/prototipo/src/antologia.pdf#tooglebar=0' width='100%' height='600px'></iframe>";
-          #Caso nao seja possível instalar o node modules tentar essa alternativa online
-          //<iframe src="https://mozilla.github.io/pdf.js/web/viewer.html?file=/uploads/arquivo.pdf#toolbar=0"width="100%" height="600px"></iframe>
+       
+          
 
         
-        while ($livro = mysqli_fetch_assoc($result)) {
+       while ($livro = mysqli_fetch_assoc($result)) {
             echo "<div class='comunidade-card' style='background: #393bb5; color:#fff; box-shadow:0 4px 16px #393bb540; border:none; min-width:320px; width:fit-content; max-width:900px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;'>";
             echo "<div style='display:flex;align-items:center;gap:16px;'>";
             echo"<img src='{$livro['caminhoimg']}' alt='Capa do Livro' style='width:80px; height:120px; object-fit:cover; border-radius:8px; margin:16px; box-shadow:0 2px 8px #00000040;'/>";
             // Conteúdo do card
             echo "<div>";
             echo "<span class='comunidade-nomie' style='font-size:1.2rem;font-weight:700;'>{$livro['titulo']}</span><br><br>";
-            echo"<embed src='{$livro['caminho']}' type='application/pdf' width='100%' height='600px' />
-";
             echo "<div style='font-size:0.95rem; color:#eae6ff;'>";
             echo "<p>{$livro['sinopse']}</p>";
             echo "</div>";
@@ -153,7 +150,15 @@ $livro = mysqli_fetch_assoc($result);
             echo "</div>";
             // Botão Baixar encaixado na base do card
             echo "<div style='display:flex; justify-content:flex-end; align-items:flex-end; margin-top:auto; padding-top:24px;'>";
-            echo "<a href='{$livro['caminho']}' download class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;'>Baixar</a>";
+            echo"<form action='visualizador.php' method='POST'>
+            <input type='hidden' id='id' name='id' value='{$livro['id']}'>
+            <input type='hidden' id='nomelivro' name='nomelivro' value='{$livro['titulo']}'>
+            <input type='hidden' id='caminho' name='caminho' value='{$livro['caminho']}'>
+            
+            ";
+            echo "<button type='submit' class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;> <input type='submit'>Ler </input> </button>";
+
+            echo "</form>";
 
                 if ($_SESSION['cargo']=="adm"){
                 echo"<form action='deletar.php' method='POST'>"; 
@@ -170,7 +175,7 @@ $livro = mysqli_fetch_assoc($result);
 
                 
                 echo"<button id='deletar' class='btn-entraro'>Apagar</button>";
-  //estrutura do modal
+  
             echo"</li>";
             echo"</form>";
                 }

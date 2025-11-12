@@ -142,7 +142,15 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
             echo "</div>";
             // Botão Baixar encaixado na base do card
             echo "<div style='display:flex; justify-content:flex-end; align-items:flex-end; margin-top:auto; padding-top:24px;'>";
-            echo "<a href='{$livro['caminho']}' download class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;'>Baixar</a>";
+            echo"<form action='visualizador.php' method='POST'>
+            <input type='hidden' id='id' name='id' value='{$livro['id']}'>
+            <input type='hidden' id='nomelivro' name='nomelivro' value='{$livro['titulo']}'>
+            <input type='hidden' id='caminho' name='caminho' value='{$livro['caminho']}'>
+            
+            ";
+            echo "<button type='submit' class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;> <input type='submit'>Ler </input> </button>";
+
+            echo "</form>";
 
                 if ($_SESSION['cargo']=="adm"){
                 echo"<form action='deletar.php' method='POST'>"; 
@@ -159,7 +167,7 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
 
                 
                 echo"<button id='deletar' class='btn-entraro'>Apagar</button>";
-  //estrutura do modal
+  
             echo"</li>";
             echo"</form>";
                 }

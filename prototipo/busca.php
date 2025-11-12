@@ -318,14 +318,18 @@
             echo "<td align='center'><b> <img src='{$dados['caminhoimg']}' alt='Capa do Livro' style='width:80px; height:120px; object-fit:cover; border-radius:8px; margin:16px; box-shadow:0 2px 8px #00000040;'/>"."</b></td>";
             echo "<td align='center'><b>". $dadosgenero['classificacao']."</b></td>";
             echo "<td align='center'><b>". $dados['autor']."</b></td>";
-            echo "<td style='padding:0;'>
-                    <div style='display:flex; justify-content:center; align-items:center; height:100%;'>
-                        <a href='{$dados['caminho']}' download class='btn-entraro'
-                            style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center; display:inline-block;'>
-                            Baixar
-                        </a>
-                    </div>
-                  </td>";
+            echo "<td style='padding:0;'>";
+                      
+            echo"<form action='visualizador.php' method='POST'>
+            <input type='hidden' id='id' name='id' value='{$dados['id']}'>
+            <input type='hidden' id='nomelivro' name='nomelivro' value='{$dados['titulo']}'>
+            <input type='hidden' id='caminho' name='caminho' value='{$dados['caminho']}'>
+            
+            ";
+            echo "<button type='submit' class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;'>Ler</button>";
+
+            echo "</form>";
+               echo"</td>";
                    if ($_SESSION['cargo']=="adm"){
                     echo "<td style='padding:0px;'>
                      <div style='display:flex; justify-content:center; align-items:center; height:100%;'>";

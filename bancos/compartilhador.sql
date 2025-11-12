@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 14/10/2025 às 15:21
--- Versão do servidor: 8.0.42
+-- Tempo de geração: 12/11/2025 às 01:28
+-- Versão do servidor: 11.2.2-MariaDB
 -- Versão do PHP: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -26,30 +26,16 @@ USE `compartilhador`;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `acesso`
---
-
-DROP TABLE IF EXISTS `acesso`;
-CREATE TABLE IF NOT EXISTS `acesso` (
-  `id_livro` int NOT NULL AUTO_INCREMENT,
-  `ID_Usuario` int NOT NULL,
-  PRIMARY KEY (`id_livro`),
-  KEY `ID_Usuario` (`ID_Usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `administracao`
 --
 
 DROP TABLE IF EXISTS `administracao`;
 CREATE TABLE IF NOT EXISTS `administracao` (
-  `ID_Administracao` int NOT NULL AUTO_INCREMENT,
-  `ID_Usuario` int NOT NULL,
-  `Nivel_Acesso` int NOT NULL,
-  `id_livro` int NOT NULL,
-  `id_autor` int NOT NULL,
+  `ID_Administracao` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_Usuario` int(11) NOT NULL,
+  `Nivel_Acesso` int(11) NOT NULL,
+  `id_livro` int(11) NOT NULL,
+  `id_autor` int(11) NOT NULL,
   PRIMARY KEY (`ID_Administracao`),
   KEY `ID_Usuario` (`ID_Usuario`),
   KEY `id_livro` (`id_livro`)
@@ -63,11 +49,11 @@ CREATE TABLE IF NOT EXISTS `administracao` (
 
 DROP TABLE IF EXISTS `comunidade`;
 CREATE TABLE IF NOT EXISTS `comunidade` (
-  `id_comunidade` int NOT NULL AUTO_INCREMENT,
-  `nome_comunidade` int NOT NULL,
-  `descrição` int NOT NULL,
-  `id_usuario` int NOT NULL,
-  `postagem` int NOT NULL,
+  `id_comunidade` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_comunidade` int(11) NOT NULL,
+  `descrição` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `postagem` int(11) NOT NULL,
   PRIMARY KEY (`id_comunidade`),
   KEY `postagem` (`postagem`),
   KEY `id_usuario` (`id_usuario`)
@@ -81,21 +67,22 @@ CREATE TABLE IF NOT EXISTS `comunidade` (
 
 DROP TABLE IF EXISTS `genero`;
 CREATE TABLE IF NOT EXISTS `genero` (
-  `id_genero` int NOT NULL AUTO_INCREMENT,
-  `classificacao` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_genero` int(11) NOT NULL AUTO_INCREMENT,
+  `classificacao` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   PRIMARY KEY (`id_genero`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Despejando dados para a tabela `genero`
 --
 
 INSERT INTO `genero` (`id_genero`, `classificacao`) VALUES
-(1, 'poesia'),
-(2, 'romance'),
-(3, 'mistério'),
-(4, 'ficcaocien'),
-(5, 'fantasia');
+(1, 'Poesia'),
+(2, 'Romance'),
+(3, 'Mistério'),
+(4, 'Ficcão científica'),
+(5, 'fantasia'),
+(7, 'História');
 
 -- --------------------------------------------------------
 
@@ -105,27 +92,47 @@ INSERT INTO `genero` (`id_genero`, `classificacao`) VALUES
 
 DROP TABLE IF EXISTS `livros`;
 CREATE TABLE IF NOT EXISTS `livros` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sinopse` varchar(2500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nome_arquivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `caminhoimg` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_genero` int NOT NULL,
-  `caminho` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `data_upload` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `autor` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) NOT NULL,
+  `sinopse` varchar(2500) NOT NULL,
+  `nome_arquivo` varchar(255) NOT NULL,
+  `caminhoimg` varchar(250) NOT NULL,
+  `id_genero` int(11) NOT NULL,
+  `caminho` varchar(255) NOT NULL,
+  `data_upload` timestamp NULL DEFAULT current_timestamp(),
+  `autor` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_genero` (`id_genero`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Despejando dados para a tabela `livros`
 --
 
 INSERT INTO `livros` (`id`, `titulo`, `sinopse`, `nome_arquivo`, `caminhoimg`, `id_genero`, `caminho`, `data_upload`, `autor`) VALUES
-(14, 'Memórias Póstumas de Brás Cubas', '\"Memórias Póstumas de Brás Cubas\" é a história de um homem rico do Rio de Janeiro do século XIX, narrada após sua morte. O protagonista, Brás Cubas, conta as memórias de sua vida com ironia e sarcasmo, abordando temas como a futilidade da busca por riqueza, a hipocrisia social, amores frustrados, e a crítica à sociedade da época. A narrativa é não-linear, cheia de digressões filosóficas e reflexões sobre a condição humana, e desafia as convenções literárias.', 'memoriasBras.pdf', 'uploads/176036824568ed16758537d.png', 2, 'uploads/176036824568ed16758537a.pdf', '2025-10-13 15:10:45', 'Machado de Assis'),
-(15, 'Dom Casmurro', '\"Dom Casmurro\" é a história de Bento Santiago, que narra sua vida para provar uma teoria: a de que sua esposa, Capitu, o traiu com seu melhor amigo, Escobar. A narrativa, escrita por um Bentinho já idoso e amargurado, mostra o ciúme crescente que o consome ao longo do tempo e como suas suspeitas, alimentadas pela semelhança entre seu filho e Escobar, destroem sua felicidade. O livro é conhecido por sua perspectiva duvidosa, deixando ao leitor a tarefa de decidir se a traição realmente aconteceu.', 'Dom_Casmurro-Machado_de_Assis.pdf', 'uploads/176036837968ed16fb41a09.jpg', 2, 'uploads/176036837968ed16fb41a07.pdf', '2025-10-13 15:12:59', 'Machado de Assis'),
-(18, 'Antologia Poética', ' A obra, organizada por ele mesmo, abrange temas como o indivíduo, a terra natal, a família, os amigos, o mundo social e político, o amor, a própria poesia e a condição existencial.', 'antologia-poetica-carlos-drummond-de-andrade.pdf', 'uploads/176045344368ee63436ab90.jfif', 1, 'uploads/176045344368ee63436ab8d.pdf', '2025-10-14 14:50:43', NULL);
+(21, 'Memórias de Martha', 'A mãe, viúva, luta para sustentar a filha, aconselhando-a para que aprenda tarefas domésticas como estratégia de sobrevivência. Martha, porém, idealiza um futuro diferente: acredita que a educação e o trabalho podem ser caminhos para escapar da situação difícil em que vivem. A obra explora como a protagonista encara limitações sociais impostas pela pobreza, pelas condições de gênero e pela rigidez das expectativas da época.', 'Memoriasdemartha.pdf', 'uploads/176054583368efcc294a475memoriasdemartha.jpg.jpg', 2, 'uploads/176054583368efcc2949b0eMemoriasdemartha.pdf.pdf', '2025-10-15 16:30:33', NULL),
+(30, 'Memórias Póstumas de Brás Cubas', 'Brás Cubas, já falecido, decide narrar suas lembranças da vida terrena. Não é um autor defunto qualquer: ele escreve de sua condição pós-morte, com ironia, humor ácido e liberdade para reinventar o olhar sobre sua trajetória. Ele relata sua infância aristocrática no Rio de Janeiro, os amores e desilusões (como a paixão por Marcela e Virgília), os relacionamentos pessoais, os costumes sociais da época e sua passagem pela Europa. Também pondera sobre as instituições, a hipocrisia social, o egoísmo humano e a própria insignificância da vida diante da morte. Ao final, Brás Cubas faz um balanço de sua existência: “negações” de tudo aquilo que não foi — ele não foi grande, não teve filhos, não alcançou fama duradoura — mas, ao mesmo tempo, sugere que, apesar de tudo, saiu “em conta” da vida, pois não sofreu certos males e manteve certo conforto. Apesar disso, fica a reflexão amarga de que não deixou legado, nem filhos que levem adiante algo das suas dores ou da sua experiência.', 'memoriasBras.pdf', 'uploads/176055429668efed381446dbrascubas.jpg.jpg', 2, 'uploads/176055429668efed3814462memoriasBras.pdf.pdf', '2025-10-15 18:51:36', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `pedido`
+--
+
+DROP TABLE IF EXISTS `pedido`;
+CREATE TABLE IF NOT EXISTS `pedido` (
+  `id_pedido` int(11) NOT NULL,
+  `id_usuario` int(30) NOT NULL,
+  `titulo` varchar(30) NOT NULL,
+  `sinopse` varchar(300) NOT NULL,
+  `id_genero` int(11) NOT NULL,
+  `caminho` varchar(300) NOT NULL,
+  `caminhoimg` varchar(300) NOT NULL,
+  `nome_arquivo` varchar(250) NOT NULL,
+  `autor` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_pedido`),
+  KEY `id_usuario` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -135,12 +142,12 @@ INSERT INTO `livros` (`id`, `titulo`, `sinopse`, `nome_arquivo`, `caminhoimg`, `
 
 DROP TABLE IF EXISTS `postagem`;
 CREATE TABLE IF NOT EXISTS `postagem` (
-  `ID_Postagem` int NOT NULL AUTO_INCREMENT,
-  `Conteudo` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ID_Postagem` int(11) NOT NULL AUTO_INCREMENT,
+  `Conteudo` varchar(150) NOT NULL,
   `Data_Postagem` date NOT NULL,
-  `ID_Comunidade` int NOT NULL,
-  `ID_Usuario` int NOT NULL,
-  `caminho` int NOT NULL,
+  `ID_Comunidade` int(11) NOT NULL,
+  `ID_Usuario` int(11) NOT NULL,
+  `caminho` int(11) NOT NULL,
   PRIMARY KEY (`ID_Postagem`),
   KEY `ID_Usuario` (`ID_Usuario`),
   KEY `ID_Comunidade` (`ID_Comunidade`)
@@ -154,38 +161,34 @@ CREATE TABLE IF NOT EXISTS `postagem` (
 
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `senha` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `idade` int NOT NULL,
-  `cargo` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Data_Cadastro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_post` int DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `idade` int(11) NOT NULL,
+  `cargo` varchar(15) NOT NULL,
+  `Data_Cadastro` timestamp NULL DEFAULT current_timestamp(),
+  `id_post` int(11) DEFAULT NULL,
+  `caminhoimgperfil` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `idade`, `cargo`, `Data_Cadastro`, `id_post`) VALUES
-(1, 'MUrilow', 'murilowhaha@gmail.com', '1234', 13, 'adm', NULL, 0),
-(2, 'andrei', 'dreiestuda@gmail.com', '1234', 14, 'adm', NULL, 0),
-(3, 'Allan Araujo', 'allanfs762@gmail.com', '1234', 18, 'adm', NULL, 0),
-(5, 'Conta de Usuário', 'teste@teste.com.br', '1234', 20, 'usuario', NULL, NULL),
-(6, 'imaculado', 'maculado@gmail.com', '1234', 12, 'usuario', NULL, NULL);
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `idade`, `cargo`, `Data_Cadastro`, `id_post`, `caminhoimgperfil`) VALUES
+(1, 'MUrilow', 'murilowhaha@gmail.com', '1234', 13, 'adm', NULL, 0, ''),
+(2, 'andrei', 'dreiestuda@gmail.com', '1234', 14, 'adm', NULL, 0, ''),
+(3, 'Allan Araujo', 'allanfs762@gmail.com', '1234', 18, 'adm', NULL, 0, ''),
+(6, 'imaculado', 'maculado@gmail.com', '1234', 12, 'usuario', NULL, NULL, ''),
+(10, 'Ã¡ndrei', 'sim@gmail.com', '1234', 59, 'usuario', NULL, NULL, ''),
+(11, 'Conta de UsuÃ¡rio', 'teste@teste.com.br', '1234', 66, 'usuario', NULL, NULL, ''),
+(12, 'Katty', 'katty@gmail.com', 'dedei2007', 15, 'usuario', NULL, NULL, 'src/img/perfis/avatar_12_1762910448.jpg');
 
 --
 -- Restrições para tabelas despejadas
 --
-
---
--- Restrições para tabelas `acesso`
---
-ALTER TABLE `acesso`
-  ADD CONSTRAINT `acesso_ibfk_1` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `acesso_ibfk_2` FOREIGN KEY (`ID_Usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Restrições para tabelas `administracao`
@@ -206,6 +209,12 @@ ALTER TABLE `comunidade`
 --
 ALTER TABLE `livros`
   ADD CONSTRAINT `livros_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id_genero`);
+
+--
+-- Restrições para tabelas `pedido`
+--
+ALTER TABLE `pedido`
+  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Restrições para tabelas `postagem`

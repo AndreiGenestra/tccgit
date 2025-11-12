@@ -1163,20 +1163,22 @@ button[type="file"] {
 }
 /*botao baixar*/
 .btn-entraro {
-    background: #007bff;
+    background: var(--cor-primaria);
     color: #fff;
     padding: 8px 18px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: 500;
     transition: background 0.2s;
+    border: 1px solid var(--cor-primaria);
     
 
 }
 
 .btn-entraro:hover {
-    background: #d10d0d;
+    background: var(--cor-texto-navbar);
     cursor: pointer;
+    color: var(--cor-primaria);
 }
 .comunidade-card {
     background: #393bb5;

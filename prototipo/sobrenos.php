@@ -8,28 +8,25 @@
     <title>Conheça a Maiam Tech</title>
 </head>
 <?php
-// Inicia sessão e recupera dados do usuário se estiver logado
+// Inicia sessão
 session_start();
 
-if( $_SESSION['logado'] != true ) {
-    $_SESSION['id']="";
-    $_SESSION['senha']="";
-    $_SESSION['email']="";
-    $_SESSION['nome']="";
-    $_SESSION['idade']="";
-    $strlink="index.php";
-    
-}
+$strlink = "";
 
- else {
-    $id = $_SESSION['id'];
-    $nome_usuario = $_SESSION['nome'];
-    $senha = $_SESSION['senha'];
-    $email = $_SESSION['email'];
-    $idade = $_SESSION['idade'];
-    $strlink="homepage.php";
+// Verifica se o usuário está logado
+if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
+    // Usuário NÃO está logado
+    $_SESSION['id'] = "";
+    $_SESSION['senha'] = "";
+    $_SESSION['email'] = "";
+    $_SESSION['nome'] = "";
+    $_SESSION['idade'] = "";
+    $strlink = "index.php";
+} else {
+    // Usuário ESTÁ logado
+    $strlink = "homepage.php";
+    // As variáveis de sessão já existem e não são zeradas
 }
-
 ?>
 
 
@@ -52,7 +49,7 @@ if( $_SESSION['logado'] != true ) {
                         <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
                         <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
                     </svg>
-                    <span class="home-text">Home</span>
+                    <span class="home-text">Página Inicial</span>
                 </a>
             </li>
             <!-- Item Sobre Nós -->

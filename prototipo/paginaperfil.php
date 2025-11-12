@@ -39,7 +39,7 @@ if (!isset($logado) || $logado !== true) {
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
         <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
       </svg>
-      <span class="generos-text">Home</span>
+      <span class="generos-text">Página Inicial</span>
     </a>
     
     <a href="comunidades-list.php"> 
@@ -118,7 +118,17 @@ if (!isset($logado) || $logado !== true) {
       <!-- Avatar e nome -->
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
         <div style="width:160px;height:160px;border-radius:16px;background:#917bff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(57,59,181,0.12);font-size:5.5rem;color:#fff;font-weight:700;">
-          <?php echo strtoupper(substr($nome_usuario,0,1)); ?>
+          <?php 
+          if(!isset($_SESSION['caminhoimgperfil'])) {
+            
+          echo strtoupper(substr($nome_usuario,0,1));
+          }
+
+          else{
+            echo "<img src=" .$_SESSION['caminhoimgperfil'] . " alt='Avatar do usuário' style='width:160px;height:160px;border-radius:16px;object-fit:cover;'/>";
+          }
+           ?>
+          
         </div>
         <span style="font-size:2rem;font-weight:700;color:#393bb5;"><?php echo ($nome_usuario); ?></span>
         <span style="color:#917bff;font-size:1.1rem;">@<?php echo ($nome_usuario); ?></span>
@@ -138,6 +148,7 @@ if (!isset($logado) || $logado !== true) {
         <div style="display:flex;gap:24px;width:100%;justify-content:flex-start;margin-top:24px;">
           <a href="bddeslogar.php" style="background:#393bb5;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Logout</a>
           <a href="homepage.php" style="background:#393bb5;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Voltar</a>
+          <a href="editarperfil.php" style="background:#5a57d8;color:#fff;padding:16px 0;border:none;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:45%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Alterar</a>
         </div>
             </div>
           </section>

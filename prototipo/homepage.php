@@ -26,7 +26,7 @@ $senha = $_SESSION['senha'];
 $email = $_SESSION['email'];
 
 $idade = $_SESSION['idade'];
-$cargo = $_SESSION['cargo']
+$cargo = $_SESSION['cargo'];
 
 ?>
 <style> 
