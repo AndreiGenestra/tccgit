@@ -5,7 +5,7 @@
 	$mysql -> conecta();
 	session_start();
   
-   //recebendo os dados do formulario
+   //recebendo os dados do formularios
    $plogin=$_POST['email'];
    $psenha=$_POST['senha'];
    // ajustando a instrucaoo select verificar usuario e senha
