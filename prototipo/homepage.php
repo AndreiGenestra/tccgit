@@ -172,6 +172,8 @@ footer, .finterna {
          <input type="hidden" name="datapostagem" value="<?php echo date('d/m/Y'); ?>">
          <input type="hidden" name="nomeusuario" value="<?php echo $nomeusuario; ?>">
 
+         <input type="hidden" name="nomeusuario" value="1">
+
         <button type="submit" style="background:var(--cor-primaria);color:#fff;padding:12px 0;border:none;border-radius:8px;font-weight:600;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:100%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Postar</button>
       </form>
     </div>

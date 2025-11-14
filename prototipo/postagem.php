@@ -14,7 +14,7 @@ $conteudo = $_POST['conteudo'];
 $nomeusuario = $_POST['nomeusuario'];
 $datapostagem = $_POST['datapostagem'];
 $idusuario = $_POST['idusuario'];
-$idcomunidade = 
+$idcomunidade = $_POST['idcomunidade'];
  require_once('bd.php');
 
 $mysql = new BancodeDados();

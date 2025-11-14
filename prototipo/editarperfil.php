@@ -190,8 +190,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             background: #393bb5;
         }
         .btn-voltar {
-            background: #e0e0e0;
-            color: #333;
+            background: #8a7ccdff;
+            color: #ffffffff;
             padding: 16px 32px;
             border: none;
             border-radius: 8px;
@@ -209,7 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         .btn-voltar:hover {
-            background: #d0d0d0;
+            background: #5c4f9cff;
         }
         h1 {
             color: #393bb5;
