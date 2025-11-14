@@ -5,9 +5,11 @@ Grupo MAIAM TECH - Allan Araujo, Andrei Genestra, Isabelle Lima, Milena Mazzo, M
  Salve como Upload.php -->
 <?php
 
-// Verifica se o arquivo foi enviado
+
 
 session_start();
+
+//recebe os dados do formulario
 $id = $_POST['id'];
 $url = $_POST['url'];
 $caminhoArquivo = $_POST['caminho'];
@@ -15,9 +17,12 @@ $caminhoimg = $_POST['caminhoimg'];
 $caminhoArquivo = __DIR__ . '/' . $caminhoArquivo;
 $caminhoimgArquivo = __DIR__ . '/' . $caminhoimg;
 
+//conecta com o banco
  require_once('bd.php');
 $mysql = new BancodeDados();
 	$mysql -> conecta();
+
+    // deleta o arquivo do banco
   $stmt = $mysql->conn->prepare(" DELETE FROM livros WHERE id=$id");
       
     $stmt->execute();
@@ -29,7 +34,7 @@ echo "<script language='javascript' type='text/javascript'> alert('Deletado com 
 
 //tirando da pasta do computador:
 
-//  Verifique se o arquivo existe
+//  Verifique se o arquivo existe no servidor
 if (file_exists($caminhoArquivo) && file_exists($caminhoimgArquivo)) {
     //  Tente excluir o arquivo
     if (unlink($caminhoArquivo) && unlink($caminhoimgArquivo)) {

@@ -149,28 +149,56 @@ footer, .finterna {
 
 <body>
 
-<button class="btn btn-secondary position-fixed bottom-0 end-0 mb-5 me-3" id="bd-theme-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <svg class="bi" width="24" height="24"><use href="#sun-fill"></use></svg>
-</button>
+<!-- Modal postar (flutuante) -->
+<button id="abrirmodalpostar" class="btn-entraro position-fixed" style="right:20px;bottom:20px;z-index:1050;padding:12px 18px;border-radius:10px;box-shadow:0 6px 18px rgba(57,59,181,0.12);">Postar</button>
 
-<!-- Mantenha o dropdown de temas como está -->
-<div class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-toggle">
-        <!-- modo claro que é o modo normal-->
-    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" >
-        <svg class="bi me-2 opacity-50" aria-hidden="true" width="50px" height="60px" ><use href="#circle-half" width="30px"></use></svg>
-        Normal
-        <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
-    </button>
-    <!-- modo "claro"
-    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
-        <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
-        Claro
-        <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
-    </button>-->
-    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
-        <svg class="bi me-2 opacity-50" aria-hidden="true" width="50px" height="60px"><use href="#moon-stars-fill" width="30px"></use></svg>
-        <p> Escuro </p>
-        <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+<div id="modalpostar" class="modal-fundo" style="z-index:9999;display:none;">
+    <div class="modal-conteudo" style="min-width:600px;">
+      <span class="fecharpostar" style="position:absolute;right:12px;top:8px;background:none;border:none;font-size:26px;cursor:pointer;color:#aaa;">&times;</span>
+      <h2 style="color:var(--cor-primaria);margin-bottom:12px;">Nova postagem</h2>
+      <form action="postagem.php" method="POST" enctype="multipart/form-data" style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label for="titulo" style="font-weight:600;color:var(--cor-primaria);">Título</label>
+          <input type="text" id="titulo" name="titulo" required style="padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1rem;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label for="conteudo" style="font-weight:600;color:var(--cor-primaria);">Descrição</label>
+          <input type="text" id="conteudo" name="conteudo" required style="padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1rem;">
+        </div>
+
+        <!-- pegando a data, url e o id do usuário -->
+         <input type="hidden" name ="url" value="<?php echo $_SERVER['HTTP_REFERER']; ?>">
+         <input type="hidden" name="idusuario" value="<?php echo $id; ?>">
+         <input type="hidden" name="datapostagem" value="<?php echo date('d/m/Y'); ?>">
+         <input type="hidden" name="nomeusuario" value="<?php echo $nomeusuario; ?>">
+
+        <button type="submit" style="background:var(--cor-primaria);color:#fff;padding:12px 0;border:none;border-radius:8px;font-weight:600;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:100%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Postar</button>
+      </form>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var modalpostar = document.getElementById('modalpostar');
+  var btnpostar = document.getElementById('abrirmodalpostar');
+  var spanpostar = document.querySelector('.fecharpostar');
+
+  btnpostar.onclick = function() {
+    modalpostar.style.display = 'block';
+  }
+
+  spanpostar.onclick = function() {
+    modalpostar.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modalpostar) {
+      modalpostar.style.display = 'none';
+    }
+  }
+});
+</script>
+
     </button>
 
 </div>
@@ -395,16 +423,16 @@ footer, .finterna {
 
              <?php if ($_SESSION['cargo']=="adm"): ?>
             <li class="list">
-                <button id="abrirModal" class="btn-entraro">Alterar</button>
+                <button id="abrirmodalalterar" class="btn-entraro">Alterar</button>
 
   <!-- Estrutura do modal -->
   
-
   
-               
+  
+  
             </li>
         <?php endif; ?>
-        <div id="meuModal" class="modal-fundo">
+        <div id="modalalterar" class="modal-fundo">
     <div class="modal-conteudo">
       <span class="fechar">&times;</span>
      <form action="princUpload.php" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 18px;">
@@ -427,23 +455,23 @@ footer, .finterna {
       </form>
     </div>
   </div>
-<script>
+<script> // Script para abrir e fechar o modal de alterar
 document.addEventListener("DOMContentLoaded", function() {
-  var modal = document.getElementById("meuModal");
-  var btn = document.getElementById("abrirModal");
+  var modalalterar = document.getElementById("modalalterar");
+  var btn = document.getElementById("abrirmodalalterar");
   var span = document.querySelector(".fechar");
 
   btn.onclick = function() {
-    modal.style.display = "block";
+    modalalterar.style.display = "block";
   }
 
   span.onclick = function() {
-    modal.style.display = "none";
+    modalalterar.style.display = "none";
   }
 
   window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+    if (event.target == modalalterar) {
+      modalalterar.style.display = "none";
     }
   }
 });
@@ -680,6 +708,10 @@ document.addEventListener("DOMContentLoaded", function() {
                                     </svg>
 
                                     <div class="col-lg-8">
+                                    <!-- Local do Rank -->
+                                    <h1>
+
+                                    
 
                                         <h6 class="mb-0">Exemplo de título de postagem</h6>
 
@@ -815,4 +847,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 
-</html> 
+</html>
