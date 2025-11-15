@@ -681,7 +681,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                             <li>
 
-                            <h1> Rank Semanal </h1>
+                            <h1> Rank  </h1>
                          <?php
                          $i=0;
                    $sqlstringpontos = "SELECT * FROM pontos p JOIN usuarios u ON p.id_usuario = u.id ORDER BY p.pontos DESC LIMIT 3"; 
