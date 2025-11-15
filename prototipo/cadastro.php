@@ -8,6 +8,13 @@
     <link href="./csspaginas/cadastro.css" rel="stylesheet">
     <title>Login</title>
 </head>
+<style>
+        .termos-label,
+.termos-checkbox {
+    display: inline-block; /* Força os elementos a ficarem lado a lado */
+    vertical-align: middle; /* Alinha eles verticalmente */
+}
+    </style>
 <?php
 session_start();
 
@@ -66,6 +73,13 @@ $strerro=$_SESSION["strCadErro"];
             <input type="password" id="senha" name="senha" required>
             <label for="senha2">Confirme sua senha</label>
             <input type="password" id="senha2" name="senha2" required>
+          
+        <div class="termos-container">
+    <label for="termos">
+        Eu aceito os <a href="termodeuso.html" target="_blank">Termos de Uso</a>
+    </label>
+    <input type="checkbox" id="termos" name="termos" value="1" required>
+</div>
 
             <button type="submit" class="btn-login">Cadastrar</button>
         </form>

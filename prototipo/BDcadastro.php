@@ -191,6 +191,7 @@ $email = $_POST['email'];
 $idade = $_POST['idade'];
 $senhausuario = $_POST['senha'];
 $senhausuario2 = $_POST['senha2']; 
+$check= $_POST['termos'];
 $cargo = "usuario";
 
 require_once('bd.php');
@@ -202,6 +203,16 @@ $mysql = new BancodeDados();
 	$result = @mysqli_query($mysql->conn, $sqlstring);
 	$total = $result -> num_rows;
  
+if($check != 1){
+    {
+      $_SESSION["strCadErro"] = " <p class='erro-cadastro'>  Você deve aceitar os termos de uso para se cadastrar. </p>";
+      echo"<script language='javascript' type='text/javascript'>
+          ;window.location.href='cadastro.php';
+          </script>";
+       
+    }
+  }
+  else
 
   if($total==1){
     {
