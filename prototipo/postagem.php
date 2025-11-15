@@ -17,15 +17,17 @@ $idusuario = $_POST['idusuario'];
 $idcomunidade = $_POST['idcomunidade'];
  require_once('bd.php');
 
+ 
 $mysql = new BancodeDados();
 	$mysql -> conecta();
-  $stmt = $mysql->conn->prepare("INSERT INTO POSTAGEM (conteudo, titulo, datapostagem, idcomunidade, idusuario) VALUES (?,?,?,?,?,?)");
-       $stmt->bind_param("sssssi", $nome, $destinoimg, $destino, $titulo, $sinopse, $genero);
+  $stmt = $mysql->conn->prepare("INSERT INTO POSTAGEM (conteudo, titulo, datapostagem, idcomunidade, idusuario) VALUES (?,?,?,?,?)");
+       $stmt->bind_param("sssii", $conteudo, $titulo, $datapostagem, $idcomunidade, $idusuario);
         $stmt->execute();
         $stmt->close();
 
-        echo"<script>alert('Postagem enviada com sucesso!');</script>";
-        header("Location: {$url}?sucesso=1");
+        echo"<script language='javascript' type='text/javascript'>
+          alert('Postagem enviada com sucesso');window.location.href='homepage.php';
+          </script>";
         exit;
 
 }

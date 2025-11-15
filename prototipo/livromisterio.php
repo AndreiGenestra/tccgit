@@ -154,6 +154,7 @@ $livro = mysqli_fetch_assoc($result);
             <input type='hidden' id='id' name='id' value='{$livro['id']}'>
             <input type='hidden' id='nomelivro' name='nomelivro' value='{$livro['titulo']}'>
             <input type='hidden' id='caminho' name='caminho' value='{$livro['caminho']}'>
+            <input type='hidden' id='tipo' name='tipo' value='livro'>
             
             ";
             echo "<button type='submit' class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;> <input type='submit'>Ler </input> </button>";

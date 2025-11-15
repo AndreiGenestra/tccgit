@@ -260,7 +260,8 @@
   
   <!--  fim da Navbar --> 
 <div class="container">
-    <h1 class="titulo-sessao">Lista dos produtos</h1>
+    <h1 class="titulo-sessao"> Livros Encontrados:</h1>
+    <h4> Não encontrou o que queria? Sugira seu livro <a href="sugerirlivro.php"> aqui </a> </h4> 
     <div class="formulario">
        
         
@@ -343,7 +344,9 @@
 
                  echo"<input type='hidden' id='caminho' name='caminho' value='{$dados['caminho']}'>"; 
 
-                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$dados['caminhoimg']}'>"; 
+                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$dados['caminhoimg']}'>
+                  <input type='hidden' id='tipo' name='tipo' value='livro'>
+                  "; 
 
                 
                 echo"<button id='deletar' class='btn-entraro' style='background:#e81515ff;color:#fff;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center; display:inline-block;'>Apagar</button>";

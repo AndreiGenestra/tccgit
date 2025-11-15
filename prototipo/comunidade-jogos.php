@@ -167,6 +167,7 @@ require_once ('bd.php');
        <div style="display: flex; flex-direction: column; gap: 6px;">
           <label for="img" style="font-weight: 600; color: var(--cor-primaria);">Arquivo do livro</label>
           <input type="file" id="livro" name="livro" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
+          <input type="hidden" id="tipo" name="tipo" value="postar"> 
         </div>
         <button type="submit" style="background: var(--cor-primaria); color: #fff; padding: 12px 0; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-decoration: none; transition: background 0.2s; width: 100%; text-align: center; box-shadow: 0 2px 8px rgba(57,59,181,0.10);">Enviar</button>
         

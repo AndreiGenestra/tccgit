@@ -1,154 +1,185 @@
 <!DOCTYPE html>
+<html>
+  <?php
+        session_start();
 
-<html lang="pt-br" dir="ltr" data-bs-theme="auto">
-
-<?php
-
-session_start();
-
-if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
-
-    echo "<script language='javascript' type='text/javascript'>
-
-    alert('Acesso negado! Entre na conta para acessar');window.location.href='entrarconta.php';</script>";
-
-    die();
-
-}
-
-
-$id = $_SESSION['id'];
-
-$nomeusuario = $_SESSION['nome'];
-
-$senha = $_SESSION['senha'];
-
-$email = $_SESSION['email'];
-
-$idade = $_SESSION['idade'];
-$cargo = $_SESSION['cargo'];
-
-?>
-<style> 
-
-/* Cards e containers */
-.card, .bg-body-secondary, .bg-body-tertiary, .destaque, .container, .containero, .login-container {
-  border-radius: 12px;
-  transition: background 0.3s, color 0.3s;
-  
-}
-.titulo-card{
-    background-color: none;
-    color: var(--cor-lead);
-}
-
-.destaque{
-    width: 100%;
-    margin: auto;
-    background: var(--destaque);
-    border-radius: 8px;
-    padding: 32px 24px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    position: relative;
-    
-}
-/* Botões */
-.btn, .btn-primary, .btn-outline-primary, .btn-login, .home-btn {
-  border: none;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-}
-
-
-/* Footer */
-footer, .finterna {
-  padding: 1rem;
-  text-align: center;
-  margin-top: 2rem;
-  border-radius: 0 0 12px 12px;
-}
-
-/* Dropdown de tema */
-.bd-mode-toggle .dropdown-menu {
-  
-  border-radius: 10px;
-}
-.bd-mode-toggle .dropdown-item.active, .bd-mode-toggle .dropdown-item:active {
- 
-  color: #fff !important;
-}
-.bd-mode-toggle .dropdown-item:hover {
- 
-  color: #fff !important;
-}
-.modal-fundo {
-  display: none; /* Escondido por padrão */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-}
-
-/* Caixa do modal */
-.modal-conteudo {
-  background-color: white;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 10px;
-  min-width: 600px;
-  position: relative;
-}
-
-/* Botão de fechar */
-.fechar {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  color: #aaa;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.fechar:hover {
-  color: black;
-}
-</style>
-
+  ?>
 <head>
-
+    <title>Pedidos</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="src/style.css">
+    <meta http-equiv="refresh" content="10">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            margin-bottom: 24px;
+        }
+        th, td {
+            padding: 12px 10px;
+            text-align: center;
+        }
+        th {
+            background: #5537db;
+            color: #fff;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+        tr:hover {
+            background: #ecebff;
+        }
+        .voltar-link {
+            margin-top: 18px;
+            display: inline-block;
+            color: #fff;
+            background: #5537db;
+            padding: 10px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 8px #0001;
+            transition: background 0.2s;
+        }
+        .voltar-link:hover {
+            background: #2f00ff;
+        }
+        .search-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        th.sinopse-col, td.sinopse-col {
+            width: auto;
+            max-width: 800px;
+            min-width: 300px;
+            word-break: break-word;
+            white-space: pre-line;
+            text-align: left;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;      /* Centraliza tudo horizontalmente */
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            background: #f8f8ff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #00000010;
+        }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        .container > h1 {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 24px;
+        }
 
-    <meta name="description" content="">
+        .container table {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            /* Remove qualquer margin-top/margin-bottom se quiser */
+        }
 
-    <link rel="stylesheet" href="./src/style.css">
-     <link rel="stylesheet" href="./csspaginas/homepage.css">
+        .sinopse-anim {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.3s;
+            padding: 0 0;
+        }
+        .sinopse-anim.open {
+            max-height: 500px; /* ajuste conforme necessário */
+            padding: 8px 0;
+        }
+        .mostrar-btn {
+            background: var(--cor-primaria, #393bb5);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            box-shadow: 0 2px 8px #393bb520;
+            transition: background 0.2s, transform 0.2s;
+            outline: none;
+            display: inline-block;
+        }
+        .mostrar-btn:hover {
+            background: var(--cor-secundaria, #917bff);
+            color: #fff;
+            transform: scale(1.05);
+        }
+        .formulario {
+            width: auto;
+            max-width: none;        /* permite o container crescer se necessário */
+            margin: 0 auto;         /* centraliza horizontalmente */
+            background: transparent;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: visible;      /* sem scroll horizontal no container */
+        }
 
-    <link rel="script" href="script.js">
+        /* tabela usa largura automática e fica centralizada */
+        .formulario table {
+            width: auto;            /* não força 100% que causava overflow */
+            max-width: 100%;        /* evita ultrapassar a largura da viewport */
+            margin: 0 auto;
+            border-collapse: collapse;
+            table-layout: auto;     /* colunas se ajustam conforme conteúdo */
+        }
 
-    <title>Sistema Bibliotec</title>
+        /* permitir quebra natural de texto para evitar deslocamentos */
+        .formulario th,
+        .formulario td {
+            padding: 12px 10px;
+            text-align: center;
+            vertical-align: middle;
+            white-space: normal;    /* permite quebra de linhas para caber na tela */
+            word-break: break-word; /* evita juntar palavras sem quebra */
+        }
 
-    <link href="./src/bootstrapcss/css/bootstrap.css" rel="stylesheet">
+        /* ajustar larguras desejadas por coluna (ajuste os valores se necessário) */
+        .formulario th:nth-child(1),
+        .formulario td:nth-child(1) { width: 100px; }   /* Código */
+        .formulario th:nth-child(2),
+        .formulario td:nth-child(2) { width: 200px; }  /* Título */
+        .formulario th:nth-child(3),
+        .formulario td:nth-child(3) { width: auto; max-width: 600px; text-align:left; } /* Sinopse */
+        .formulario th:nth-child(4),
+        .formulario td:nth-child(4) { width: 110px; }  /* Imagem */
+        .formulario th:nth-child(5),
+        .formulario td:nth-child(5) { width: 120px; }  /* Gênero */
+        .formulario th:nth-child(6),
+        .formulario td:nth-child(6) { width: 140px; }  /* Autor */
+        .formulario th:nth-child(7),
+        .formulario td:nth-child(7) { width: 110px; }  /* PDF */
+        .formulario th:nth-child(8),
+        .formulario td:nth-child(8) { width: 110px; }  /* Apagar (apenas se existir) */
 
-    <link href="./src/bootstrapIcons/bootstrap-icons.css" rel="stylesheet">
-    <link href="./effects.js" rel="">
+        /* mantém botão e imagens visíveis sem expandir demais */
+        .formulario img { max-width: 100px; height: auto; display:block; margin:0 auto; }
+        .btn-entraro { box-sizing: border-box; }
 
+        /* animação de sinopse continua */
+        .sinopse-anim { max-height: 0; overflow: hidden; transition: max-height .4s; padding:0; }
+        .sinopse-anim.open { max-height: 800px; padding: 8px 0; }
+
+        /* ...existing code... */
+    </style>
 </head>
-
-<!-- Adicione este botão para abrir o dropdown de tema -->
-
-
 <body>
-   <nav class="navbar">
+    <nav class="navbar">
   <div id="mySidenav" class="navbarladinho">
     <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="homepage.php"> 
@@ -222,23 +253,149 @@ footer, .finterna {
         </form>
       </div>
       <div class="col-4 d-flex justify-content-end align-items- header-1">
-        <a style="color: white" class="btn icon" href="paginaperfil.php"> 
-         <?php 
-          if(empty($_SESSION['caminhoimgperfil'])) {
-            
-          echo strtoupper(substr($nomeusuario,0,1));
-          }
-
-          else{
-            echo "<img src=" .$_SESSION['caminhoimgperfil'] . " alt='Avatar do usuário' style='width:30px;height:30px;border-radius:16px;object-fit:cover;'/>";
-          }
-           ?> <!-- Ícone de perfil --></a> 
+        <a class="btn icon" href="paginaperfil.php"><i class="bi bi-person-circle"></i></i> <!-- Ícone de perfil --></a>
+        <img class="navlogo" src="src/img/logodeitada.png" alt="Logo da Bibliotec">
       </div>
-
 </nav>
+  
+  <!--  fim da Navbar --> 
+<div class="container">
+    <h1 class="titulo-sessao">Lista de pedidos</h1>
+    <div class="formulario">
+       
+        
+        <?php
+
+        require_once('bd.php');
+        $mysql = new BancodeDados();
+        $mysql->conecta();
+        $sqlstring = 'SELECT * FROM PEDIDO ORDER BY datapedido DESC';
+        
+        $query = @mysqli_query($mysql->conn, $sqlstring);
 
 
+       
+        echo "<table style='margin:auto;'>";
+        echo "<tr>
+            <th width='30px'>Código livro</th>
+            <th width='100px'>titulo</th>
+            <th class='sinopse-col'>sinopse</th>
+            <th width='100px'>imagem</th>
+            <th width='100px'>genero</th>
+            <th width='100px'>autor</th>
+            <th width='100px'>PDF</th>";
+            
+            
+            if ($_SESSION['cargo']=="adm"){
+            echo"
+            <th width='100px'>Apagar</th>";
+            }
+           echo" <th width='100px'>Postar</th>";
+          echo"</tr>";
+          // mostra a tabela dos livros encontrados
 
+        while($dados=mysqli_fetch_array($query))
+        {
+            $idLivro = $dados['id_pedido'];
+
+            $sqlstringGenero = "SELECT classificacao FROM genero WHERE id_genero = {$dados['id_genero']}";
+            $queryGenero = @mysqli_query($mysql->conn, $sqlstringGenero);
+            $dadosgenero=mysqli_fetch_array($queryGenero);
+            echo "<tr>";
+            echo "<td align='center'>". $dados['id_pedido']."</td>";
+            echo "<td align='center'><b>". $dados['titulo']."</b></td>";
+            // Sinopse escondida por padrão, com animação
+            echo "<td class='sinopse-col'>
+                    <div id='sinopse-$idLivro' class='sinopse-anim'><b>". nl2br(htmlspecialchars($dados['sinopse'])) ."</b></div>
+                    <button type='button' class='mostrar-btn' onclick=\"toggleSinopse('$idLivro', this)\">Mostrar mais</button>
+                  </td>";
+            echo "<td align='center'><b> <img src='{$dados['caminhoimg']}' alt='Capa do Livro' style='width:80px; height:120px; object-fit:cover; border-radius:8px; margin:16px; box-shadow:0 2px 8px #00000040;'/>"."</b></td>";
+            echo "<td align='center'><b>". $dadosgenero['classificacao']."</b></td>";
+            echo "<td align='center'><b>". $dados['autor']."</b></td>";
+            echo "<td style='padding:0;'>";
+                      
+            echo"<form action='visualizador.php' method='POST'>
+            <input type='hidden' id='id' name='id' value='{$dados['id_pedido']}'>
+            <input type='hidden' id='nomelivro' name='nomelivro' value='{$dados['titulo']}'>
+            <input type='hidden' id='caminho' name='caminho' value='{$dados['caminho']}'>
+            
+            ";
+            echo "<button type='submit' class='btn-entraro' style='background:#fff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center;'>Ler</button>";
+
+            echo "</form>";
+               echo"</td>";
+                   if ($_SESSION['cargo']=="adm"){
+                    echo "<td style='padding:0px;'>
+                     <div style='display:flex; justify-content:center; align-items:center; height:100%;'>";
+                echo"<form action='deletarpedido.php' method='POST' style='margin:0; padding:0; display:inline; border:none;'>"; 
+
+                  echo"<li class='list' style='list-style:none;'>";
+                  
+                echo"<input type='hidden' id='id' name='id' value='{$dados['id_pedido']}'>"; 
+
+                
+
+                 echo"<input type='hidden' id='caminho' name='caminho' value='{$dados['caminho']}'>"; 
+
+                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$dados['caminhoimg']}'>
+                  
+                  "; 
+
+                
+                echo"<button id='deletar' class='btn-entraro' style='background:#e81515ff;color:#fff;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center; display:inline-block;'>Apagar</button>";
+              echo"</form>";
+                    echo "</div>";
+                    echo "</td>";
+                    }
+
+                    echo "<td style='padding:0px;'>
+                     <div style='display:flex; justify-content:center; align-items:center; height:100%;'>";
+                echo"<form action='princUpload.php' method='POST' style='margin:0; padding:0; display:inline; border:none;'>"; 
+
+                  echo"<li class='list' style='list-style:none;'>";
+                  
+                echo"<input type='hidden' id='id' name='id' value='{$dados['id_pedido']}'>"; 
+
+                
+
+                 echo"<input type='hidden' id='caminho' name='caminho' value='{$dados['caminho']}'>"; 
+
+                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$dados['caminhoimg']}'>
+
+                  <input type='hidden' id='titulo' name='titulo' value='{$dados['titulo']}'>
+                  <input type='hidden' id='sinopse' name='sinopse' value='{$dados['sinopse']}'>
+                  <input type='hidden' id='genero' name='genero' value='{$dados['id_genero']}'>
+                  <input type='hidden' id='autor' name='autor' value='{$dados['autor']}'>
+
+                  <input type='hidden' id='url' name='url' value='pedidos.php'>
+                  <input type='hidden' id='nome' name='nome' value='{$dados['nome_arquivo']}'>
+                  "; 
+
+                
+                echo"<button id='postar' class='btn-entraro' style='background:#ffffff;color:#393bb5;font-weight:600;box-shadow:0 2px 8px #393bb520; min-width:100px; text-align:center; display:inline-block;'>Postar</button>";
+              echo"</form>";
+                    echo "</div>";
+                    echo "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+
+        $mysql->fechar();
+        ?>
+        <a href='homepage.php' class="voltar-link">Voltar para a Home</a>
+    </div>
+</div>
+<script>
+function toggleSinopse(id, btn) {
+    var sinopseDiv = document.getElementById('sinopse-' + id);
+    if (!sinopseDiv.classList.contains('open')) {
+        sinopseDiv.classList.add('open');
+        btn.textContent = "Mostrar menos";
+    } else {
+        sinopseDiv.classList.remove('open');
+        btn.textContent = "Mostrar mais";
+    }
+}
+</script>
 </body>
-
-</html> 
+</html>

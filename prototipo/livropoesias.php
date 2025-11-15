@@ -162,7 +162,9 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
 
                  echo"<input type='hidden' id='caminho' name='caminho' value='{$livro['caminho']}'>"; 
 
-                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$livro['caminhoimg']}'>"; 
+                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$livro['caminhoimg']}'>
+                  <input type='hidden' id='tipo' name='tipo' value='livro'>
+                  "; 
 
                 
                 echo"<button id='deletar' class='btn-entraro'>Apagar</button>";

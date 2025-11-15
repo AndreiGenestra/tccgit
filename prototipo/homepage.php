@@ -3,7 +3,7 @@
 <html lang="pt-br" dir="ltr" data-bs-theme="auto">
 
 <?php
-
+date_default_timezone_set('America/Sao_Paulo');
 session_start();
 
 if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
@@ -27,6 +27,10 @@ $email = $_SESSION['email'];
 
 $idade = $_SESSION['idade'];
 $cargo = $_SESSION['cargo'];
+
+require_once('bd.php');
+$mysql = new BancodeDados();
+$mysql -> conecta();
 
 ?>
 <style> 
@@ -148,6 +152,9 @@ footer, .finterna {
 
 
 <body>
+<?php if ($cargo == "adm"): ?>
+
+
 
 <!-- Modal postar (flutuante) -->
 <button id="abrirmodalpostar" class="btn-entraro position-fixed" style="right:20px;bottom:20px;z-index:1050;padding:12px 18px;border-radius:10px;box-shadow:0 6px 18px rgba(57,59,181,0.12);">Postar</button>
@@ -167,17 +174,19 @@ footer, .finterna {
         </div>
 
         <!-- pegando a data, url e o id do usuário -->
-         <input type="hidden" name ="url" value="<?php echo $_SERVER['HTTP_REFERER']; ?>">
+         <input type="hidden" name ="url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
          <input type="hidden" name="idusuario" value="<?php echo $id; ?>">
          <input type="hidden" name="datapostagem" value="<?php echo date('d/m/Y'); ?>">
          <input type="hidden" name="nomeusuario" value="<?php echo $nomeusuario; ?>">
 
-         <input type="hidden" name="nomeusuario" value="1">
+         <input type="hidden" name="idcomunidade" value="2">
 
         <button type="submit" style="background:var(--cor-primaria);color:#fff;padding:12px 0;border:none;border-radius:8px;font-weight:600;font-size:1.1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;width:100%;text-align:center;box-shadow:0 2px 8px rgba(57,59,181,0.10);">Postar</button>
       </form>
     </div>
 </div>
+
+<?php endif; ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -279,14 +288,16 @@ document.addEventListener('DOMContentLoaded', function() {
         </form>
       </div>
       <div class="col-4 d-flex justify-content-end align-items- header-1">
-        <a style="color: white" class="btn icon" href="paginaperfil.php"> 
          <?php 
           if(empty($_SESSION['caminhoimgperfil'])) {
+       echo" <a style='color: white; border: solid 1px white;' class='btn icon' href='paginaperfil.php'>"; 
+        
             
           echo strtoupper(substr($nomeusuario,0,1));
           }
 
           else{
+            echo" <a style='color: white; border: none;' class='btn icon' href='paginaperfil.php'>"; 
             echo "<img src=" .$_SESSION['caminhoimgperfil'] . " alt='Avatar do usuário' style='width:30px;height:30px;border-radius:16px;object-fit:cover;'/>";
           }
            ?> <!-- Ícone de perfil --></a> 
@@ -419,7 +430,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 <p class="">
 
-                    <a style="color: #333bb5 !important; text-decoration: none; cursor: pointer;" class="text-body-emphasis fw-bold lead" onclick="openNav()">Acessar</a>
+                    <a style="color: #333bb5 !important; text-decoration: none; cursor: pointer;" class="text-body-emphasis fw-bold lead" href="busca.php?nomelivro=">Acessar</a>
 
                 </p>
 
@@ -625,12 +636,18 @@ document.addEventListener("DOMContentLoaded", function() {
              </article>
 
                
+              <?php 
+              
+              $sqlstringpost = "SELECT * FROM postagem p JOIN usuarios u ON p.idusuario = u.id ORDER BY p.datapostagem DESC LIMIT 3"; 
+              $result = @mysqli_query($mysql->conn, $sqlstringpost);
+              while ($post = mysqli_fetch_assoc($result)){
+                 
+              
+                echo"<article class='blog-post'>
 
-                <article class="blog-post">
+                    <h2 class='display-5 link-body-emphasis mb-1'>{$post['titulo']}</h2>
 
-                    <h2 class="display-5 link-body-emphasis mb-1">Outro Post</h2>
-
-                    <p class="blog-post-meta">23 de dezembro de 2020 por <a href="#">Jacob</a></p>
+                    <p class='blog-post-meta'>{$post['datapostagem']} por <a href='#'>{$post['nome']}</a></p>
 
                     <p>Atualmente, várias empresas estudam esses microrganismos para produzir alimentos. Em 2019, pesquisadores da Air Protein anunciaram sucesso em transformar CO₂ do ar em carne artificial rica em proteína, sem uso de terras agrícolas.</p>
 
@@ -642,37 +659,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     <p>Esses pesquisadores usaram ar e energia renovável em um processo semelhante à fermentação para produzir proteína rica em aminoácidos essenciais, vitaminas e minerais, sem hormônios, antibióticos ou pesticidas.</p>
 
-                    <p>Foram produzidas carnes de aves, bovinos e frutos do mar, sem emissões de carbono, ao contrário da pecuária tradicional.</p>
+                    <p>Foram produzidas carnes de aves, bovinos e frutos do mar, sem emissões de carbono, ao contrário da pecuária tradicional.</p>";
 
-                </article>
+                    if($cargo=="adm"){
+                    echo"<form action='deletar.php' method='POST'>
+                    <input type='hidden' name='idpostagem' value='{$post['ID_Postagem']}'> 
+                    <input type='hidden' name='tipo' value='postagem'>
+                    <button type ='submit' style='background-color: red;
+                     color:white; text-decoration: none; padding: 3px; border: none;'> Excluir </button>
+                    </form>"; 
+                    }
 
-               
 
-                <article class="blog-post">
+                echo"</article>";
+              }
+                ?>
 
-                    <h2 class="display-5 link-body-emphasis mb-1">Nova Funcionalidade</h2>
-
-                    <p class="blog-post-meta">14 de dezembro de 2020 por <a href="#">Jacob</a></p>
-
-                    <p>A empresa finlandesa Solar Foods desenvolveu uma técnica para produzir proteína do ar, dividindo a água em hidrogênio e oxigênio por eletrólise. O hidrogênio fornece energia para bactérias transformarem CO₂ e nitrogênio do ar em proteína, de forma mais eficiente que as plantas. Essa proteína, chamada Solein, se assemelha à farinha de trigo.</p>
-
-                    <p>A empresa está coletando dados para obter aprovação alimentar da União Europeia e planeja iniciar a produção comercial em 2021. O objetivo é produzir alimentos sustentáveis usando eletricidade e CO₂, evitando os impactos ambientais da agricultura tradicional.</p>
-
-                    <p>Assim, proteínas derivadas de microrganismos podem:</p>
-
-                    <ul>
-
-                        <li>Oferecer uma solução para a crescente demanda global por alimentos</li>
-
-                        <li>Tornar as fábricas de alimentos mais eficientes e sustentáveis</li>
-
-                        <li>Fornecer alimento para astronautas e toda a população da Terra em 2050</li>
-
-                    </ul>
-
-                    <p>Imagine que os microrganismos serão as fábricas do futuro e que o alimento do futuro será feito do ar! O ano de 2050 será muito diferente do nosso mundo atual, sem agricultura ou pecuária para alimentação. Parece ficção, mas não é impossível!</p>
-
-                </article>
 
             </div>
 
@@ -783,11 +785,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         <ol class="list-unstyled">
 
-                            <li> <a style="text-decoration: none; color: #393bb5;" href="https://allanfs762@gmail.com">Email</a></li>
+                            <li> <a style="text-decoration: none; color: #393bb5;" href="#">Email</a></li>
 
-                            <li> <a style="text-decoration: none; color: #393bb5;"href="">Instagram</a></li>
+                            <li> <a style="text-decoration: none; color: #393bb5;"href="#">Instagram</a></li>
 
-                            <li> <a style="text-decoration: none; color: #393bb5;"href="meupinto.com">Twitter</a></li>
+                            <li> <a style="text-decoration: none; color: #393bb5;"href="#">Twitter</a></li>
 
                             
 
@@ -803,9 +805,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <div class="finterna">
 
-                <p> &copy;  2025 Bibliotec. Todos os direitos reservados  by Maiam Technologies</p>
-
-                <br>
+                
 
                 <a class="link"href="#"> Voltar ao topo </a>
 
@@ -815,37 +815,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     </main>
 
-   
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-
-    // Script oficial do Bootstrap para alternância de tema
-
-    document.querySelectorAll('[data-bs-theme-value]').forEach(function(btn) {
-
-        btn.addEventListener('click', function() {
-
-            var theme = btn.getAttribute('data-bs-theme-value');
-
-            document.documentElement.setAttribute('data-bs-theme', theme);
-
-            // Atualiza o botão ativo
-
-            document.querySelectorAll('[data-bs-theme-value]').forEach(function(b) {
-
-                b.classList.remove('active');
-
-            });
-
-            btn.classList.add('active');
-
-        });
-
-    });
-
-    </script>
+  
 
 </body>
 

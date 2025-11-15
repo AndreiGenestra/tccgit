@@ -10,6 +10,8 @@ Grupo MAIAM TECH - Allan Araujo, Andrei Genestra, Isabelle Lima, Milena Mazzo, M
 session_start();
 
 //recebe os dados do formulario
+
+if($_POST['tipo'] == "livro"){
 $id = $_POST['id'];
 $url = $_POST['url'];
 $caminhoArquivo = $_POST['caminho'];
@@ -49,7 +51,28 @@ if (file_exists($caminhoArquivo) && file_exists($caminhoimgArquivo)) {
     echo "O arquivo não foi encontrado.";
 }
 
+}
+else if($_POST['tipo'] == "postagem"){
+$id = $_POST['idpostagem'];
+$url = "homepage.php";
+//conecta com o banco
+ require_once('bd.php');   
+$mysql = new BancodeDados();
+    $mysql -> conecta();
 
+    // deleta o arquivo do banco
+  $stmt = $mysql->conn->prepare(" DELETE FROM postagem WHERE ID_Postagem=$id");
+      
+    $stmt->execute();
+        $stmt->close();
+        
+  $mysql -> fechar();
+echo "<script language='javascript' type='text/javascript'> alert('Deletado com sucesso'); window.location.href='{$url}';</script>"; 
+}
+
+else {
+    echo "<script language='javascript' type='text/javascript'> alert('Erro ao deletar'); window.location.href='{$url}';</script>";
+}
 
 
 ?>
