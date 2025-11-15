@@ -35,10 +35,14 @@ $novoNomeimg = uniqid ( time () ) . $img .".". $extensaoimg;
  $destino = 'uploads/' . $novoNome;
   $destinoimg = 'uploads/' . $novoNomeimg;
 // $destino = $novoNome;
+
+//salvando na pasta do computador
 if ( @move_uploaded_file ( $arquivo_tmp, $destino ) && @move_uploaded_file ( $arquivo_img_tmp, $destinoimg ) ) {
 
-echo"salvo na pasta \n\n";
 
+
+
+//banco de dados
  require_once('bd.php');
 $mysql = new BancodeDados();
 	$mysql -> conecta();

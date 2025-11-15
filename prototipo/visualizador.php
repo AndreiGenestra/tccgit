@@ -83,12 +83,7 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
       <span class="generos-text">Pagina Inicial</span>
     </a>
     
-    <a href="comunidades-list.php"> 
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-      </svg>
-      <span class="generos-text">Comunidades</span>
-    </a>
+   
     
     <a href="sobrenos.php"> 
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
@@ -156,6 +151,57 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
             <div class="col-12">
                 <h2><?php echo $nomelivro ?></h2>
                 <p>Veja o conteúdo do livro abaixo:</p>
+                <p style="display:;">Pontos de Leitura: <span id="contador">0</p></h1>
+
+    <script>
+        // variáveis vindas do PHP
+        const idLivro = <?php echo json_encode($idlivro); ?>; // conversão para valores que podem entrar no javascript
+        const idUsuario = <?php echo json_encode($id); ?>;
+
+        // contador simples
+        let contador = 0;
+        const intervaloMS = 5000; // 5 segundos
+
+        const elContador = document.getElementById('contador');
+
+        function incrementar() {
+            contador++;
+            if (elContador) elContador.textContent = contador;
+        }
+
+        const timer = setInterval(incrementar, intervaloMS); // definindo intervalo para cada vez que vai incrementear
+
+        // envia pontos ao servidor usando navigator.sendBeacon 
+        function enviarPontos() {
+            if (contador <= 0) return;
+            // preparar payload urlencoded
+            const params = new URLSearchParams();
+            params.append('id_livro', idLivro);
+            params.append('id_usuario', idUsuario);
+            params.append('pontos', contador);
+
+            const url = 'salvarpontos.php';
+            if (navigator.sendBeacon) {
+                const blob = new Blob([params.toString() /* aqui ele manda os paramatros do contador e do id livro pro salvar pontos*/], { type: 'application/x-www-form-urlencoded' });
+                navigator.sendBeacon(url, blob);
+            } else {
+                // fallback para enviar caso o navegador nao tenha sendBeacon
+                navigator.fetch(url, { method: 'POST', body: params, keepalive: true }).catch(()=>{});
+            }
+            // zerar contador para evitar envios duplicados
+            contador = 0;
+        }
+
+        // eventos para enviar quando a aba for escondida ou o usuário sair
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'hidden') {
+                enviarPontos();
+            }
+        });
+        window.addEventListener('beforeunload', function() {
+            enviarPontos();
+        });
+    </script>
             </div>
         </div>
     </div>

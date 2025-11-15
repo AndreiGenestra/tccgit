@@ -20,7 +20,6 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
 
     echo "<script language='javascript' type='text/javascript'>
@@ -35,11 +34,10 @@ $mysql = new BancodeDados();
 $mysql -> conecta();
 $sqlstring = "select * from livros where id_genero=3"; 
 $result = @mysqli_query($mysql->conn, $sqlstring);
-$livro = mysqli_fetch_assoc($result);
 ?>
 <body>
  <!-- NAVBAR -->
- <nav class="navbar">
+    <nav class="navbar">
   <div id="mySidenav" class="navbarladinho">
     <a class="" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="homepage.php"> 
@@ -49,12 +47,7 @@ $livro = mysqli_fetch_assoc($result);
       <span class="generos-text">Pagina Inicial</span>
     </a>
     
-    <a href="comunidades-list.php"> 
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-      </svg>
-      <span class="generos-text">Comunidades</span>
-    </a>
+ 
     
     <a href="sobrenos.php"> 
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
@@ -118,25 +111,20 @@ $livro = mysqli_fetch_assoc($result);
       </div>
 </nav>
   
+
   <!--  fim da Navbar --> 
-    
+
     <section class="comunidades-hero" style="text-align:center; margin-top:40px; margin-bottom:30px;">
         <h1 class="titulo1" style="font-size:2.5rem; color:#393bb5; margin-bottom:10px;">Mistério</h1>
         <p style="font-size:1.2rem; color:#333; max-width:600px; margin:0 auto 10px auto;">
-            Seja bem-vindo à página de Mistério <strong>Bibliotec</strong>!<br>
+           <strong>Seja bem-vindo à página de Mistérios da Bibliotec!</strong><br>
             Encontre, crie e leia livros de Mistério compartilhados por nossa comunidade apaixonada por literatura.<br>
         </p>
-
-        
     </section>
-    <div class="bloco-comunidades" style="gap: 24px; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: stretch;">
+    <div class="bloco-comunidades" style="display: flex; flex-direction: column; gap: 24px; justify-content: center; align-items: center;">
         <h2 class="titulo2" style="color:#222; font-size:1.7rem; margin-bottom:10px; width:100%;">Livros de Mistério em destaque:</h2>
-        <?php
-       
-          
-
-        
-       while ($livro = mysqli_fetch_assoc($result)) {
+       <?php
+        while ($livro = mysqli_fetch_assoc($result)) {
             echo "<div class='comunidade-card' style='background: #393bb5; color:#fff; box-shadow:0 4px 16px #393bb540; border:none; min-width:320px; width:fit-content; max-width:900px; flex:1 1 320px; margin: 0 12px; display:flex; flex-direction:column; justify-content:space-between;'>";
             echo "<div style='display:flex;align-items:center;gap:16px;'>";
             echo"<img src='{$livro['caminhoimg']}' alt='Capa do Livro' style='width:80px; height:120px; object-fit:cover; border-radius:8px; margin:16px; box-shadow:0 2px 8px #00000040;'/>";
@@ -154,6 +142,7 @@ $livro = mysqli_fetch_assoc($result);
             <input type='hidden' id='id' name='id' value='{$livro['id']}'>
             <input type='hidden' id='nomelivro' name='nomelivro' value='{$livro['titulo']}'>
             <input type='hidden' id='caminho' name='caminho' value='{$livro['caminho']}'>
+
             <input type='hidden' id='tipo' name='tipo' value='livro'>
             
             ";
@@ -172,7 +161,8 @@ $livro = mysqli_fetch_assoc($result);
 
                  echo"<input type='hidden' id='caminho' name='caminho' value='{$livro['caminho']}'>"; 
 
-                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$livro['caminhoimg']}'>"; 
+                  echo"<input type='hidden' id='caminhoimg' name='caminhoimg' value='{$livro['caminhoimg']}'>
+                  <input type='hidden' id='tipo' name='tipo' value='livro'>"; 
 
                 
                 echo"<button id='deletar' class='btn-entraro'>Apagar</button>";
@@ -189,6 +179,6 @@ $livro = mysqli_fetch_assoc($result);
     <footer class="footer">
         <p>&copy; 2025 Bibliotec. Todos os direitos reservados by Maiam Technologies</p>
     </footer>
-    
+   
 </body>
 </html>

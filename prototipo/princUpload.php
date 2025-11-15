@@ -16,6 +16,8 @@ $url = $_POST['url'];
 $sinopse = $_POST['sinopse'];
 $genero = $_POST['genero'];
 $nome = $_POST['nome'];
+$id_pedido = $_POST['id_pedido'];
+
 
 
 
@@ -33,22 +35,17 @@ $mysql = new BancodeDados();
         $stmt->execute();
         $stmt->close();
 
+        // remover o registro da tabela de pedidos (se o id do pedido for enviado no formulário
+
+            $del = $mysql->conn->prepare("DELETE FROM pedido WHERE id_pedido = ?");
+            $del->bind_param("i", $id_pedido);
+            $del->execute();
+            $del->close();
+        
+
       echo"<script language='javascript' type='text/javascript'>
           alert('Postagem enviada com sucesso');window.location.href='pedidos.php';
           </script>";
-
-
-
-
-      
-
-
-
-
-        
-
-
-// caso seja um livro como pedido
 
  
    

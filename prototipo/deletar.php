@@ -11,46 +11,57 @@ session_start();
 
 //recebe os dados do formulario
 
+$tipo = $_POST['tipo'];
+
 if($_POST['tipo'] == "livro"){
-$id = $_POST['id'];
-$url = $_POST['url'];
-$caminhoArquivo = $_POST['caminho'];
-$caminhoimg = $_POST['caminhoimg'];
-$caminhoArquivo = __DIR__ . '/' . $caminhoArquivo;
-$caminhoimgArquivo = __DIR__ . '/' . $caminhoimg;
+    $id = $_POST['id'];
+    $url = $_POST['url'];
+    // pegar só o nome do arquivo por segurança
+    $caminho = isset($_POST['caminho']) ? basename($_POST['caminho']) : '';
+    $caminhoimg = isset($_POST['caminhoimg']) ? basename($_POST['caminhoimg']) : '';
 
-//conecta com o banco
- require_once('bd.php');
-$mysql = new BancodeDados();
-	$mysql -> conecta();
+    // caminho absoluto para a pasta uploads (ajuste se sua pasta for outra)
+    $uploadDir = __DIR__ . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+    $fullArquivo = $uploadDir . $caminho;
+    $fullImgArquivo = $uploadDir . $caminhoimg;
 
-    // deleta o arquivo do banco
-  $stmt = $mysql->conn->prepare(" DELETE FROM livros WHERE id=$id");
-      
+    // conecta com o banco
+    require_once('bd.php');
+    $mysql = new BancodeDados();
+    $mysql->conecta();
+
+    // deleta o registro do banco (use parâmetros para segurança)
+    $stmt = $mysql->conn->prepare("DELETE FROM livros WHERE id = ?");
+    $stmt->bind_param("i", $id);
     $stmt->execute();
-        $stmt->close();
-        
-  $mysql -> fechar();
+    $stmt->close();
+    $mysql->fechar();
 
-echo "<script language='javascript' type='text/javascript'> alert('Deletado com sucesso'); window.location.href='{$url}';</script>"; 
-
-//tirando da pasta do computador:
-
-//  Verifique se o arquivo existe no servidor
-if (file_exists($caminhoArquivo) && file_exists($caminhoimgArquivo)) {
-    //  Tente excluir o arquivo
-    if (unlink($caminhoArquivo) && unlink($caminhoimgArquivo)) {
-        
-        echo "Arquivo excluído com sucesso!";
-    } else {
-        
-        echo "Não foi possível excluir o arquivo.";
+    // tenta apagar cada arquivo separadamente (não exigir os dois)
+    $errors = [];
+    if ($caminho !== '') {
+        if (file_exists($fullArquivo)) {
+            if (!@unlink($fullArquivo)) {
+                $errors[] = "Falha ao excluir: $fullArquivo";
+            }
+        } // se não existir, ignorar
     }
-} else {
-    //  Se o arquivo não existir
-    echo "O arquivo não foi encontrado.";
-}
+    if ($caminhoimg !== '') {
+        if (file_exists($fullImgArquivo)) {
+            if (!@unlink($fullImgArquivo)) {
+                $errors[] = "Falha ao excluir: $fullImgArquivo";
+            }
+        }
+    }
 
+    // montar mensagem e redirecionar depois de tentar apagar
+    if (empty($errors)) {
+        echo "<script>alert('Deletado com sucesso'); window.location.href='{$url}';</script>";
+    } else {
+        $msg = implode('\\n', $errors);
+        echo "<script>alert('Deletado (com erros):\\n{$msg}'); window.location.href='{$url}';</script>";
+    }
+    exit;
 }
 else if($_POST['tipo'] == "postagem"){
 $id = $_POST['idpostagem'];

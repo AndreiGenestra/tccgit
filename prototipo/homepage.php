@@ -224,12 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <span class="generos-text">Pagina Inicial</span>
     </a>
     
-    <a href="comunidades-list.php"> 
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-      </svg>
-      <span class="generos-text">Comunidades</span>
-    </a>
+   
     
     <a href="sobrenos.php"> 
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
@@ -434,17 +429,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 </p>
 
-             <?php if ($_SESSION['cargo']=="adm"): ?>
-            <li class="list">
-                <button id="abrirmodalalterar" class="btn-entraro">Alterar</button>
-
-  <!-- Estrutura do modal -->
-  
-  
-  
-  
-            </li>
-        <?php endif; ?>
+             
         <div id="modalalterar" class="modal-fundo">
     <div class="modal-conteudo">
       <span class="fechar">&times;</span>
@@ -508,13 +493,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     <div class="col p-4 d-flex flex-column position-static">
 
-                        <strong class="d-inline-block mb-2 text-primary-emphasis">Romance</strong>
+                        <strong class="d-inline-block mb-2 text-primary-emphasis">Poesia</strong>
 
-                        <h3 class="mb-0">Antologia Poética</h3>
+                        <h3 class="mb-0">Claro Enigma</h3>
 
                         <div class="mb-1 text-body-secondary">14 de outubro</div>
 
-                        <p class="card-text mb-auto">Este é um cartão mais amplo c.</p>
+                        <p class="card-text mb-auto">Claro Enigma marca um momento de virada na poesia de Carlos Drummond de Andrade.</p>
 
                         <a style="color: #333bb5; text-decoration: none;" href="livroromance" class="icon-link gap-1 icon-link-hover stretched-link">
                             Continue lendo
@@ -649,17 +634,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     <p class='blog-post-meta'>{$post['datapostagem']} por <a href='#'>{$post['nome']}</a></p>
 
-                    <p>Atualmente, várias empresas estudam esses microrganismos para produzir alimentos. Em 2019, pesquisadores da Air Protein anunciaram sucesso em transformar CO₂ do ar em carne artificial rica em proteína, sem uso de terras agrícolas.</p>
+                    <p>{$post['Conteudo']}</p>
 
-                    <blockquote>
-
-                        <p>Foram produzidas carnes de vários tipos</p>
-
-                    </blockquote>
-
-                    <p>Esses pesquisadores usaram ar e energia renovável em um processo semelhante à fermentação para produzir proteína rica em aminoácidos essenciais, vitaminas e minerais, sem hormônios, antibióticos ou pesticidas.</p>
-
-                    <p>Foram produzidas carnes de aves, bovinos e frutos do mar, sem emissões de carbono, ao contrário da pecuária tradicional.</p>";
+                   ";
 
                     if($cargo=="adm"){
                     echo"<form action='deletar.php' method='POST'>
