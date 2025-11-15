@@ -151,7 +151,7 @@ $result = @mysqli_query($mysql->conn, $sqlstring);
             <div class="col-12">
                 <h2><?php echo $nomelivro ?></h2>
                 <p>Veja o conteúdo do livro abaixo:</p>
-                <p style="display:;">Pontos de Leitura: <span id="contador">0</p></h1>
+                <p style="display:none;">Pontos de Leitura: <span id="contador">0</p></h1>
 
     <script>
         // variáveis vindas do PHP

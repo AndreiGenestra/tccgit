@@ -28,6 +28,7 @@ $email = $_SESSION['email'];
 $idade = $_SESSION['idade'];
 $cargo = $_SESSION['cargo'];
 
+
 require_once('bd.php');
 $mysql = new BancodeDados();
 $mysql -> conecta();
@@ -672,7 +673,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
 
                    
-
+                 
                     <div>
 
 
@@ -680,77 +681,63 @@ document.addEventListener("DOMContentLoaded", function() {
 
                             <li>
 
-                                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+                            <h1> Rank Semanal </h1>
+                         <?php
+                         $i=0;
+                   $sqlstringpontos = "SELECT * FROM pontos p JOIN usuarios u ON p.id_usuario = u.id ORDER BY p.pontos DESC LIMIT 3"; 
+              $resultpontos = @mysqli_query($mysql->conn, $sqlstringpontos);
+                  
+                  
+                  while ($ponto = mysqli_fetch_assoc($resultpontos)): ?>
+                                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="<?php echo"paginaperfiloutros.php?nome_usuario={$ponto['nome']}";?>">
 
-                                    <svg aria-hidden="true" class="bd-placeholder-img " height="96" preserveAspectRatio="xMidYMid slice" width="100%" xmlns="http://www.w3.org/2000/svg">
-
-                                        <rect width="100%" height="100%" fill="#777"></rect>
-
-                                    </svg>
+                                    <img src="<?php echo"{$ponto['caminhoimgperfil']}";?>" class="bd-placeholder-img " width="60px" height="60px" alt='Avatar do usuário' style='width:60px;height:60px;border-radius:16px;object-fit:cover;' 
+                                    />
+                                    
 
                                     <div class="col-lg-8">
                                     <!-- Local do Rank -->
-                                    <h1>
+                                    
 
                                     
 
-                                        <h6 class="mb-0">Exemplo de título de postagem</h6>
+                                        <h6 class="mb-0">
+                                          
+                                        <?php
+                                        
+                                        $i++;
+                                        echo"{$ponto['nome']}";
 
-                                        <small class="text-body-secondary">15 de janeiro de 2024</small>
 
-                                    </div>
+                                        ?>
+                                        </h6>
 
-                                </a>
-
-                            </li>
-
-                            <li>
-
-                                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-
-                                    <svg aria-hidden="true" class="bd-placeholder-img " height="96" preserveAspectRatio="xMidYMid slice" width="100%" xmlns="http://www.w3.org/2000/svg">
-
-                                        <rect width="100%" height="100%" fill="#777"></rect>
-
-                                    </svg>
-
-                                    <div class="col-lg-8">
-
-                                        <h6 class="mb-0">Este é outro título de postagem</h6>
-
-                                        <small class="text-body-secondary">14 de janeiro de 2024</small>
-
-                                    </div>
-
-                                </a>
-
-                            </li>
-
-                            <li>
-
-                                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-
-                                    <svg aria-hidden="true" class="bd-placeholder-img " height="96" preserveAspectRatio="xMidYMid slice" width="100%" xmlns="http://www.w3.org/2000/svg">
-
-                                        <rect width="100%" height="100%" fill="#777"></rect>
-
-                                    </svg>
-
-                                    <div class="col-lg-8">
-
-                                        <h6 class="mb-0">Título de postagem mais longo: esta linha tem várias linhas!</h6>
-
-                                        <small class="text-body-secondary">13 de janeiro de 2024</small>
+                                        <small class="text-body-secondary">
+                                          <?php
+                                          if($i==1){
+                                          echo " &#129351;{$i}º Lugar - {$ponto['pontos']} pontos";
+                                          }
+                                          else if($i==2){
+                                            echo " &#129352;{$i}º Lugar - {$ponto['pontos']} pontos";
+                                          }
+                                          else if($i==3){
+                                            echo " &#129353;{$i}º Lugar - {$ponto['pontos']} pontos";
+                                          }
+                                          ?>
+                                          </small>
 
                                     </div>
 
                                 </a>
-
+                    <?php endwhile; ?>
+                            
                             </li>
 
                         </ul>
 
                     </div>
+                    
+                   
 
                    
 
