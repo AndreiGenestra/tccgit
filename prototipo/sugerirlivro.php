@@ -152,7 +152,7 @@ footer, .finterna {
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
         <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
       </svg>  
-      <span class="generos-text">Sobre Nos</span>
+      <span class="generos-text">Sobre Nós</span>
     </a>
 
     <a href="paginaperfil.php">
@@ -265,6 +265,7 @@ footer, .finterna {
           <label for="img" style="font-weight: 600; color: var(--cor-primaria);">Arquivo do livro</label>
           <input type="file" id="livro" name="livro" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
         </div>
+        <input type="hidden" id="tipo" name="tipo" value="pedido">
         <button type="button" class="btn-aviso" onclick="abrirModal()" style="background: var(--cor-primaria); color: #fff; padding: 12px 0; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-decoration: none; transition: background 0.2s; width: 100%; text-align: center; box-shadow: 0 2px 8px rgba(57,59,181,0.10); margin-bottom: 12px;">Aviso</button>
 
         <div id="modalAviso" class="modal-fundo">
@@ -278,7 +279,7 @@ footer, .finterna {
           </div>
         </div>
 
-        <input type="hidden" id="tipo" name="tipo" value="pedido">
+        
         <button type="submit" style="background: var(--cor-primaria); color: #fff; padding: 12px 0; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-decoration: none; transition: background 0.2s; width: 100%; text-align: center; box-shadow: 0 2px 8px rgba(57,59,181,0.10);">Enviar</button>
 
         <script>
