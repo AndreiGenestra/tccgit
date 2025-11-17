@@ -265,9 +265,38 @@ footer, .finterna {
           <label for="img" style="font-weight: 600; color: var(--cor-primaria);">Arquivo do livro</label>
           <input type="file" id="livro" name="livro" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
         </div>
+        <button type="button" class="btn-aviso" onclick="abrirModal()" style="background: var(--cor-primaria); color: #fff; padding: 12px 0; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-decoration: none; transition: background 0.2s; width: 100%; text-align: center; box-shadow: 0 2px 8px rgba(57,59,181,0.10); margin-bottom: 12px;">Aviso</button>
+
+        <div id="modalAviso" class="modal-fundo">
+          <div class="modal-conteudo">
+            <span class="fechar" onclick="fecharModal()">&times;</span>
+            <h4>Ao enviar um livro para esta plataforma, o usuário declara estar ciente de que somente obras de domínio público ou de autoria própria podem ser publicadas.
+      <br><br>O envio de materiais que violem direitos autorais constitui infração aos Termos de Uso e poderá resultar em remoção do conteúdo, suspensão da conta e demais medidas cabíveis.
+      <br><br>O usuário também reconhece que, ao postar qualquer livro no site, o conteúdo se tornará público e acessível aos demais usuários.
+      <br><br>A partir do momento em que o material é disponibilizado publicamente, não é de responsabilidade da empresa qualquer uso indevido, cópia ou distribuição realizada por terceiros, cabendo exclusivamente ao usuário avaliar os riscos antes da publicação.
+      Ao prosseguir com o envio, o usuário aceita e concorda integralmente com estas condições.</h4>
+          </div>
+        </div>
+
         <input type="hidden" id="tipo" name="tipo" value="pedido">
         <button type="submit" style="background: var(--cor-primaria); color: #fff; padding: 12px 0; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-decoration: none; transition: background 0.2s; width: 100%; text-align: center; box-shadow: 0 2px 8px rgba(57,59,181,0.10);">Enviar</button>
-        
+
+        <script>
+        function abrirModal() {
+          document.getElementById("modalAviso").style.display = "block";
+        }
+
+        function fecharModal() {
+          document.getElementById("modalAviso").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+          var modal = document.getElementById("modalAviso");
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
       </form>
     </div>
 
