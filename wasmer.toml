@@ -1,6 +1,6 @@
 wasmer.toml
 [package]
-name = "seu-nome/seu-app-php"
+name = "tccgit/prototipo"
 version = "0.1.0"
 description = "App PHP/JS"
 
