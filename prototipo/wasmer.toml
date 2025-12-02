@@ -1,13 +1,13 @@
+wasmer.toml
 [package]
-name = "seu-nome/seu-app-hibrido"
+name = "seu-nome/seu-app-php"
 version = "0.1.0"
 description = "App PHP/JS"
 
 [scripts]
-# 1. Este comando é executado ANTES do 'start'. 
-# Ele instala as dependências do Node.js (que o seu JavaScript usa).
-build = "npm install"
+# Tenta instalar as dependências JS (npm install) E PHP (composer install)
+# O operador "&&" garante que um comando só executa se o anterior for bem-sucedido.
+build = "npm install && composer install" 
 
-# 2. Este comando é executado para iniciar o servidor web.
-# Ele serve seus arquivos PHP, HTML, CSS e os arquivos JS recém-instalados em 'node_modules'.
+# Inicia o servidor PHP embutido, que servirá todos os seus arquivos.
 start = "php -t . -S 0.0.0.0:8080"
