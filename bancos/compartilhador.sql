@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 15/11/2025 às 22:11
+-- Tempo de geração: 17/11/2025 às 02:17
 -- Versão do servidor: 11.2.2-MariaDB
 -- Versão do PHP: 8.3.14
 
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `livros` (
   `autor` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_genero` (`id_genero`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Despejando dados para a tabela `livros`
@@ -138,7 +138,14 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `nome_arquivo` varchar(250) NOT NULL,
   `autor` varchar(200) NOT NULL,
   PRIMARY KEY (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `pedido`
+--
+
+INSERT INTO `pedido` (`id_pedido`, `titulo`, `sinopse`, `datapedido`, `id_genero`, `caminho`, `caminhoimg`, `nome_arquivo`, `autor`) VALUES
+(17, 'As Aventuras de Pimpollone', 'kjkjkjjdf', '2025-11-17', 4, 'uploads/1763344020691a7e944876cantologia.pdf.pdf', 'uploads/1763344020691a7e9448779bicho.jfif.jfif', 'antologia.pdf', 'Julia de Almeida');
 
 -- --------------------------------------------------------
 
@@ -208,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_post` int(11) DEFAULT NULL,
   `caminhoimgperfil` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
@@ -223,7 +230,8 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `idade`, `cargo`, `Data_
 (11, 'Conta de Usuário', 'teste@teste.com.br', '1234', 66, 'usuario', NULL, NULL, ''),
 (12, 'Katty', 'katty@gmail.com', 'dedei2007', 15, 'usuario', NULL, NULL, 'src/img/perfis/avatar_12_1762910448.jpg'),
 (13, 'Genestra', 'genestradavi@gmail.com', 'Miau2012', 28, 'usuario', NULL, NULL, 'src/img/perfis/avatar_13_1762966168.png'),
-(14, 'oya', 'oya@gmail.com', '1234', 1, 'usuario', NULL, NULL, 'src/img/perfis/avatar_14_1763166329.jpg');
+(14, 'oya', 'oya@gmail.com', '1234', 1, 'usuario', NULL, NULL, 'src/img/perfis/avatar_14_1763166329.jpg'),
+(15, 'oie', 'oie@gmail.com', '1234', 19, 'usuario', NULL, NULL, NULL);
 
 --
 -- Restrições para tabelas despejadas
